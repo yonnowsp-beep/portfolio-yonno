@@ -142,16 +142,53 @@
   /* CLIENTES */
   #projetos { background: var(--bg2); }
   .clients-intro { max-width: 560px; font-size: 0.95rem; color: var(--muted); line-height: 1.8; margin-bottom: 3rem; }
-  .clients-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5px; background: var(--line); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
-  .client-card { background: var(--bg2); padding: 2rem; transition: background 0.25s; position: relative; overflow: hidden; }
+  .clients-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  @media (max-width: 768px) { .clients-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 480px) { .clients-grid { grid-template-columns: repeat(2, 1fr); } }
+  .client-card {
+    background: var(--bg2);
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    transition: background 0.25s;
+    position: relative;
+    overflow: hidden;
+    min-height: 110px;
+  }
   .client-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), transparent); transform: scaleX(0); transform-origin: left; transition: transform 0.4s cubic-bezier(0.22,1,0.36,1); }
   .client-card:hover { background: var(--bg3); }
   .client-card:hover::before { transform: scaleX(1); }
-  .client-icon { width: 40px; height: 40px; border-radius: 8px; background: var(--accent-lo); border: 1px solid rgba(232,104,42,0.2); display: flex; align-items: center; justify-content: center; margin-bottom: 1.2rem; }
-  .client-icon svg { width: 18px; height: 18px; }
-  .client-name { font-family: var(--serif); font-size: 1.1rem; font-weight: 700; color: var(--white); margin-bottom: 0.4rem; }
-  .client-sector { font-size: 0.72rem; font-family: var(--mono); color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.8rem; }
-  .client-desc { font-size: 0.84rem; color: var(--muted); line-height: 1.7; }
+  .client-logo {
+    width: 100%;
+    max-width: 110px;
+    height: 40px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    opacity: 0.4;
+    transition: opacity 0.25s;
+  }
+  .client-card:hover .client-logo { opacity: 0.9; }
+  .client-name-fallback {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: center;
+    transition: color 0.25s;
+  }
+  .client-card:hover .client-name-fallback { color: var(--white); }
 
   /* FERRAMENTAS */
   #ferramentas { background: var(--bg); position: relative; overflow: hidden; }
@@ -420,108 +457,69 @@
     <p class="clients-intro reveal">Ao longo da carreira, desenvolvi inteligência de dados e estratégias de comunicação para organizações de diferentes setores — do governo federal a marcas globais de consumo.</p>
     <div class="clients-grid">
 
-      <!-- Anbima -->
       <div class="client-card reveal">
-        <div class="client-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#e8682a" stroke-width="1.8"><path d="M3 3h18v18H3z"/><path d="M3 9h18M9 21V9"/></svg></div>
-        <div class="client-name">Anbima</div>
-        <div class="client-sector">Mercado Financeiro</div>
-        <p class="client-desc">Monitoramento de redes sociais e relatórios de reputação digital para a maior associação do mercado de capitais e financeiro do Brasil.</p>
+        <img class="client-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Anbima_logo.svg/320px-Anbima_logo.svg.png" alt="Anbima" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span class="client-name-fallback" style="display:none">Anbima</span>
       </div>
 
-      <!-- CAIXA -->
       <div class="client-card reveal reveal-d1">
-        <div class="client-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#e8682a" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/><path d="M6 15h4"/></svg></div>
-        <div class="client-name">CAIXA</div>
-        <div class="client-sector">Banco Público Federal</div>
-        <p class="client-desc">Inteligência de dados e análise de presença digital para uma das maiores instituições financeiras da América Latina.</p>
+        <img class="client-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Caixa_Econ%C3%B4mica_Federal_logo.svg/320px-Caixa_Econ%C3%B4mica_Federal_logo.svg.png" alt="CAIXA" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span class="client-name-fallback" style="display:none">CAIXA</span>
       </div>
 
-      <!-- CNI -->
       <div class="client-card reveal reveal-d2">
-        <div class="client-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#e8682a" stroke-width="1.8"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg></div>
-        <div class="client-name">CNI</div>
-        <div class="client-sector">Indústria</div>
-        <p class="client-desc">Benchmarks institucionais e estudos de reputação digital para a Confederação Nacional da Indústria, representante do setor produtivo brasileiro.</p>
+        <img class="client-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/CNI_logo.svg/320px-CNI_logo.svg.png" alt="CNI" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span class="client-name-fallback" style="display:none">CNI</span>
       </div>
 
-      <!-- Ministério da Saúde -->
       <div class="client-card reveal reveal-d3">
-        <div class="client-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#e8682a" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
-        <div class="client-name">Ministério da Saúde</div>
-        <div class="client-sector">Governo Federal</div>
-        <p class="client-desc">Monitoramento de temas sensíveis, análise de desinformação e estudos de reputação digital para o principal órgão de saúde pública do Brasil.</p>
+        <img class="client-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Minist%C3%A9rio_da_Sa%C3%BAde_logo.svg/320px-Minist%C3%A9rio_da_Sa%C3%BAde_logo.svg.png" alt="Ministério da Saúde" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span class="client-name-fallback" style="display:none">Min. Saúde</span>
       </div>
 
-      <!-- Ministério da Cultura -->
       <div class="client-card reveal">
-        <div class="client-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#e8682a" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M7 9.5v6M17 9.5v6M2 17l10 5 10-5"/></svg></div>
-        <div class="client-name">Ministério da Cultura</div>
-        <div class="client-sector">Governo Federal</div>
-        <p class="client-desc">Análise de engajamento e percepção pública de políticas culturais nas redes sociais, com foco em tendências do setor criativo nacional.</p>
+        <img class="client-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Minist%C3%A9rio_da_Cultura_%28Brasil%29_logo.svg/320px-Minist%C3%A9rio_da_Cultura_%28Brasil%29_logo.svg.png" alt="Ministério da Cultura" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span class="client-name-fallback" style="display:none">Min. Cultura</span>
       </div>
 
-      <!-- Ministério do Esporte -->
       <div class="client-card reveal reveal-d1">
-        <div class="client-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#e8682a" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 000 20M2 12h20"/><path d="M12 2C6 6 6 18 12 22M12 2c6 4 6 16 0 20"/></svg></div>
-        <div class="client-name">Ministério do Esporte</div>
-        <div class="client-sector">Governo Federal</div>
-        <p class="client-desc">Monitoramento de repercussão de eventos esportivos e programas públicos, com mapeamento de influenciadores e análise de sentimento.</p>
+        <img class="client-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Minist%C3%A9rio_do_Esporte_%28Brazil%29_logo.svg/320px-Minist%C3%A9rio_do_Esporte_%28Brazil%29_logo.svg.png" alt="Ministério do Esporte" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span class="client-name-fallback" style="display:none">Min. Esporte</span>
       </div>
 
-      <!-- Ministério dos Transportes -->
       <div class="client-card reveal reveal-d2">
-        <div class="client-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#e8682a" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><circle cx="8" cy="18" r="1"/><circle cx="16" cy="18" r="1"/></svg></div>
-        <div class="client-name">Ministério dos Transportes</div>
-        <div class="client-sector">Governo Federal</div>
-        <p class="client-desc">Comunicação institucional e análise de dados para a pasta responsável pela infraestrutura de transportes e logística do país — onde a trajetória profissional teve início.</p>
+        <img class="client-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Minist%C3%A9rio_dos_Transportes_%28Brasil%29_logo.svg/320px-Minist%C3%A9rio_dos_Transportes_%28Brasil%29_logo.svg.png" alt="Ministério dos Transportes" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span class="client-name-fallback" style="display:none">Min. Transportes</span>
       </div>
 
-      <!-- SEBRAE -->
       <div class="client-card reveal reveal-d3">
-        <div class="client-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#e8682a" stroke-width="1.8"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
-        <div class="client-name">SEBRAE</div>
-        <div class="client-sector">Empreendedorismo</div>
-        <p class="client-desc">Relatórios de tendências e análise de comportamento digital para o principal suporte aos pequenos negócios e ao empreendedorismo brasileiro.</p>
+        <img class="client-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Sebrae_logo.svg/320px-Sebrae_logo.svg.png" alt="SEBRAE" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span class="client-name-fallback" style="display:none">SEBRAE</span>
       </div>
 
-      <!-- Embratur -->
       <div class="client-card reveal">
-        <div class="client-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#e8682a" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
-        <div class="client-name">Embratur</div>
-        <div class="client-sector">Turismo & Governo</div>
-        <p class="client-desc">Inteligência de dados para posicionamento da marca Brasil no cenário internacional e análise de percepção turística nas redes sociais.</p>
+        <img class="client-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Embratur_logo_2021.svg/320px-Embratur_logo_2021.svg.png" alt="Embratur" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span class="client-name-fallback" style="display:none">Embratur</span>
       </div>
 
-      <!-- Braskem -->
       <div class="client-card reveal reveal-d1">
-        <div class="client-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#e8682a" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="12" y2="17"/></svg></div>
-        <div class="client-name">Braskem</div>
-        <div class="client-sector">Petroquímica</div>
-        <p class="client-desc">Estudos de inteligência de mercado, análise de sentimento e reputação digital para a maior produtora de resinas termoplásticas das Américas.</p>
+        <img class="client-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Braskem_logo.svg/320px-Braskem_logo.svg.png" alt="Braskem" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span class="client-name-fallback" style="display:none">Braskem</span>
       </div>
 
-      <!-- Kumon -->
       <div class="client-card reveal reveal-d2">
-        <div class="client-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#e8682a" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
-        <div class="client-name">Kumon</div>
-        <div class="client-sector">Educação</div>
-        <p class="client-desc">Análise de tendências e mapeamento de influenciadores no setor educacional para a maior rede de ensino complementar do mundo, presente em mais de 60 países.</p>
+        <img class="client-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Kumon_logo.svg/320px-Kumon_logo.svg.png" alt="Kumon" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span class="client-name-fallback" style="display:none">Kumon</span>
       </div>
 
-      <!-- KOF Coca-Cola FEMSA -->
       <div class="client-card reveal reveal-d3">
-        <div class="client-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#e8682a" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
-        <div class="client-name">KOF — Coca-Cola FEMSA</div>
-        <div class="client-sector">Bens de Consumo</div>
-        <p class="client-desc">Benchmarks competitivos, análise de performance digital e inteligência de mercado para uma das maiores engarrafadoras da Coca-Cola no mundo.</p>
+        <img class="client-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Coca-Cola_FEMSA_logo.svg/320px-Coca-Cola_FEMSA_logo.svg.png" alt="Coca-Cola FEMSA" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span class="client-name-fallback" style="display:none">KOF / FEMSA</span>
       </div>
 
-      <!-- Bauducco -->
       <div class="client-card reveal">
-        <div class="client-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#e8682a" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
-        <div class="client-name">Bauducco</div>
-        <div class="client-sector">Alimentos & Consumo</div>
-        <p class="client-desc">Atuação interna como Analista de Comunicação — produção de conteúdo, TV corporativa, indicadores de endomarketing e gestão de comunicação institucional.</p>
+        <img class="client-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Bauducco_logo.svg/320px-Bauducco_logo.svg.png" alt="Bauducco" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span class="client-name-fallback" style="display:none">Bauducco</span>
       </div>
 
     </div>
@@ -717,6 +715,28 @@
     setTimeout(() => el.classList.add('visible'), 80 + i * 130);
   });
 
+  // Logo fallback handler
+  document.querySelectorAll('.client-logo').forEach(img => {
+    img.addEventListener('error', function() {
+      this.style.display = 'none';
+      const fallback = this.nextElementSibling;
+      if (fallback) fallback.style.display = 'block';
+    });
+  });
+
   // Active nav highlight
   const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-links
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const navObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(a => a.classList.remove('active-nav'));
+        const link = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
+        if (link) link.classList.add('active-nav');
+      }
+    });
+  }, { threshold: 0.4 });
+  sections.forEach(s => navObs.observe(s));
+</script>
+</body>
+</html>
