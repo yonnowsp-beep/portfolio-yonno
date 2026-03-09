@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yoneila Pereira | Data Insights & Social Listening</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ==================== VARIÁVEIS ==================== */
+        :root {
+            --bg-base: #07070a;
+            --bg-surface: #111116;
+            --bg-surface-hover: #17171e;
+            
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --text-muted: #6b7280;
+            
+            --accent-main: #10b981; /* Verde/Esmeralda - remete a dados e crescimento */
+            --accent-glow: rgba(16, 185, 129, 0.15);
+            
+            --border-color: #1f2937;
+            
+            --font-heading: 'Outfit', sans-serif;
+            --font-body: 'Source Sans 3', sans-serif;
+            
+            --transition-smooth: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --section-padding: 100px 0;
+        }
+
+        /* ==================== RESET & BASE ==================== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        ::selection { background-color: var(--accent-main); color: #fff; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); font-weight: 700; line-height: 1.2; }
+        a { text-decoration: none; color: inherit; transition: var(--transition-smooth); }
+
+        /* ==================== TYPOGRAPHY ==================== */
+        .section-title { font-size: clamp(2rem, 5vw, 2.5rem); margin-bottom: 3rem; position: relative; display: inline-block; }
+        .section-title::after { content: ''; position: absolute; bottom: -10px; left: 0; width: 60px; height: 3px; background-color: var(--accent-main); border-radius: 2px; }
+
+        /* ==================== NAVBAR ==================== */
+        header { position: fixed; top: 0; width: 100%; height: 80px; z-index: 100; display: flex; align-items: center; transition: var(--transition-smooth); }
+        header.scrolled { background-color: rgba(7, 7, 10, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+        .logo { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; color: var(--text-primary); letter-spacing: -0.5px; }
+        .logo span { color: var(--accent-main); }
+        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+        .nav-links a { font-family: var(--font-heading); font-size: 0.95rem; color: var(--text-secondary); font-weight: 500; }
+        .nav-links a:hover { color: var(--accent-main); }
+
+        /* ==================== BUTTONS ==================== */
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 28px; font-family: var(--font-heading); font-weight: 600; font-size: 1rem; border-radius: 6px; transition: var(--transition-smooth); cursor: pointer; }
+        .btn-primary { background-color: transparent; color: var(--accent-main); border: 1px solid var(--accent-main); }
+        .btn-primary:hover { background-color: var(--accent-glow); transform: translateY(-2px); }
+        .btn-secondary { background-color: var(--bg-surface); color: var(--text-primary); border: 1px solid var(--border-color); }
+        .btn-secondary:hover { border-color: var(--text-secondary); background-color: var(--bg-surface-hover); transform: translateY(-2px); }
+
+        /* ==================== HERO SECTION ==================== */
+        .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 80px; }
+        .hero-greeting { font-family: var(--font-heading); color: var(--accent-main); font-size: 1.125rem; letter-spacing: 2px; margin-bottom: 1.5rem; display: block; }
+        .hero-name { font-size: clamp(3rem, 8vw, 5rem); color: var(--text-primary); margin-bottom: 0.5rem; letter-spacing: -1px; }
+        .hero-title { font-size: clamp(1.5rem, 4vw, 2.5rem); color: var(--text-secondary); margin-bottom: 2rem; font-weight: 700; }
+        .hero-desc { max-width: 600px; font-size: 1.125rem; color: var(--text-secondary); margin-bottom: 3rem; }
+        .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+        /* ==================== ABOUT SECTION ==================== */
+        .about { padding: var(--section-padding); }
+        .about-grid { display: grid; grid-template-columns: 3fr 2fr; gap: 4rem; align-items: start; }
+        .about-text p { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 1.5rem; }
+        .skills-container { display: flex; flex-wrap: wrap; gap: 12px; }
+        .skill-tag { font-family: var(--font-heading); font-size: 0.85rem; font-weight: 500; color: var(--accent-main); background-color: var(--accent-glow); padding: 8px 16px; border-radius: 50px; border: 1px solid rgba(16, 185, 129, 0.2); transition: var(--transition-smooth); }
+        .skill-tag:hover { background-color: rgba(16, 185, 129, 0.25); transform: translateY(-2px); }
+
+        /* ==================== PROJECTS SECTION ==================== */
+        .projects { padding: var(--section-padding); }
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem; }
+        .project-card { background-color: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 12px; padding: 2.5rem 2rem; display: flex; flex-direction: column; transition: var(--transition-smooth); }
+        .project-card:hover { transform: translateY(-8px); border-color: var(--accent-main); box-shadow: 0 10px 30px -15px var(--accent-main); }
+        .project-icon { color: var(--accent-main); margin-bottom: 1.5rem; }
+        .project-title { font-size: 1.5rem; color: var(--text-primary); margin-bottom: 1rem; }
+        .project-desc { color: var(--text-secondary); font-size: 1rem; flex-grow: 1; margin-bottom: 2rem; }
+        .project-tech { display: flex; flex-wrap: wrap; gap: 1rem; font-family: var(--font-heading); font-size: 0.8rem; color: var(--text-muted); }
+
+        /* ==================== EXPERIENCE SECTION ==================== */
+        .experience { padding: var(--section-padding); }
+        .timeline { position: relative; max-width: 800px; }
+        .timeline::before { content: ''; position: absolute; top: 0; left: 11px; height: 100%; width: 2px; background-color: var(--border-color); }
+        .timeline-item { position: relative; padding-left: 3.5rem; margin-bottom: 3.5rem; }
+        .timeline-item:last-child { margin-bottom: 0; }
+        .timeline-dot { position: absolute; left: 5px; top: 6px; width: 14px; height: 14px; border-radius: 50%; background-color: var(--bg-base); border: 2px solid var(--accent-main); transition: var(--transition-smooth); }
+        .timeline-item:hover .timeline-dot { background-color: var(--accent-main); }
+        .timeline-date { font-family: var(--font-heading); font-size: 0.85rem; color: var(--accent-main); letter-spacing: 1px; margin-bottom: 0.5rem; display: block; }
+        .timeline-title { font-size: 1.25rem; color: var(--text-primary); margin-bottom: 0.25rem; }
+        .timeline-company { font-size: 1rem; color: var(--text-muted); margin-bottom: 1rem; display: block; }
+        .timeline-desc { color: var(--text-secondary); font-size: 1rem; }
+
+        /* ==================== CONTACT / FOOTER ==================== */
+        .contact { padding: var(--section-padding); text-align: center; max-width: 600px; margin: 0 auto; }
+        .contact .section-title::after { left: 50%; transform: translateX(-50%); }
+        .contact p { color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 2.5rem; }
+        .footer-bottom { margin-top: 100px; padding: 30px 0; border-top: 1px solid var(--border-color); text-align: center; font-size: 0.9rem; color: var(--text-muted); }
+
+        /* ==================== ANIMATIONS ==================== */
+        .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; will-change: opacity, visibility; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 768px) {
+            .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            .hero-actions { flex-direction: column; width: 100%; }
+            .btn { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="navbar">
+        <div class="container nav-container">
+            <a href="#home" class="logo">Yoneila<span>.</span></a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#experiencia">Experiência</a></li>
+                    <li><a href="#cases">Cases</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container fade-in">
+                <span class="hero-greeting">Olá, meu nome é</span>
+                <h1 class="hero-name">Yoneila Pereira.</h1>
+                <h2 class="hero-title">Data Analyst | Data Insights | Social Listening.</h2>
+                <p class="hero-desc">
+                    Analista de Dados e Comunicação com vasta experiência em grandes organizações públicas e privadas. Sou especialista no desenvolvimento de estratégias de redes sociais orientadas por dados e na análise de resultados.
+                </p>
+                <div class="hero-actions">
+                    <a href="#experiencia" class="btn btn-primary">Ver Trajetória</a>
+                    <a href="https://www.linkedin.com/in/yonno-pereira" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        LinkedIn
+                    </a>
+                    <a href="mailto:yoneila97@hotmail.com" class="btn btn-secondary">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        Email
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="sobre" class="about">
+            <div class="container fade-in">
+                <h3 class="section-title">Sobre Mim</h3>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p>
+                            Atuo na intersecção entre comunicação e dados. Ao longo da minha trajetória profissional, liderei projetos estratégicos para clientes de altíssimo nível, como Bauducco, CAIXA, CNI, Ministérios da Saúde, Cultura, Esporte e Transportes, SEBRAE, Embratur, Braskem, Kumon, KOF (Coca-Cola FEMSA) e Anbima.
+                        </p>
+                        <p>
+                            Minha formação em Comunicação Social combinada com minha expertise em Business Intelligence me permite não apenas extrair métricas, mas traduzi-las em relatórios analíticos focados em reputação digital, benchmarks e tendências de mercado.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="skills-container">
+                            <span class="skill-tag">Business Intelligence</span>
+                            <span class="skill-tag">Social Listening</span>
+                            <span class="skill-tag">Brandwatch</span>
+                            <span class="skill-tag">Minter</span>
+                            <span class="skill-tag">Stilingue</span>
+                            <span class="skill-tag">Tagger</span>
+                            <span class="skill-tag">Comunicação Interna</span>
+                            <span class="skill-tag">Endomarketing</span>
+                            <span class="skill-tag">Produção Audiovisual</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experiencia" class="experience">
+            <div class="container fade-in">
+                <h3 class="section-title">Experiência Profissional</h3>
+                <div class="timeline">
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <span class="timeline-date">Fev 2025 — Presente</span>
+                        <h4 class="timeline-title">Data Insights</h4>
+                        <span class="timeline-company">charisma business intelligence | São Paulo, Brasil</span>
+                        <p class="timeline-desc">
+                            Atuo na produção de relatórios analíticos e geração de insights estratégicos para grandes marcas, como Braskem, Kumon, KOF (Coca-Cola FEMSA) e Anbima. Utilizo Brandwatch e Minter para Social Listening e Business Intelligence. Responsável pela classificação de conteúdo, benchmarks e estudos de reputação digital e tendências.
+                        </p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <span class="timeline-date">Fev 2024 — Set 2024</span>
+                        <h4 class="timeline-title">Analista de Comunicação</h4>
+                        <span class="timeline-company">Bauducco | Guarulhos, São Paulo, Brasil</span>
+                        <p class="timeline-desc">
+                            Responsável pela comunicação interna e engajamento. Produzi conteúdos para TV corporativa, murais, intranet e atuei como âncora e líder de produção audiovisual. Organização de eventos internos e ações de endomarketing baseadas em indicadores.
+                        </p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <span class="timeline-date">Ago 2022 — Fev 2024</span>
+                        <h4 class="timeline-title">Data Insights Jr.</h4>
+                        <span class="timeline-company">FSB Holding | São Paulo, Brasil</span>
+                        <p class="timeline-desc">
+                            Atuação estratégica em Business Intelligence, métricas e reputação digital. Monitoramento de redes sociais, mapeamento de influenciadores e criação de alertas personalizados para clientes públicos como Ministério da Saúde, Embratur, Sebrae, CNI, SECOM e STF. Utilização de Stilingue e Tagger.
+                        </p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <span class="timeline-date">Jan 2020 — Ago 2022</span>
+                        <h4 class="timeline-title">Analista de Comunicação Jr.</h4>
+                        <span class="timeline-company">Ministério dos Transportes | Brasília, DF</span>
+                        <p class="timeline-desc">
+                            Profissional de Comunicação Social atuando diretamente na Assessoria Especial de Comunicação (AESCOM). *Nota: Iniciou como Estagiário em Junho de 2019.*
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="cases" class="projects">
+            <div class="container fade-in">
+                <h3 class="section-title">Principais Áreas de Atuação</h3>
+                <div class="projects-grid">
+                    
+                    <article class="project-card">
+                        <svg class="project-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                        <h4 class="project-title">Inteligência Estratégica & BI</h4>
+                        <p class="project-desc">
+                            Monitoramento de redes, análise de tendências e classificação de conteúdos para marcas globais corporativas através da produção de relatórios analíticos de alta complexidade.
+                        </p>
+                        <div class="project-tech">
+                            <span>Braskem</span>
+                            <span>KOF (Coca-Cola)</span>
+                            <span>Anbima</span>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <svg class="project-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                        <h4 class="project-title">Reputação Digital Governamental</h4>
+                        <p class="project-desc">
+                            Mapeamento de influenciadores, análise de temas sensíveis e desenvolvimento de benchmarks personalizados para gerenciar a percepção digital de grandes entidades públicas.
+                        </p>
+                        <div class="project-tech">
+                            <span>Ministério da Saúde</span>
+                            <span>Embratur</span>
+                            <span>Sebrae</span>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <svg class="project-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0
