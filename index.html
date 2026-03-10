@@ -606,29 +606,61 @@
   }
 
   /* Github preview screenshot placeholder */
-  .github-preview {
+  .github-embed {
     width: 100%;
-    min-height: 280px;
     background: var(--bg3);
     border-bottom: 1px solid var(--line);
     position: relative;
     overflow: hidden;
   }
-  .github-preview iframe {
-    width: 200%;
-    height: 560px;
+  .github-embed iframe {
+    display: block;
+    width: 100%;
+    height: 480px;
     border: none;
-    transform: scale(0.5);
-    transform-origin: top left;
-    pointer-events: none;
   }
-  .github-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, transparent 50%, rgba(9,9,13,0.9) 100%);
+  .embed-topbar {
     display: flex;
-    align-items: flex-end;
-    padding: 1.2rem;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    background: rgba(9,9,13,0.9);
+    border-bottom: 1px solid var(--line);
+    gap: 0.8rem;
+  }
+  .embed-topbar-dots { display: flex; gap: 5px; }
+  .embed-topbar-dots span {
+    width: 10px; height: 10px; border-radius: 50%;
+  }
+  .embed-topbar-dots span:nth-child(1) { background: #ff5f56; }
+  .embed-topbar-dots span:nth-child(2) { background: #ffbd2e; }
+  .embed-topbar-dots span:nth-child(3) { background: #27c93f; }
+  .embed-topbar-url {
+    flex: 1;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid var(--line2);
+    border-radius: 4px;
+    padding: 0.25rem 0.7rem;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    color: var(--muted);
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .looker-embed {
+    width: 100%;
+    background: var(--bg3);
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+  .looker-embed iframe {
+    display: block;
+    width: 100%;
+    height: 480px;
+    border: none;
   }
 
 
@@ -1230,22 +1262,26 @@
 
     <div class="portfolio-grid">
 
-      <!-- CARD 1: GitHub Pages -->
+      <!-- CARD 1: Taggea — embed interativo -->
       <div class="portfolio-card reveal">
-        <div class="github-preview">
-          <iframe
-            src="https://yonnowsp-beep.github.io/taggea/"
-            title="Taggea — GitHub Pages"
-            loading="lazy"
-            sandbox="allow-scripts allow-same-origin"
-          ></iframe>
-          <div class="github-overlay">
-            <a href="https://yonnowsp-beep.github.io/taggea/" target="_blank" rel="noopener" class="portfolio-link-btn btn-sm">
+        <div class="github-embed">
+          <div class="embed-topbar">
+            <div class="embed-topbar-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="embed-topbar-url">yonnowsp-beep.github.io/taggea/</div>
+            <a href="https://yonnowsp-beep.github.io/taggea/" target="_blank" rel="noopener" class="portfolio-link-btn" style="padding:0.25rem 0.7rem;font-size:0.65rem;">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              Abrir projeto
+              Abrir
             </a>
           </div>
-          <div class="preview-badge"><div class="preview-badge-dot"></div>Social Listening App</div>
+          <iframe
+            src="https://yonnowsp-beep.github.io/taggea/"
+            title="Taggea — Social Listening App"
+            loading="lazy"
+            allow="same-origin"
+            sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+          ></iframe>
         </div>
         <div class="portfolio-info">
           <div class="portfolio-info-top">
@@ -1266,30 +1302,34 @@
         </div>
       </div>
 
-      <!-- CARD 2: Looker Studio -->
+      <!-- CARD 2: Looker Studio — embed real -->
       <div class="portfolio-card reveal reveal-d1">
-        <div class="looker-placeholder">
-          <div class="looker-icon-wrap">
-            <!-- Looker Studio color icon SVG -->
-            <svg width="28" height="28" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="24" cy="24" r="22" fill="#4285F4" opacity="0.15"/>
-              <path d="M14 34V20a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v14" stroke="#4285F4" stroke-width="2.5" stroke-linecap="round"/>
-              <path d="M26 34V14a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v20" stroke="#EA4335" stroke-width="2.5" stroke-linecap="round"/>
-              <line x1="10" y1="34" x2="38" y2="34" stroke="#FBBC04" stroke-width="2.5" stroke-linecap="round"/>
-            </svg>
+        <div class="looker-embed">
+          <div class="embed-topbar">
+            <div class="embed-topbar-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="embed-topbar-url">lookerstudio.google.com · Dashboard</div>
+            <a href="https://lookerstudio.google.com/reporting/5e6a4058-ac64-4d8b-bf2a-e18d02a63fcb" target="_blank" rel="noopener" class="portfolio-link-btn" style="padding:0.25rem 0.7rem;font-size:0.65rem;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Abrir
+            </a>
           </div>
-          <p>O Looker Studio não permite embed externo por política de segurança do Google.<br>Clique para abrir o dashboard no navegador.</p>
-          <a href="https://lookerstudio.google.com/s/ugI13-UrHUg" target="_blank" rel="noopener" class="looker-open-btn">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            Abrir Dashboard
-          </a>
+          <iframe
+            src="https://lookerstudio.google.com/embed/reporting/5e6a4058-ac64-4d8b-bf2a-e18d02a63fcb/page/5VjqF"
+            title="Dashboard — Looker Studio"
+            frameborder="0"
+            style="border:0"
+            allowfullscreen
+            sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+          ></iframe>
         </div>
         <div class="portfolio-info">
           <div class="portfolio-info-top">
             <div class="portfolio-title">Dashboard — Looker Studio</div>
-            <a href="https://lookerstudio.google.com/s/ugI13-UrHUg" target="_blank" rel="noopener" class="portfolio-link-btn">
+            <a href="https://lookerstudio.google.com/reporting/5e6a4058-ac64-4d8b-bf2a-e18d02a63fcb" target="_blank" rel="noopener" class="portfolio-link-btn">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              Acessar
+              Tela cheia
             </a>
           </div>
           <p class="portfolio-desc">Dashboard interativo de Business Intelligence construído no Looker Studio. Visualização de métricas, tendências e KPIs para suporte à tomada de decisão.</p>
