@@ -41,7 +41,6 @@
   ::selection { background: var(--accent); color: #000; }
   a { color: inherit; text-decoration: none; }
 
-  /* Typography */
   .t-display { font-family: var(--serif); font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; }
   .t-heading  { font-family: var(--serif); font-weight: 700; line-height: 1.2; }
   .t-label    { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); }
@@ -49,16 +48,21 @@
 
   .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
 
-  /* Scroll animations */
-  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    animation: fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) both;
+    animation-delay: 0.05s;
+  }
   .reveal.visible { opacity: 1; transform: translateY(0); }
-  .reveal-d1 { transition-delay: 0.1s; }
-  .reveal-d2 { transition-delay: 0.2s; }
-  .reveal-d3 { transition-delay: 0.3s; }
-  .reveal-d4 { transition-delay: 0.4s; }
-  .reveal-d5 { transition-delay: 0.5s; }
+  .reveal-d1 { animation-delay: 0.15s; }
+  .reveal-d2 { animation-delay: 0.25s; }
+  .reveal-d3 { animation-delay: 0.35s; }
+  .reveal-d4 { animation-delay: 0.45s; }
+  .reveal-d5 { animation-delay: 0.55s; }
 
-  /* NAV */
   nav { position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h); z-index: 100; transition: background 0.4s, backdrop-filter 0.4s, border-color 0.4s; border-bottom: 1px solid transparent; }
   nav.scrolled { background: rgba(9,9,13,0.88); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-color: var(--line); }
   .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 2rem; height: 100%; display: flex; align-items: center; justify-content: space-between; }
@@ -75,7 +79,6 @@
   .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
   .nav-hamburger span { display: block; width: 22px; height: 1.5px; background: var(--text); transition: all 0.3s; }
 
-  /* HERO */
   #hero { min-height: 100vh; display: flex; align-items: center; padding-top: var(--nav-h); position: relative; overflow: hidden; }
   .hero-bg { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
   .hero-bg::before { content: ''; position: absolute; top: -20%; right: -10%; width: 60vw; height: 60vw; background: radial-gradient(circle, rgba(232,104,42,0.07) 0%, transparent 65%); }
@@ -90,14 +93,13 @@
   .hero-desc { max-width: 540px; font-size: 1rem; color: var(--text); line-height: 1.8; margin-bottom: 3rem; opacity: 0.85; }
   .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
 
-  /* Buttons */
   .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.8rem 1.8rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 500; letter-spacing: 0.04em; transition: all 0.25s cubic-bezier(0.22,1,0.36,1); cursor: pointer; border: none; font-family: var(--sans); }
   .btn-primary { background: var(--accent); color: #000; }
   .btn-primary:hover { background: var(--white); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(232,104,42,0.3); }
   .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--line2); }
   .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+  .btn-sm { padding: 0.55rem 1.2rem; font-size: 0.78rem; }
 
-  /* Hero stats */
   .hero-stats { display: flex; gap: 0; margin-top: 5rem; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
   .hero-stat { flex: 1; padding: 1.5rem 0; border-right: 1px solid var(--line); }
   .hero-stat:last-child { border-right: none; }
@@ -105,13 +107,11 @@
   .hero-stat-num span { color: var(--accent); }
   .hero-stat-label { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
 
-  /* Sections */
   section { padding: 7rem 0; }
   .section-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 4rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--line); gap: 2rem; }
   .section-num { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.15em; color: var(--muted); margin-bottom: 0.5rem; }
   .section-title { font-size: clamp(2rem, 4vw, 3rem); color: var(--white); }
 
-  /* SOBRE */
   #sobre { background: var(--bg2); }
   .sobre-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
   .sobre-text p { font-size: 1rem; line-height: 1.9; color: var(--text); margin-bottom: 1.2rem; opacity: 0.85; }
@@ -123,7 +123,6 @@
   .skill-tag:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-lo); }
   .skill-tag.accent { border-color: rgba(232,104,42,0.4); color: var(--accent); background: var(--accent-lo); }
 
-  /* EXPERIÊNCIA */
   #experiencia { background: var(--bg); }
   .timeline { position: relative; }
   .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: var(--line2); }
@@ -134,12 +133,27 @@
   .tl-meta { padding-left: 1.5rem; }
   .tl-period { font-family: var(--mono); font-size: 0.72rem; color: var(--muted); letter-spacing: 0.05em; line-height: 1.5; }
   .tl-company { font-size: 0.8rem; font-weight: 500; color: var(--accent); margin-top: 0.3rem; }
+  .tl-company-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.9rem;
+    flex-shrink: 0;
+    border: 1px solid rgba(255,255,255,0.07);
+    transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s;
+  }
+  .timeline-item:hover .tl-company-icon {
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.5);
+  }
   .tl-role { font-family: var(--serif); font-size: 1.3rem; font-weight: 700; color: var(--white); margin-bottom: 0.6rem; line-height: 1.2; }
   .tl-desc { font-size: 0.9rem; color: var(--text); line-height: 1.8; opacity: 0.8; }
   .tl-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
   .tl-tag { padding: 0.2rem 0.7rem; border-radius: 99px; font-size: 0.68rem; letter-spacing: 0.05em; border: 1px solid var(--line2); color: var(--muted); background: var(--bg2); }
 
-  /* CLIENTES */
   #projetos { background: var(--bg2); }
   .clients-intro { max-width: 560px; font-size: 0.95rem; color: var(--muted); line-height: 1.8; margin-bottom: 3rem; }
   .clients-grid {
@@ -189,9 +203,436 @@
     transition: color 0.25s;
   }
   .client-card:hover .client-name-fallback { color: var(--white); }
+  /* SVG icon badges for clients */
+  .client-icon-wrap {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.3rem;
+    transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), filter 0.3s;
+    flex-shrink: 0;
+  }
+  .client-card:hover .client-icon-wrap {
+    transform: translateY(-3px) scale(1.06);
+    filter: brightness(1.15);
+  }
+  .client-label {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: center;
+    transition: color 0.25s;
+    line-height: 1.3;
+  }
+  .client-card:hover .client-label { color: var(--white); }
 
-  /* FERRAMENTAS */
-  #ferramentas { background: var(--bg); position: relative; overflow: hidden; }
+  /* =============================================
+     PORTFOLIO DE PROJETOS — NOVA SEÇÃO
+     ============================================= */
+  #portfolio { background: var(--bg); position: relative; overflow: hidden; }
+  #portfolio::before {
+    content: '';
+    position: absolute;
+    top: -15%;
+    right: -5%;
+    width: 45vw;
+    height: 45vw;
+    background: radial-gradient(circle, rgba(232,104,42,0.05) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  /* Card principal — ocupa a coluna da esquerda inteira */
+  .portfolio-card {
+    background: var(--bg2);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+  }
+  .portfolio-card:hover {
+    border-color: rgba(232,104,42,0.3);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px var(--accent-gl);
+  }
+  .portfolio-card.span-2 {
+    grid-column: span 2;
+  }
+
+  /* Área de preview / embed */
+  .portfolio-preview {
+    position: relative;
+    width: 100%;
+    background: var(--bg3);
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .portfolio-preview iframe {
+    display: block;
+    width: 100%;
+    border: none;
+  }
+
+  /* Overlay para cards que redirecionam ao clicar */
+  .preview-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 60%, rgba(9,9,13,0.95) 100%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 1.2rem;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+  }
+  .portfolio-card:hover .preview-overlay { opacity: 1; }
+
+  /* Badge de tipo no canto superior */
+  .preview-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(9,9,13,0.85);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--line2);
+    border-radius: 99px;
+    padding: 0.3rem 0.8rem;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    z-index: 2;
+  }
+  .preview-badge-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  /* Info do card */
+  .portfolio-info {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    flex: 1;
+  }
+  .portfolio-info-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .portfolio-title {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.25;
+  }
+  .portfolio-desc {
+    font-size: 0.83rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  .portfolio-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.4rem;
+  }
+  .portfolio-tag {
+    padding: 0.18rem 0.65rem;
+    border-radius: 99px;
+    font-size: 0.65rem;
+    font-family: var(--mono);
+    letter-spacing: 0.06em;
+    border: 1px solid var(--line2);
+    color: var(--muted);
+    background: var(--bg3);
+  }
+
+  /* Botão de link externo */
+  .portfolio-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 1rem;
+    border-radius: var(--radius);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    background: var(--accent-lo);
+    border: 1px solid rgba(232,104,42,0.3);
+    color: var(--accent);
+    transition: all 0.2s;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .portfolio-link-btn:hover {
+    background: var(--accent);
+    color: #000;
+    border-color: var(--accent);
+  }
+  .portfolio-link-btn svg { width: 12px; height: 12px; }
+
+  /* Upload area para PDF */
+  .pdf-upload-area {
+    width: 100%;
+    min-height: 260px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background: var(--bg3);
+    border-bottom: 1px solid var(--line);
+    cursor: pointer;
+    position: relative;
+    transition: background 0.25s;
+  }
+  .pdf-upload-area:hover { background: rgba(22,22,30,0.8); }
+  .pdf-upload-area.drag-over { background: var(--accent-lo); border-color: var(--accent); }
+  .pdf-upload-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    background: var(--accent-lo);
+    border: 1px solid rgba(232,104,42,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+  }
+  .pdf-upload-icon svg { width: 22px; height: 22px; }
+  .pdf-upload-label {
+    text-align: center;
+  }
+  .pdf-upload-label p {
+    font-size: 0.88rem;
+    color: var(--text);
+    margin-bottom: 0.25rem;
+  }
+  .pdf-upload-label span {
+    font-size: 0.72rem;
+    font-family: var(--mono);
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+  .pdf-upload-btn {
+    padding: 0.55rem 1.4rem;
+    border-radius: var(--radius);
+    font-size: 0.78rem;
+    font-weight: 500;
+    background: var(--accent);
+    color: #000;
+    cursor: pointer;
+    border: none;
+    font-family: var(--sans);
+    transition: background 0.2s, transform 0.2s;
+  }
+  .pdf-upload-btn:hover { background: var(--white); transform: translateY(-1px); }
+  #pdf-file-input { display: none; }
+
+  /* Viewer PDF embutido */
+  .pdf-viewer-container {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+  }
+  .pdf-viewer-container.active { display: flex; }
+  .pdf-viewer-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.6rem 1rem;
+    background: var(--bg3);
+    border-bottom: 1px solid var(--line);
+    gap: 1rem;
+  }
+  .pdf-viewer-toolbar .pdf-filename {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .pdf-viewer-toolbar .pdf-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+  }
+  .pdf-nav button {
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    background: var(--bg2);
+    border: 1px solid var(--line2);
+    color: var(--text);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .pdf-nav button:hover { border-color: var(--accent); color: var(--accent); }
+  .pdf-nav button svg { width: 14px; height: 14px; }
+  .pdf-nav .page-info {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .pdf-remove-btn {
+    padding: 0.3rem 0.7rem;
+    font-size: 0.65rem;
+    font-family: var(--mono);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background: transparent;
+    border: 1px solid var(--line2);
+    border-radius: 4px;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .pdf-remove-btn:hover { border-color: #e84242; color: #e84242; }
+  #pdf-canvas-wrapper {
+    width: 100%;
+    background: #1a1a22;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 1.5rem;
+  }
+  #pdf-canvas {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  }
+
+  /* Looker Studio placeholder */
+  .looker-placeholder {
+    width: 100%;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background: var(--bg3);
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+  .looker-placeholder::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 28px 28px;
+    opacity: 0.5;
+  }
+  .looker-icon-wrap {
+    position: relative;
+    z-index: 1;
+    width: 60px;
+    height: 60px;
+    border-radius: 14px;
+    background: rgba(66,133,244,0.12);
+    border: 1px solid rgba(66,133,244,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .looker-placeholder p {
+    position: relative;
+    z-index: 1;
+    font-size: 0.85rem;
+    color: var(--muted);
+    text-align: center;
+    line-height: 1.6;
+    max-width: 280px;
+  }
+  .looker-placeholder .looker-open-btn {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.4rem;
+    border-radius: var(--radius);
+    font-size: 0.82rem;
+    font-weight: 500;
+    background: rgba(66,133,244,0.15);
+    border: 1px solid rgba(66,133,244,0.3);
+    color: #7ab3f7;
+    cursor: pointer;
+    font-family: var(--sans);
+    transition: all 0.25s;
+    text-decoration: none;
+  }
+  .looker-placeholder .looker-open-btn:hover {
+    background: rgba(66,133,244,0.28);
+    border-color: rgba(66,133,244,0.55);
+    color: #fff;
+    transform: translateY(-2px);
+  }
+
+  /* Github preview screenshot placeholder */
+  .github-preview {
+    width: 100%;
+    min-height: 280px;
+    background: var(--bg3);
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+  .github-preview iframe {
+    width: 200%;
+    height: 560px;
+    border: none;
+    transform: scale(0.5);
+    transform-origin: top left;
+    pointer-events: none;
+  }
+  .github-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 50%, rgba(9,9,13,0.9) 100%);
+    display: flex;
+    align-items: flex-end;
+    padding: 1.2rem;
+  }
+
+
+  #ferramentas { background: var(--bg2); position: relative; overflow: hidden; }
   #ferramentas::before { content: ''; position: absolute; bottom: -20%; left: -10%; width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(232,104,42,0.05) 0%, transparent 65%); pointer-events: none; }
   .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem; }
   .tool-card { background: var(--bg2); border: 1px solid var(--line); border-radius: 10px; padding: 1.5rem 1.2rem; text-align: center; transition: all 0.25s cubic-bezier(0.22,1,0.36,1); cursor: default; }
@@ -200,7 +641,6 @@
   .tool-name { font-size: 0.82rem; font-weight: 500; color: var(--white); margin-bottom: 0.2rem; }
   .tool-type { font-size: 0.65rem; font-family: var(--mono); color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
 
-  /* CONTATO */
   #contato { background: var(--bg2); }
   .contato-inner { display: grid; grid-template-columns: 1.2fr 1fr; gap: 5rem; align-items: start; }
   .contato-big { font-size: clamp(2.5rem, 5vw, 4rem); color: var(--white); line-height: 1.1; margin-bottom: 1.5rem; }
@@ -214,7 +654,6 @@
   .contact-link-label { font-size: 0.65rem; font-family: var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.1rem; }
   .contact-link-value { font-size: 0.9rem; font-weight: 400; }
 
-  /* FOOTER */
   footer { border-top: 1px solid var(--line); padding: 2rem 0; background: var(--bg); }
   .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
   .footer-copy { font-size: 0.78rem; color: var(--muted); font-family: var(--mono); }
@@ -228,7 +667,10 @@
   ::-webkit-scrollbar-thumb { background: var(--bg3); border-radius: 3px; }
   ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
 
-  /* MOBILE */
+  @media (max-width: 900px) {
+    .portfolio-grid { grid-template-columns: 1fr; }
+    .portfolio-card.span-2 { grid-column: span 1; }
+  }
   @media (max-width: 768px) {
     .nav-links { display: none; }
     .nav-links.open { display: flex; flex-direction: column; position: absolute; top: var(--nav-h); left: 0; right: 0; background: rgba(9,9,13,0.97); backdrop-filter: blur(20px); padding: 1.5rem 2rem; border-bottom: 1px solid var(--line); gap: 1.5rem; }
@@ -244,6 +686,7 @@
     .hero-stat:last-child { border-bottom: none; }
     .section-header { flex-direction: column; align-items: flex-start; }
     section { padding: 5rem 0; }
+    .github-preview iframe { width: 300%; height: 840px; transform: scale(0.333); }
   }
 </style>
 </head>
@@ -257,6 +700,7 @@
       <li><a href="#sobre">Sobre</a></li>
       <li><a href="#experiencia">Experiência</a></li>
       <li><a href="#projetos">Clientes</a></li>
+      <li><a href="#portfolio">Portfólio</a></li>
       <li><a href="#ferramentas">Ferramentas</a></li>
       <li><a href="#contato" class="nav-cta">Contato</a></li>
     </ul>
@@ -290,7 +734,7 @@
         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
         LinkedIn
       </a>
-      <a href="/cdn-cgi/l/email-protection#b1c8dedfd4d8ddd08886f1d9dec5dcd0d8dd9fd2dedc" class="btn btn-outline">
+      <a href="/cdn-cgi/l/email-protection#0f7660616a66636e4f6a626e6663216c6062" class="btn btn-outline">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
         E-mail
       </a>
@@ -387,6 +831,16 @@
 
       <div class="timeline-item reveal">
         <div class="tl-meta">
+          <div class="tl-company-icon" style="background:linear-gradient(135deg,#1a0e06 0%,#2a1408 100%);">
+            <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Charisma BI: abstract upward bar chart with glow -->
+              <rect x="4" y="18" width="5" height="10" rx="1.5" fill="#e8682a" opacity="0.5"/>
+              <rect x="12" y="12" width="5" height="16" rx="1.5" fill="#e8682a" opacity="0.75"/>
+              <rect x="20" y="6" width="5" height="22" rx="1.5" fill="#e8682a"/>
+              <path d="M5 17 L13 11 L21 5" stroke="#e8682a" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+              <circle cx="21" cy="5" r="2" fill="#f5a070"/>
+            </svg>
+          </div>
           <div class="tl-period">fev 2025 — presente<br>São Paulo, SP</div>
           <div class="tl-company">Charisma Business Intelligence</div>
         </div>
@@ -401,6 +855,25 @@
 
       <div class="timeline-item reveal reveal-d1">
         <div class="tl-meta">
+          <div class="tl-company-icon" style="background:linear-gradient(135deg,#1a0f04 0%,#261408 100%);">
+            <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Bauducco: stylized wheat stalk / bread loaf -->
+              <ellipse cx="16" cy="20" rx="9" ry="6" fill="#c47a1e" opacity="0.9"/>
+              <ellipse cx="16" cy="19" rx="9" ry="5.5" fill="#d98c2a"/>
+              <!-- seeds / texture dots -->
+              <circle cx="13" cy="19" r="1" fill="#f0b84a" opacity="0.7"/>
+              <circle cx="16.5" cy="21" r="1" fill="#f0b84a" opacity="0.7"/>
+              <circle cx="19.5" cy="18.5" r="1" fill="#f0b84a" opacity="0.7"/>
+              <!-- stem -->
+              <line x1="16" y1="13" x2="16" y2="7" stroke="#a06010" stroke-width="1.5" stroke-linecap="round"/>
+              <!-- wheat grains left -->
+              <ellipse cx="13" cy="10" rx="2.5" ry="1.3" fill="#c47a1e" opacity="0.8" transform="rotate(-30 13 10)"/>
+              <!-- wheat grains right -->
+              <ellipse cx="19" cy="10" rx="2.5" ry="1.3" fill="#c47a1e" opacity="0.8" transform="rotate(30 19 10)"/>
+              <ellipse cx="14" cy="7.5" rx="2" ry="1.1" fill="#d98c2a" opacity="0.7" transform="rotate(-20 14 7.5)"/>
+              <ellipse cx="18" cy="7.5" rx="2" ry="1.1" fill="#d98c2a" opacity="0.7" transform="rotate(20 18 7.5)"/>
+            </svg>
+          </div>
           <div class="tl-period">fev 2024 — set 2024<br>Guarulhos, SP</div>
           <div class="tl-company">Bauducco</div>
         </div>
@@ -415,6 +888,23 @@
 
       <div class="timeline-item reveal reveal-d2">
         <div class="tl-meta">
+          <div class="tl-company-icon" style="background:linear-gradient(135deg,#050a14 0%,#0a1428 100%);">
+            <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- FSB: communication network / PR nodes -->
+              <circle cx="16" cy="16" r="3.5" fill="#3b82f6" opacity="0.9"/>
+              <circle cx="7" cy="10" r="2.5" fill="#3b82f6" opacity="0.5"/>
+              <circle cx="25" cy="10" r="2.5" fill="#3b82f6" opacity="0.5"/>
+              <circle cx="7" cy="22" r="2.5" fill="#3b82f6" opacity="0.5"/>
+              <circle cx="25" cy="22" r="2.5" fill="#3b82f6" opacity="0.5"/>
+              <line x1="16" y1="12.5" x2="9" y2="11.5" stroke="#3b82f6" stroke-width="1" opacity="0.4"/>
+              <line x1="16" y1="12.5" x2="23" y2="11.5" stroke="#3b82f6" stroke-width="1" opacity="0.4"/>
+              <line x1="16" y1="19.5" x2="9" y2="20.5" stroke="#3b82f6" stroke-width="1" opacity="0.4"/>
+              <line x1="16" y1="19.5" x2="23" y2="20.5" stroke="#3b82f6" stroke-width="1" opacity="0.4"/>
+              <!-- signal rings -->
+              <circle cx="16" cy="16" r="7" stroke="#3b82f6" stroke-width="0.75" opacity="0.2"/>
+              <circle cx="16" cy="16" r="11" stroke="#3b82f6" stroke-width="0.5" opacity="0.1"/>
+            </svg>
+          </div>
           <div class="tl-period">ago 2022 — fev 2024<br>São Paulo, SP</div>
           <div class="tl-company">FSB Holding</div>
         </div>
@@ -429,6 +919,20 @@
 
       <div class="timeline-item reveal reveal-d3">
         <div class="tl-meta">
+          <div class="tl-company-icon" style="background:linear-gradient(135deg,#050f05 0%,#091a09 100%);">
+            <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Ministério Transportes: stylized road with center dashes -->
+              <!-- Road shape -->
+              <path d="M4 26 L10 6 L22 6 L28 26 Z" fill="#2a6b2a" opacity="0.3"/>
+              <path d="M5 26 L11 7 L21 7 L27 26 Z" stroke="#4a9c4a" stroke-width="1.2" fill="none"/>
+              <!-- center lane dashes -->
+              <line x1="16" y1="23" x2="16" y2="19" stroke="#6ec86e" stroke-width="1.5" stroke-linecap="round" opacity="0.9"/>
+              <line x1="16" y1="16" x2="16" y2="12" stroke="#6ec86e" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+              <line x1="16" y1="9.5" x2="16" y2="7.5" stroke="#6ec86e" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+              <!-- ground line -->
+              <line x1="4" y1="27" x2="28" y2="27" stroke="#4a9c4a" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+            </svg>
+          </div>
           <div class="tl-period">jun 2019 — ago 2022<br>Brasília, DF</div>
           <div class="tl-company">Ministério dos Transportes</div>
         </div>
@@ -457,69 +961,401 @@
     <p class="clients-intro reveal">Ao longo da carreira, desenvolvi inteligência de dados e estratégias de comunicação para organizações de diferentes setores — do governo federal a marcas globais de consumo.</p>
     <div class="clients-grid">
 
+
+      <!-- ANBIMA — finanças / mercado de capitais -->
       <div class="client-card reveal">
-        <img class="client-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Anbima_logo.svg/320px-Anbima_logo.svg.png" alt="Anbima" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-        <span class="client-name-fallback" style="display:none">Anbima</span>
+        <div class="client-icon-wrap" style="background:linear-gradient(135deg,#0a1628,#0d2040);">
+          <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
+            <rect x="4" y="20" width="4" height="8" rx="1" fill="#4a90d9" opacity="0.5"/>
+            <rect x="10" y="14" width="4" height="14" rx="1" fill="#4a90d9" opacity="0.7"/>
+            <rect x="16" y="8" width="4" height="20" rx="1" fill="#4a90d9"/>
+            <rect x="22" y="11" width="4" height="17" rx="1" fill="#4a90d9" opacity="0.8"/>
+            <path d="M6 19 L12 13 L18 7 L24 10" stroke="#7ab8f5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+            <circle cx="24" cy="10" r="2" fill="#7ab8f5"/>
+          </svg>
+        </div>
+        <span class="client-label">Anbima</span>
       </div>
 
+      <!-- CAIXA ECONÔMICA — banco público / habitação -->
       <div class="client-card reveal reveal-d1">
-        <img class="client-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Caixa_Econ%C3%B4mica_Federal_logo.svg/320px-Caixa_Econ%C3%B4mica_Federal_logo.svg.png" alt="CAIXA" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-        <span class="client-name-fallback" style="display:none">CAIXA</span>
+        <div class="client-icon-wrap" style="background:linear-gradient(135deg,#071a07,#0c280c);">
+          <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
+            <!-- house shape -->
+            <path d="M16 4 L28 14 L28 28 L4 28 L4 14 Z" fill="#1a7a1a" opacity="0.2"/>
+            <path d="M16 5 L27 14.5 L27 27 L5 27 L5 14.5 Z" stroke="#2ea82e" stroke-width="1.5" fill="none"/>
+            <path d="M9 27 L9 19 Q9 17 11 17 L21 17 Q23 17 23 19 L23 27" stroke="#2ea82e" stroke-width="1.2" fill="#0c280c"/>
+            <!-- door -->
+            <rect x="14" y="20" width="4" height="7" rx="2" fill="#2ea82e" opacity="0.8"/>
+            <!-- roof ridge -->
+            <path d="M16 5 L16 4" stroke="#5ecf5e" stroke-width="2" stroke-linecap="round"/>
+            <path d="M3 14.5 L16 5 L29 14.5" stroke="#2ea82e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </div>
+        <span class="client-label">Caixa</span>
       </div>
 
+      <!-- CNI — indústria / engrenagem -->
       <div class="client-card reveal reveal-d2">
-        <img class="client-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/CNI_logo.svg/320px-CNI_logo.svg.png" alt="CNI" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-        <span class="client-name-fallback" style="display:none">CNI</span>
+        <div class="client-icon-wrap" style="background:linear-gradient(135deg,#140a02,#201208);">
+          <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
+            <circle cx="16" cy="16" r="5" stroke="#e07820" stroke-width="2"/>
+            <circle cx="16" cy="16" r="2" fill="#e07820" opacity="0.7"/>
+            <!-- gear teeth -->
+            <rect x="14.5" y="3" width="3" height="5" rx="1" fill="#e07820" opacity="0.8"/>
+            <rect x="14.5" y="24" width="3" height="5" rx="1" fill="#e07820" opacity="0.8"/>
+            <rect x="3" y="14.5" width="5" height="3" rx="1" fill="#e07820" opacity="0.8"/>
+            <rect x="24" y="14.5" width="5" height="3" rx="1" fill="#e07820" opacity="0.8"/>
+            <rect x="6.5" y="6.5" width="3" height="5" rx="1" fill="#e07820" opacity="0.6" transform="rotate(45 8 9)"/>
+            <rect x="22.5" y="6.5" width="3" height="5" rx="1" fill="#e07820" opacity="0.6" transform="rotate(-45 24 9)"/>
+            <rect x="6.5" y="20.5" width="3" height="5" rx="1" fill="#e07820" opacity="0.6" transform="rotate(-45 8 23)"/>
+            <rect x="22.5" y="20.5" width="3" height="5" rx="1" fill="#e07820" opacity="0.6" transform="rotate(45 24 23)"/>
+          </svg>
+        </div>
+        <span class="client-label">CNI</span>
       </div>
 
+      <!-- MINISTÉRIO DA SAÚDE — cruz + coração -->
       <div class="client-card reveal reveal-d3">
-        <img class="client-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Minist%C3%A9rio_da_Sa%C3%BAde_logo.svg/320px-Minist%C3%A9rio_da_Sa%C3%BAde_logo.svg.png" alt="Ministério da Saúde" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-        <span class="client-name-fallback" style="display:none">Min. Saúde</span>
+        <div class="client-icon-wrap" style="background:linear-gradient(135deg,#071412,#0a2020);">
+          <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
+            <!-- cross -->
+            <rect x="13" y="5" width="6" height="22" rx="2" fill="#00b09b" opacity="0.3"/>
+            <rect x="5" y="13" width="22" height="6" rx="2" fill="#00b09b" opacity="0.3"/>
+            <rect x="13.5" y="5.5" width="5" height="21" rx="1.5" stroke="#00c9b0" stroke-width="0.8" fill="none"/>
+            <rect x="5.5" y="13.5" width="21" height="5" rx="1.5" stroke="#00c9b0" stroke-width="0.8" fill="none"/>
+            <!-- heart small -->
+            <path d="M16 22 C16 22 12 19 12 16.5 C12 14.8 13.3 13.5 16 15.5 C18.7 13.5 20 14.8 20 16.5 C20 19 16 22 16 22Z" fill="#00e0c4" opacity="0.85"/>
+          </svg>
+        </div>
+        <span class="client-label">Min. Saúde</span>
       </div>
 
+      <!-- MINISTÉRIO DA CULTURA — star/arts -->
       <div class="client-card reveal">
-        <img class="client-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Minist%C3%A9rio_da_Cultura_%28Brasil%29_logo.svg/320px-Minist%C3%A9rio_da_Cultura_%28Brasil%29_logo.svg.png" alt="Ministério da Cultura" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-        <span class="client-name-fallback" style="display:none">Min. Cultura</span>
+        <div class="client-icon-wrap" style="background:linear-gradient(135deg,#130814,#1e0e20);">
+          <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
+            <!-- palette-like shape -->
+            <circle cx="16" cy="16" r="9" stroke="#c060d8" stroke-width="1.2" fill="none" opacity="0.4"/>
+            <!-- color dots on palette -->
+            <circle cx="12" cy="11" r="2.5" fill="#e080f0" opacity="0.9"/>
+            <circle cx="19" cy="10" r="2" fill="#f0a0e0" opacity="0.7"/>
+            <circle cx="22" cy="17" r="2" fill="#c060d8" opacity="0.8"/>
+            <circle cx="19" cy="22" r="2" fill="#d070e8" opacity="0.7"/>
+            <circle cx="11" cy="20" r="2.5" fill="#b050c8" opacity="0.85"/>
+            <!-- brush handle -->
+            <line x1="8" y1="24" x2="12" y2="20" stroke="#e080f0" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span class="client-label">Min. Cultura</span>
       </div>
 
+      <!-- MINISTÉRIO DO ESPORTE — podium / trophy -->
       <div class="client-card reveal reveal-d1">
-        <img class="client-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Minist%C3%A9rio_do_Esporte_%28Brazil%29_logo.svg/320px-Minist%C3%A9rio_do_Esporte_%28Brazil%29_logo.svg.png" alt="Ministério do Esporte" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-        <span class="client-name-fallback" style="display:none">Min. Esporte</span>
+        <div class="client-icon-wrap" style="background:linear-gradient(135deg,#0d1205,#141c07);">
+          <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
+            <!-- trophy cup -->
+            <path d="M10 6 L22 6 L22 16 Q22 22 16 22 Q10 22 10 16 Z" fill="#8ac820" opacity="0.25"/>
+            <path d="M10 6 L22 6 L22 16 Q22 22 16 22 Q10 22 10 16 Z" stroke="#9ed030" stroke-width="1.5" fill="none"/>
+            <!-- handles -->
+            <path d="M10 9 Q6 9 6 13 Q6 17 10 16" stroke="#9ed030" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            <path d="M22 9 Q26 9 26 13 Q26 17 22 16" stroke="#9ed030" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            <!-- stem -->
+            <line x1="16" y1="22" x2="16" y2="26" stroke="#9ed030" stroke-width="1.5"/>
+            <line x1="11" y1="26" x2="21" y2="26" stroke="#9ed030" stroke-width="2" stroke-linecap="round"/>
+            <!-- star inside trophy -->
+            <path d="M16 10 L17 13 L20 13 L17.5 14.8 L18.5 18 L16 16 L13.5 18 L14.5 14.8 L12 13 L15 13 Z" fill="#b8e840" opacity="0.8"/>
+          </svg>
+        </div>
+        <span class="client-label">Min. Esporte</span>
       </div>
 
+      <!-- MINISTÉRIO DOS TRANSPORTES — road/highway -->
       <div class="client-card reveal reveal-d2">
-        <img class="client-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Minist%C3%A9rio_dos_Transportes_%28Brasil%29_logo.svg/320px-Minist%C3%A9rio_dos_Transportes_%28Brasil%29_logo.svg.png" alt="Ministério dos Transportes" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-        <span class="client-name-fallback" style="display:none">Min. Transportes</span>
+        <div class="client-icon-wrap" style="background:linear-gradient(135deg,#050f05,#091a09);">
+          <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
+            <path d="M5 27 L10 5 L22 5 L27 27 Z" fill="#4a9c4a" opacity="0.15"/>
+            <path d="M5.5 27 L10.5 6 L21.5 6 L26.5 27 Z" stroke="#5cb85c" stroke-width="1.2" fill="none"/>
+            <line x1="16" y1="24" x2="16" y2="20" stroke="#7dd87d" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="16" y1="17" x2="16" y2="13" stroke="#7dd87d" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+            <line x1="16" y1="10.5" x2="16" y2="8" stroke="#7dd87d" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+            <line x1="4" y1="28" x2="28" y2="28" stroke="#5cb85c" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+          </svg>
+        </div>
+        <span class="client-label">Min. Transportes</span>
       </div>
 
+      <!-- SEBRAE — small business / plant growing -->
       <div class="client-card reveal reveal-d3">
-        <img class="client-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Sebrae_logo.svg/320px-Sebrae_logo.svg.png" alt="SEBRAE" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-        <span class="client-name-fallback" style="display:none">SEBRAE</span>
+        <div class="client-icon-wrap" style="background:linear-gradient(135deg,#04100c,#071a14);">
+          <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
+            <!-- sprout/growth -->
+            <line x1="16" y1="28" x2="16" y2="12" stroke="#00c878" stroke-width="2" stroke-linecap="round"/>
+            <!-- left leaf -->
+            <path d="M16 18 Q10 16 8 10 Q14 10 16 18Z" fill="#00c878" opacity="0.8"/>
+            <!-- right leaf -->
+            <path d="M16 14 Q22 12 24 6 Q18 7 16 14Z" fill="#00e890" opacity="0.7"/>
+            <!-- ground -->
+            <path d="M8 28 Q16 25 24 28" stroke="#00c878" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.5"/>
+            <!-- small person icon -->
+            <circle cx="16" cy="6" r="2" fill="#00e890" opacity="0.6"/>
+          </svg>
+        </div>
+        <span class="client-label">SEBRAE</span>
       </div>
 
+      <!-- EMBRATUR — sun/tourism/travel -->
       <div class="client-card reveal">
-        <img class="client-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Embratur_logo_2021.svg/320px-Embratur_logo_2021.svg.png" alt="Embratur" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-        <span class="client-name-fallback" style="display:none">Embratur</span>
+        <div class="client-icon-wrap" style="background:linear-gradient(135deg,#140c02,#201408);">
+          <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
+            <!-- globe -->
+            <circle cx="16" cy="16" r="10" stroke="#f5a020" stroke-width="1.5" fill="none" opacity="0.5"/>
+            <!-- latitude lines -->
+            <ellipse cx="16" cy="16" rx="10" ry="5" stroke="#f5a020" stroke-width="0.8" fill="none" opacity="0.4"/>
+            <!-- longitude line -->
+            <line x1="16" y1="6" x2="16" y2="26" stroke="#f5a020" stroke-width="0.8" opacity="0.4"/>
+            <!-- sun rays -->
+            <circle cx="16" cy="16" r="4" fill="#f5a020" opacity="0.9"/>
+            <line x1="16" y1="3" x2="16" y2="6" stroke="#f5c050" stroke-width="2" stroke-linecap="round"/>
+            <line x1="16" y1="26" x2="16" y2="29" stroke="#f5c050" stroke-width="2" stroke-linecap="round"/>
+            <line x1="3" y1="16" x2="6" y2="16" stroke="#f5c050" stroke-width="2" stroke-linecap="round"/>
+            <line x1="26" y1="16" x2="29" y2="16" stroke="#f5c050" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span class="client-label">Embratur</span>
       </div>
 
+      <!-- BRASKEM — petrochemical / molecule -->
       <div class="client-card reveal reveal-d1">
-        <img class="client-logo" src="https://pt.wikipedia.org/wiki/Braskem#/media/Ficheiro:Logo_of_Braskem.svg" alt="Braskem" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-        <span class="client-name-fallback" style="display:none">Braskem</span>
+        <div class="client-icon-wrap" style="background:linear-gradient(135deg,#0a0614,#100a20);">
+          <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
+            <!-- molecule nodes -->
+            <circle cx="16" cy="16" r="3.5" fill="#8050e0"/>
+            <circle cx="7" cy="10" r="2.5" fill="#6038c0" opacity="0.8"/>
+            <circle cx="25" cy="10" r="2.5" fill="#6038c0" opacity="0.8"/>
+            <circle cx="7" cy="22" r="2.5" fill="#6038c0" opacity="0.8"/>
+            <circle cx="25" cy="22" r="2.5" fill="#6038c0" opacity="0.8"/>
+            <circle cx="16" cy="5" r="2" fill="#a070f0" opacity="0.7"/>
+            <circle cx="16" cy="27" r="2" fill="#a070f0" opacity="0.7"/>
+            <!-- bonds -->
+            <line x1="16" y1="12.5" x2="9" y2="11" stroke="#8050e0" stroke-width="1.2" opacity="0.6"/>
+            <line x1="16" y1="12.5" x2="23" y2="11" stroke="#8050e0" stroke-width="1.2" opacity="0.6"/>
+            <line x1="16" y1="19.5" x2="9" y2="21" stroke="#8050e0" stroke-width="1.2" opacity="0.6"/>
+            <line x1="16" y1="19.5" x2="23" y2="21" stroke="#8050e0" stroke-width="1.2" opacity="0.6"/>
+            <line x1="16" y1="12.5" x2="16" y2="7" stroke="#a070f0" stroke-width="1.2" opacity="0.5"/>
+            <line x1="16" y1="19.5" x2="16" y2="25" stroke="#a070f0" stroke-width="1.2" opacity="0.5"/>
+          </svg>
+        </div>
+        <span class="client-label">Braskem</span>
       </div>
 
+      <!-- KUMON — education / pencil / learning -->
       <div class="client-card reveal reveal-d2">
-        <img class="client-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Kumon_logo.svg/320px-Kumon_logo.svg.png" alt="Kumon" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-        <span class="client-name-fallback" style="display:none">Kumon</span>
+        <div class="client-icon-wrap" style="background:linear-gradient(135deg,#140403,#201008);">
+          <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
+            <!-- open book -->
+            <path d="M4 8 Q4 6 6 6 L15 7 L15 26 L6 25 Q4 25 4 23 Z" fill="#e84040" opacity="0.2"/>
+            <path d="M4.5 8 Q4.5 6.5 6 6.5 L15 7.5 L15 25.5 L6 24.5 Q4.5 24.5 4.5 23 Z" stroke="#e84040" stroke-width="1.2" fill="none"/>
+            <path d="M28 8 Q28 6 26 6 L17 7 L17 26 L26 25 Q28 25 28 23 Z" fill="#e84040" opacity="0.2"/>
+            <path d="M27.5 8 Q27.5 6.5 26 6.5 L17 7.5 L17 25.5 L26 24.5 Q27.5 24.5 27.5 23 Z" stroke="#e84040" stroke-width="1.2" fill="none"/>
+            <!-- spine -->
+            <line x1="16" y1="7" x2="16" y2="26" stroke="#e84040" stroke-width="1.5" opacity="0.6"/>
+            <!-- text lines on left page -->
+            <line x1="7" y1="11" x2="13" y2="11.5" stroke="#e84040" stroke-width="0.8" opacity="0.6"/>
+            <line x1="7" y1="14" x2="13" y2="14.5" stroke="#e84040" stroke-width="0.8" opacity="0.5"/>
+            <line x1="7" y1="17" x2="13" y2="17.5" stroke="#e84040" stroke-width="0.8" opacity="0.4"/>
+            <!-- text lines on right page -->
+            <line x1="19" y1="11" x2="25" y2="11.5" stroke="#e84040" stroke-width="0.8" opacity="0.6"/>
+            <line x1="19" y1="14" x2="25" y2="14.5" stroke="#e84040" stroke-width="0.8" opacity="0.5"/>
+            <line x1="19" y1="17" x2="25" y2="17.5" stroke="#e84040" stroke-width="0.8" opacity="0.4"/>
+          </svg>
+        </div>
+        <span class="client-label">Kumon</span>
       </div>
 
+      <!-- COCA-COLA FEMSA — beverage / bottle wave -->
       <div class="client-card reveal reveal-d3">
-        <img class="client-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Coca-Cola_FEMSA_logo.svg/320px-Coca-Cola_FEMSA_logo.svg.png" alt="Coca-Cola FEMSA" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-        <span class="client-name-fallback" style="display:none">KOF / FEMSA</span>
+        <div class="client-icon-wrap" style="background:linear-gradient(135deg,#140202,#200404);">
+          <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
+            <!-- bottle silhouette -->
+            <path d="M13 4 L13 7 Q10 8 10 11 L10 24 Q10 27 13 27 L19 27 Q22 27 22 24 L22 11 Q22 8 19 7 L19 4 Z" fill="#e82020" opacity="0.2"/>
+            <path d="M13.5 4.5 L13.5 7.5 Q11 8.5 11 11 L11 24 Q11 26.5 13.5 26.5 L18.5 26.5 Q21 26.5 21 24 L21 11 Q21 8.5 18.5 7.5 L18.5 4.5 Z" stroke="#e83030" stroke-width="1.2" fill="none"/>
+            <!-- cap -->
+            <rect x="13" y="3" width="6" height="2" rx="1" fill="#e83030" opacity="0.7"/>
+            <!-- bubbles -->
+            <circle cx="14.5" cy="18" r="1" fill="#f06060" opacity="0.5"/>
+            <circle cx="17.5" cy="14" r="1.2" fill="#f06060" opacity="0.5"/>
+            <circle cx="15" cy="22" r="0.8" fill="#f06060" opacity="0.4"/>
+            <!-- wave line inside -->
+            <path d="M12 15 Q14 13 16 15 Q18 17 20 15" stroke="#f06060" stroke-width="1" fill="none" opacity="0.6"/>
+          </svg>
+        </div>
+        <span class="client-label">KOF / FEMSA</span>
       </div>
 
+      <!-- BAUDUCCO — bread/wheat (também empresa) -->
       <div class="client-card reveal">
-        <img class="client-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Bauducco_logo.svg/320px-Bauducco_logo.svg.png" alt="Bauducco" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-        <span class="client-name-fallback" style="display:none">Bauducco</span>
+        <div class="client-icon-wrap" style="background:linear-gradient(135deg,#1a0f04,#261408);">
+          <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
+            <ellipse cx="16" cy="20" rx="9" ry="5.5" fill="#c47a1e" opacity="0.9"/>
+            <ellipse cx="16" cy="19" rx="9" ry="5" fill="#d98c2a"/>
+            <circle cx="13" cy="19" r="1" fill="#f0b84a" opacity="0.7"/>
+            <circle cx="16.5" cy="21" r="1" fill="#f0b84a" opacity="0.7"/>
+            <circle cx="19.5" cy="18.5" r="1" fill="#f0b84a" opacity="0.7"/>
+            <line x1="16" y1="14" x2="16" y2="7" stroke="#a06010" stroke-width="1.5" stroke-linecap="round"/>
+            <ellipse cx="13" cy="10" rx="2.5" ry="1.3" fill="#c47a1e" opacity="0.8" transform="rotate(-30 13 10)"/>
+            <ellipse cx="19" cy="10" rx="2.5" ry="1.3" fill="#c47a1e" opacity="0.8" transform="rotate(30 19 10)"/>
+            <ellipse cx="14" cy="7.5" rx="2" ry="1.1" fill="#d98c2a" opacity="0.7" transform="rotate(-20 14 7.5)"/>
+            <ellipse cx="18" cy="7.5" rx="2" ry="1.1" fill="#d98c2a" opacity="0.7" transform="rotate(20 18 7.5)"/>
+          </svg>
+        </div>
+        <span class="client-label">Bauducco</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     PORTFÓLIO — NOVA SEÇÃO
+     ============================================= -->
+<section id="portfolio">
+  <div class="container">
+    <div class="section-header reveal">
+      <div>
+        <div class="section-num">04 —</div>
+        <h2 class="t-heading section-title">Portfólio</h2>
+      </div>
+    </div>
+
+    <div class="portfolio-grid">
+
+      <!-- CARD 1: GitHub Pages -->
+      <div class="portfolio-card reveal">
+        <div class="github-preview">
+          <iframe
+            src="https://yonnowsp-beep.github.io/taggea/"
+            title="Taggea — GitHub Pages"
+            loading="lazy"
+            sandbox="allow-scripts allow-same-origin"
+          ></iframe>
+          <div class="github-overlay">
+            <a href="https://yonnowsp-beep.github.io/taggea/" target="_blank" rel="noopener" class="portfolio-link-btn btn-sm">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Abrir projeto
+            </a>
+          </div>
+          <div class="preview-badge"><div class="preview-badge-dot"></div>Social Listening App</div>
+        </div>
+        <div class="portfolio-info">
+          <div class="portfolio-info-top">
+            <div class="portfolio-title">Taggea — Social Listening Tool</div>
+            <a href="https://yonnowsp-beep.github.io/taggea/" target="_blank" rel="noopener" class="portfolio-link-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Ver ao vivo
+            </a>
+          </div>
+          <p class="portfolio-desc">Aplicativo web para automatizar a catalogação de conteúdos sobre tópicos e clientes, extraídos via desk research em redes sociais. Uma ferramenta própria de Social Listening que agiliza a organização de dados e potencializa a geração de insights estratégicos.</p>
+          <div class="portfolio-tags">
+            <span class="portfolio-tag">Social Listening</span>
+            <span class="portfolio-tag">Web App</span>
+            <span class="portfolio-tag">Desk Research</span>
+            <span class="portfolio-tag">Catalogação</span>
+            <span class="portfolio-tag">GitHub Pages</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 2: Looker Studio -->
+      <div class="portfolio-card reveal reveal-d1">
+        <div class="looker-placeholder">
+          <div class="looker-icon-wrap">
+            <!-- Looker Studio color icon SVG -->
+            <svg width="28" height="28" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="24" r="22" fill="#4285F4" opacity="0.15"/>
+              <path d="M14 34V20a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v14" stroke="#4285F4" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M26 34V14a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v20" stroke="#EA4335" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="10" y1="34" x2="38" y2="34" stroke="#FBBC04" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <p>O Looker Studio não permite embed externo por política de segurança do Google.<br>Clique para abrir o dashboard no navegador.</p>
+          <a href="https://lookerstudio.google.com/s/ugI13-UrHUg" target="_blank" rel="noopener" class="looker-open-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Abrir Dashboard
+          </a>
+        </div>
+        <div class="portfolio-info">
+          <div class="portfolio-info-top">
+            <div class="portfolio-title">Dashboard — Looker Studio</div>
+            <a href="https://lookerstudio.google.com/s/ugI13-UrHUg" target="_blank" rel="noopener" class="portfolio-link-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Acessar
+            </a>
+          </div>
+          <p class="portfolio-desc">Dashboard interativo de Business Intelligence construído no Looker Studio. Visualização de métricas, tendências e KPIs para suporte à tomada de decisão.</p>
+          <div class="portfolio-tags">
+            <span class="portfolio-tag">Looker Studio</span>
+            <span class="portfolio-tag">BI</span>
+            <span class="portfolio-tag">Dashboard</span>
+            <span class="portfolio-tag">Data Viz</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 3: PDF / Google Slides — largura total -->
+      <div class="portfolio-card span-2 reveal reveal-d2">
+        <div class="pdf-upload-area" id="pdf-drop-zone">
+          <input type="file" id="pdf-file-input" accept=".pdf,application/pdf">
+          <div class="pdf-upload-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+          </div>
+          <div class="pdf-upload-label">
+            <p>Arraste o PDF do slide aqui</p>
+            <span>ou clique para selecionar o arquivo</span>
+          </div>
+          <button class="pdf-upload-btn" onclick="document.getElementById('pdf-file-input').click()">Selecionar PDF</button>
+        </div>
+
+        <div class="pdf-viewer-container" id="pdf-viewer">
+          <div class="pdf-viewer-toolbar">
+            <span class="pdf-filename" id="pdf-filename">slide.pdf</span>
+            <div class="pdf-nav">
+              <button onclick="changePage(-1)" title="Página anterior">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+              </button>
+              <span class="page-info" id="page-info">1 / 1</span>
+              <button onclick="changePage(1)" title="Próxima página">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+              </button>
+              <button onclick="zoomOut()" title="Reduzir zoom">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+              </button>
+              <button onclick="zoomIn()" title="Aumentar zoom">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+              </button>
+            </div>
+            <button class="pdf-remove-btn" onclick="removePdf()">Remover</button>
+          </div>
+          <div id="pdf-canvas-wrapper">
+            <canvas id="pdf-canvas"></canvas>
+          </div>
+        </div>
+
+        <div class="preview-badge" style="position:static; display:inline-flex; margin: 0; border-radius:0; border:none; border-bottom:1px solid var(--line); padding: 0.55rem 1.5rem; background: var(--bg3); font-size:0.6rem;">
+          <div class="preview-badge-dot"></div>Google Slides · PDF
+        </div>
+
+        <div class="portfolio-info">
+          <div class="portfolio-info-top">
+            <div class="portfolio-title">Apresentação — Google Slides</div>
+          </div>
+          <p class="portfolio-desc">Exporte sua apresentação do Google Slides como PDF e faça o upload acima para visualizá-la diretamente nesta página — com navegação por páginas e zoom.</p>
+          <div class="portfolio-tags">
+            <span class="portfolio-tag">Google Slides</span>
+            <span class="portfolio-tag">Apresentação</span>
+            <span class="portfolio-tag">Storytelling com Dados</span>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -531,7 +1367,7 @@
   <div class="container">
     <div class="section-header reveal">
       <div>
-        <div class="section-num">04 —</div>
+        <div class="section-num">05 —</div>
         <h2 class="t-heading section-title">Ferramentas</h2>
       </div>
     </div>
@@ -610,7 +1446,7 @@
   <div class="container">
     <div class="section-header reveal">
       <div>
-        <div class="section-num">05 —</div>
+        <div class="section-num">06 —</div>
         <h2 class="t-heading section-title">Contato</h2>
       </div>
     </div>
@@ -618,20 +1454,20 @@
       <div class="reveal">
         <h3 class="t-heading contato-big">Vamos transformar<br>dados em <em>decisões</em>?</h3>
         <p class="contato-sub">Estou disponível para projetos de Data Insights, Social Listening e Business Intelligence. Se você tem dados e precisa de inteligência, vamos conversar.</p>
-        <a href="/cdn-cgi/l/email-protection#fe8791909b97929fc7c9be96918a939f9792d09d9193" class="btn btn-primary">
+        <a href="/cdn-cgi/l/email-protection#10697f7e75797c7150757d71797c3e737f7d" class="btn btn-primary">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           Enviar mensagem
         </a>
       </div>
       <div class="contact-links reveal reveal-d2">
 
-        <a href="/cdn-cgi/l/email-protection#3d4452535854515c040a7d555249505c5451135e5250" class="contact-link">
+        <a href="/cdn-cgi/l/email-protection#51283e3f34383d3011343c30383d7f323e3c" class="contact-link">
           <div class="contact-link-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
           </div>
           <div>
             <div class="contact-link-label">E-mail</div>
-            <div class="contact-link-value"><span class="__cf_email__" data-cfemail="225b4d4c474b4e431b15624a4d564f434b4e0c414d4f">[email&#160;protected]</span></div>
+            <div class="contact-link-value"><span class="__cf_email__" data-cfemail="077e6869626e6b6647626a666e6b2964686a">[email&#160;protected]</span></div>
           </div>
         </a>
 
@@ -687,14 +1523,16 @@
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // Navbar scroll
+<!-- PDF.js CDN -->
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+  // ── Navbar scroll ──────────────────────────────────────────
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 30);
   }, { passive: true });
 
-  // Mobile menu
+  // ── Mobile menu ────────────────────────────────────────────
   function toggleMenu() {
     document.getElementById('nav-links').classList.toggle('open');
   }
@@ -702,20 +1540,27 @@
     a.addEventListener('click', () => document.getElementById('nav-links').classList.remove('open'));
   });
 
-  // Reveal on scroll
+  // ── Reveal on scroll ───────────────────────────────────────
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
     });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  // Hero immediate reveal
+  // ── Hero immediate reveal ──────────────────────────────────
+  // Force ALL reveal elements visible on load as fallback
+  function forceRevealAll() {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+  }
+  // Hero: immediate staggered
   document.querySelectorAll('#hero .reveal').forEach((el, i) => {
-    setTimeout(() => el.classList.add('visible'), 80 + i * 130);
+    setTimeout(() => el.classList.add('visible'), 60 + i * 110);
   });
+  // Safety net: if page loaded but intersections never fired, reveal all after 1.5s
+  setTimeout(() => forceRevealAll(), 1500);
 
-  // Logo fallback handler
+  // ── Logo fallback ──────────────────────────────────────────
   document.querySelectorAll('.client-logo').forEach(img => {
     img.addEventListener('error', function() {
       this.style.display = 'none';
@@ -724,7 +1569,7 @@
     });
   });
 
-  // Active nav highlight
+  // ── Active nav highlight ───────────────────────────────────
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-links a');
   const navObs = new IntersectionObserver((entries) => {
@@ -737,6 +1582,97 @@
     });
   }, { threshold: 0.4 });
   sections.forEach(s => navObs.observe(s));
-</script>
-</body>
-</html>
+
+  // ══════════════════════════════════════════════════════════
+  // PDF VIEWER
+  // ══════════════════════════════════════════════════════════
+  pdfjsLib.GlobalWorkerOptions.workerSrc =
+    'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+  let pdfDoc = null;
+  let currentPage = 1;
+  let totalPages = 0;
+  let currentScale = 1.0;
+
+  const dropZone   = document.getElementById('pdf-drop-zone');
+  const fileInput  = document.getElementById('pdf-file-input');
+  const viewer     = document.getElementById('pdf-viewer');
+  const canvas     = document.getElementById('pdf-canvas');
+  const ctx        = canvas.getContext('2d');
+  const pageInfo   = document.getElementById('page-info');
+  const filenameEl = document.getElementById('pdf-filename');
+
+  // File input change
+  fileInput.addEventListener('change', (e) => {
+    if (e.target.files[0]) loadPDF(e.target.files[0]);
+  });
+
+  // Drag & drop
+  dropZone.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    dropZone.classList.add('drag-over');
+  });
+  dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+  dropZone.addEventListener('drop', (e) => {
+    e.preventDefault();
+    dropZone.classList.remove('drag-over');
+    const file = e.dataTransfer.files[0];
+    if (file && file.type === 'application/pdf') loadPDF(file);
+  });
+  dropZone.addEventListener('click', (e) => {
+    if (e.target.tagName !== 'BUTTON') fileInput.click();
+  });
+
+  function loadPDF(file) {
+    filenameEl.textContent = file.name;
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const typedArray = new Uint8Array(e.target.result);
+      pdfjsLib.getDocument({ data: typedArray }).promise.then(pdf => {
+        pdfDoc = pdf;
+        totalPages = pdf.numPages;
+        currentPage = 1;
+        dropZone.style.display = 'none';
+        viewer.classList.add('active');
+        renderPage(currentPage);
+      });
+    };
+    reader.readAsArrayBuffer(file);
+  }
+
+  function renderPage(num) {
+    pdfDoc.getPage(num).then(page => {
+      const wrapper = document.getElementById('pdf-canvas-wrapper');
+      const padding = 48; // 1.5rem * 2 sides
+      const availW = wrapper.clientWidth - padding;
+      const viewport = page.getViewport({ scale: 1 });
+      // Fit to available width, then apply zoom multiplier on top
+      const baseScale = availW / viewport.width;
+      const scale = baseScale * currentScale;
+      const scaledViewport = page.getViewport({ scale });
+
+      canvas.width  = scaledViewport.width;
+      canvas.height = scaledViewport.height;
+
+      page.render({ canvasContext: ctx, viewport: scaledViewport });
+      pageInfo.textContent = `${num} / ${totalPages}`;
+    });
+  }
+
+  function changePage(delta) {
+    const next = currentPage + delta;
+    if (next >= 1 && next <= totalPages) {
+      currentPage = next;
+      renderPage(currentPage);
+    }
+  }
+
+  function zoomIn()  { currentScale = Math.min(currentScale + 0.2, 3);   renderPage(currentPage); }
+  function zoomOut() { currentScale = Math.max(currentScale - 0.2, 0.5); renderPage(currentPage); }
+
+  function removePdf() {
+    pdfDoc = null;
+    viewer.classList.remove('active');
+    dropZone.style.display = 'flex';
+    fileInput.value = '';
+    ctx.clearRect(0, 0,
