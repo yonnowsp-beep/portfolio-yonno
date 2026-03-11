@@ -6,12 +6,10 @@
 <title>Yoneila Pereira — Data Analyst</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Adicionadas as fontes Nunito e Nunito Sans para o carrossel -->
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&family=Nunito+Sans:wght@500;600;700;800&family=Nunito:ital,wght@0,900;1,900&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    /* Cores do Portfólio */
     --bg:        #09090d;
     --bg2:       #0f0f15;
     --bg3:       #16161e;
@@ -29,8 +27,6 @@
     --mono:      'DM Mono', monospace;
     --radius:    6px;
     --nav-h:     64px;
-
-    /* Cores e Fontes Específicas do Carrossel */
     --c-purple:  #7B2FFF;
     --c-pink:    #FF4E99;
     --c-yellow:  #FFE44D;
@@ -51,22 +47,17 @@
   }
   ::selection { background: var(--accent); color: #000; }
   a { color: inherit; text-decoration: none; }
-
   .t-display { font-family: var(--serif); font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; }
   .t-heading  { font-family: var(--serif); font-weight: 700; line-height: 1.2; }
   .t-label    { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); }
   .t-muted    { color: var(--muted); }
-
-  .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+  .container  { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
 
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
     to   { opacity: 1; transform: translateY(0); }
   }
-  .reveal {
-    animation: fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) both;
-    animation-delay: 0.05s;
-  }
+  .reveal { animation: fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) both; animation-delay: 0.05s; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
   .reveal-d1 { animation-delay: 0.15s; }
   .reveal-d2 { animation-delay: 0.25s; }
@@ -74,6 +65,7 @@
   .reveal-d4 { animation-delay: 0.45s; }
   .reveal-d5 { animation-delay: 0.55s; }
 
+  /* ══ NAV ══ */
   nav { position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h); z-index: 100; transition: background 0.4s, backdrop-filter 0.4s, border-color 0.4s; border-bottom: 1px solid transparent; }
   nav.scrolled { background: rgba(9,9,13,0.88); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-color: var(--line); }
   .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 2rem; height: 100%; display: flex; align-items: center; justify-content: space-between; }
@@ -87,9 +79,10 @@
   .nav-cta { padding: 0.5rem 1.2rem !important; border: 1px solid var(--accent); border-radius: var(--radius); color: var(--accent) !important; transition: background 0.2s, color 0.2s !important; }
   .nav-cta:hover { background: var(--accent); color: #000 !important; }
   .nav-cta::after { display: none !important; }
-  .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+  .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
   .nav-hamburger span { display: block; width: 22px; height: 1.5px; background: var(--text); transition: all 0.3s; }
 
+  /* ══ HERO ══ */
   #hero { min-height: 100vh; display: flex; align-items: center; padding-top: var(--nav-h); position: relative; overflow: hidden; }
   .hero-bg { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
   .hero-bg::before { content: ''; position: absolute; top: -20%; right: -10%; width: 60vw; height: 60vw; background: radial-gradient(circle, rgba(232,104,42,0.07) 0%, transparent 65%); }
@@ -103,14 +96,11 @@
   .hero-title { font-size: clamp(1rem, 2.5vw, 1.4rem); color: var(--muted); font-weight: 300; margin-bottom: 2rem; letter-spacing: 0.02em; }
   .hero-desc { max-width: 540px; font-size: 1rem; color: var(--text); line-height: 1.8; margin-bottom: 3rem; opacity: 0.85; }
   .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
-
   .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.8rem 1.8rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 500; letter-spacing: 0.04em; transition: all 0.25s cubic-bezier(0.22,1,0.36,1); cursor: pointer; border: none; font-family: var(--sans); }
   .btn-primary { background: var(--accent); color: #000; }
   .btn-primary:hover { background: var(--white); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(232,104,42,0.3); }
   .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--line2); }
   .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
-  .btn-sm { padding: 0.55rem 1.2rem; font-size: 0.78rem; }
-
   .hero-stats { display: flex; gap: 0; margin-top: 5rem; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
   .hero-stat { flex: 1; padding: 1.5rem 0; border-right: 1px solid var(--line); }
   .hero-stat:last-child { border-right: none; }
@@ -118,11 +108,13 @@
   .hero-stat-num span { color: var(--accent); }
   .hero-stat-label { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
 
+  /* ══ SECTION BASE ══ */
   section { padding: 7rem 0; }
   .section-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 4rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--line); gap: 2rem; }
   .section-num { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.15em; color: var(--muted); margin-bottom: 0.5rem; }
   .section-title { font-size: clamp(2rem, 4vw, 3rem); color: var(--white); }
 
+  /* ══ SOBRE ══ */
   #sobre { background: var(--bg2); }
   .sobre-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
   .sobre-text p { font-size: 1rem; line-height: 1.9; color: var(--text); margin-bottom: 1.2rem; opacity: 0.85; }
@@ -134,6 +126,7 @@
   .skill-tag:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-lo); }
   .skill-tag.accent { border-color: rgba(232,104,42,0.4); color: var(--accent); background: var(--accent-lo); }
 
+  /* ══ EXPERIÊNCIA ══ */
   #experiencia { background: var(--bg); }
   .timeline { position: relative; }
   .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: var(--line2); }
@@ -144,360 +137,431 @@
   .tl-meta { padding-left: 1.5rem; }
   .tl-period { font-family: var(--mono); font-size: 0.72rem; color: var(--muted); letter-spacing: 0.05em; line-height: 1.5; }
   .tl-company { font-size: 0.8rem; font-weight: 500; color: var(--accent); margin-top: 0.3rem; }
-  .tl-company-icon {
-    width: 52px;
-    height: 52px;
-    border-radius: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 0.9rem;
-    flex-shrink: 0;
-    border: 1px solid rgba(255,255,255,0.07);
-    transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s;
-  }
-  .timeline-item:hover .tl-company-icon {
-    transform: translateY(-3px) scale(1.04);
-    box-shadow: 0 12px 32px rgba(0,0,0,0.5);
-  }
+  .tl-company-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 0.9rem; flex-shrink: 0; border: 1px solid rgba(255,255,255,0.07); transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s; }
+  .timeline-item:hover .tl-company-icon { transform: translateY(-3px) scale(1.04); box-shadow: 0 12px 32px rgba(0,0,0,0.5); }
   .tl-role { font-family: var(--serif); font-size: 1.3rem; font-weight: 700; color: var(--white); margin-bottom: 0.6rem; line-height: 1.2; }
   .tl-desc { font-size: 0.9rem; color: var(--text); line-height: 1.8; opacity: 0.8; }
   .tl-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
   .tl-tag { padding: 0.2rem 0.7rem; border-radius: 99px; font-size: 0.68rem; letter-spacing: 0.05em; border: 1px solid var(--line2); color: var(--muted); background: var(--bg2); }
 
+  /* ══ CLIENTES ══ */
   #projetos { background: var(--bg2); }
   .clients-intro { max-width: 560px; font-size: 0.95rem; color: var(--muted); line-height: 1.8; margin-bottom: 3rem; }
-  .clients-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.5px;
-    background: var(--line);
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    overflow: hidden;
-  }
-  @media (max-width: 768px) { .clients-grid { grid-template-columns: repeat(3, 1fr); } }
-  @media (max-width: 480px) { .clients-grid { grid-template-columns: repeat(2, 1fr); } }
-  .client-card {
-    background: var(--bg2);
-    padding: 2rem 1.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.8rem;
-    transition: background 0.25s;
-    position: relative;
-    overflow: hidden;
-    min-height: 110px;
-  }
+  .clients-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5px; background: var(--line); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+  .client-card { background: var(--bg2); padding: 2rem 1.5rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.8rem; transition: background 0.25s; position: relative; overflow: hidden; min-height: 110px; }
   .client-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), transparent); transform: scaleX(0); transform-origin: left; transition: transform 0.4s cubic-bezier(0.22,1,0.36,1); }
   .client-card:hover { background: var(--bg3); }
   .client-card:hover::before { transform: scaleX(1); }
-  .client-logo {
-    width: 100%;
-    max-width: 110px;
-    height: 40px;
-    object-fit: contain;
-    filter: brightness(0) invert(1);
-    opacity: 0.4;
-    transition: opacity 0.25s;
-  }
-  .client-card:hover .client-logo { opacity: 0.9; }
-  .client-name-fallback {
-    font-family: var(--mono);
-    font-size: 0.68rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-    text-align: center;
-    transition: color 0.25s;
-  }
-  .client-card:hover .client-name-fallback { color: var(--white); }
-  .client-icon-wrap {
-    width: 52px;
-    height: 52px;
-    border-radius: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 0.3rem;
-    transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), filter 0.3s;
-    flex-shrink: 0;
-  }
-  .client-card:hover .client-icon-wrap {
-    transform: translateY(-3px) scale(1.06);
-    filter: brightness(1.15);
-  }
-  .client-label {
-    font-family: var(--mono);
-    font-size: 0.62rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-    text-align: center;
-    transition: color 0.25s;
-    line-height: 1.3;
-  }
+  .client-icon-wrap { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 0.3rem; transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), filter 0.3s; flex-shrink: 0; }
+  .client-card:hover .client-icon-wrap { transform: translateY(-3px) scale(1.06); filter: brightness(1.15); }
+  .client-label { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-align: center; transition: color 0.25s; line-height: 1.3; }
   .client-card:hover .client-label { color: var(--white); }
 
-  /* =============================================
-     PORTFOLIO DE PROJETOS
-     ============================================= */
+  /* ══════════════════════════════════════════
+     PORTFÓLIO — CARDS RETANGULARES DE HOMEPAGE
+     ══════════════════════════════════════════ */
   #portfolio { background: var(--bg); position: relative; overflow: hidden; }
-  #portfolio::before {
-    content: '';
-    position: absolute;
-    top: -15%;
-    right: -5%;
-    width: 45vw;
-    height: 45vw;
-    background: radial-gradient(circle, rgba(232,104,42,0.05) 0%, transparent 65%);
-    pointer-events: none;
-  }
+  #portfolio::before { content: ''; position: absolute; top: -15%; right: -5%; width: 45vw; height: 45vw; background: radial-gradient(circle, rgba(232,104,42,0.05) 0%, transparent 65%); pointer-events: none; }
 
+  /* Grid principal de projetos */
   .portfolio-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
   }
 
-  .portfolio-card {
+  /* Card base — estilo homepage section */
+  .pf-card {
     background: var(--bg2);
     border: 1px solid var(--line);
-    border-radius: 14px;
+    border-radius: 20px;
     overflow: hidden;
-    transition: border-color 0.3s, box-shadow 0.3s;
     display: flex;
     flex-direction: column;
+    transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    position: relative;
   }
-  .portfolio-card:hover {
-    border-color: rgba(232,104,42,0.3);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px var(--accent-gl);
+  .pf-card:hover {
+    border-color: rgba(232,104,42,0.35);
+    box-shadow: 0 24px 64px rgba(0,0,0,0.55), 0 0 0 1px var(--accent-gl);
+    transform: translateY(-4px);
   }
-  .portfolio-card.span-2 {
+  .pf-card.full-width {
     grid-column: span 2;
   }
 
-  .portfolio-preview {
-    position: relative;
-    width: 100%;
-    background: var(--bg3);
-    overflow: hidden;
-    flex-shrink: 0;
-  }
-  .portfolio-preview iframe {
-    display: block;
-    width: 100%;
-    border: none;
-  }
-
-  .preview-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, transparent 60%, rgba(9,9,13,0.95) 100%);
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-    padding: 1.2rem;
-    opacity: 0;
-    transition: opacity 0.3s;
-    pointer-events: none;
-  }
-  .portfolio-card:hover .preview-overlay { opacity: 1; }
-
-  .preview-badge {
+  /* Badge de tipo no topo do card */
+  .pf-card-badge {
     position: absolute;
     top: 1rem;
     left: 1rem;
-    display: flex;
+    z-index: 10;
+    display: inline-flex;
     align-items: center;
     gap: 0.4rem;
-    background: rgba(9,9,13,0.85);
-    backdrop-filter: blur(8px);
+    background: rgba(9,9,13,0.82);
+    backdrop-filter: blur(10px);
     border: 1px solid var(--line2);
     border-radius: 99px;
-    padding: 0.3rem 0.8rem;
+    padding: 0.28rem 0.75rem;
     font-family: var(--mono);
-    font-size: 0.62rem;
-    letter-spacing: 0.1em;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--accent);
-    z-index: 2;
   }
-  .preview-badge-dot {
-    width: 5px;
-    height: 5px;
+  .pf-card-badge-dot {
+    width: 5px; height: 5px;
     border-radius: 50%;
     background: var(--accent);
+    animation: pulse 2s infinite;
   }
 
-  .portfolio-info {
-    padding: 1.5rem;
+  /* Preview area — browser mockup */
+  .pf-preview {
+    position: relative;
+    background: var(--bg3);
+    border-bottom: 1px solid var(--line);
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  /* Browser chrome bar */
+  .pf-browser-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 0.9rem;
+    background: rgba(9,9,13,0.95);
+    border-bottom: 1px solid var(--line);
+  }
+  .pf-browser-dots { display: flex; gap: 4px; }
+  .pf-browser-dots span { width: 9px; height: 9px; border-radius: 50%; display: block; }
+  .pf-browser-dots span:nth-child(1) { background: #ff5f56; }
+  .pf-browser-dots span:nth-child(2) { background: #ffbd2e; }
+  .pf-browser-dots span:nth-child(3) { background: #27c93f; }
+  .pf-browser-url {
+    flex: 1;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 0.2rem 0.6rem;
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    color: var(--muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .pf-browser-open {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.22rem 0.6rem;
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    border: 1px solid rgba(232,104,42,0.3);
+    border-radius: 4px;
+    background: var(--accent-lo);
+    transition: all 0.2s;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .pf-browser-open:hover { background: var(--accent); color: #000; border-color: var(--accent); }
+  .pf-browser-open svg { width: 10px; height: 10px; }
+  .pf-preview iframe { display: block; width: 100%; border: none; }
+
+  /* Info block */
+  .pf-info {
+    padding: 1.6rem 1.8rem 1.8rem;
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
+    gap: 0.7rem;
     flex: 1;
   }
-  .portfolio-info-top {
+  .pf-info-row {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
     gap: 1rem;
   }
-  .portfolio-title {
+  .pf-title {
     font-family: var(--serif);
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     font-weight: 700;
     color: var(--white);
     line-height: 1.25;
   }
-  .portfolio-desc {
-    font-size: 0.83rem;
+  .pf-desc {
+    font-size: 0.84rem;
     color: var(--muted);
-    line-height: 1.7;
+    line-height: 1.75;
   }
-  .portfolio-tags {
+  .pf-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 0.4rem;
-    margin-top: 0.4rem;
+    margin-top: 0.2rem;
   }
-  .portfolio-tag {
+  .pf-tag {
     padding: 0.18rem 0.65rem;
     border-radius: 99px;
-    font-size: 0.65rem;
+    font-size: 0.64rem;
     font-family: var(--mono);
     letter-spacing: 0.06em;
     border: 1px solid var(--line2);
     color: var(--muted);
     background: var(--bg3);
   }
-
-  .portfolio-link-btn {
+  .pf-link-btn {
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
     padding: 0.45rem 1rem;
     border-radius: var(--radius);
-    font-size: 0.75rem;
+    font-size: 0.74rem;
     font-weight: 500;
-    letter-spacing: 0.03em;
     background: var(--accent-lo);
     border: 1px solid rgba(232,104,42,0.3);
     color: var(--accent);
     transition: all 0.2s;
     white-space: nowrap;
     flex-shrink: 0;
+    letter-spacing: 0.02em;
   }
-  .portfolio-link-btn:hover {
-    background: var(--accent);
-    color: #000;
-    border-color: var(--accent);
-  }
-  .portfolio-link-btn svg { width: 12px; height: 12px; }
+  .pf-link-btn:hover { background: var(--accent); color: #000; border-color: var(--accent); }
+  .pf-link-btn svg { width: 12px; height: 12px; }
 
-  .github-embed {
-    width: 100%;
-    background: var(--bg3);
-    border-bottom: 1px solid var(--line);
-    position: relative;
+  /* Divider stats row inside card */
+  .pf-stats-row {
+    display: flex;
+    gap: 0;
+    border-top: 1px solid var(--line);
+    margin-top: 0.4rem;
+    padding-top: 1rem;
+  }
+  .pf-stat {
+    flex: 1;
+    padding-right: 1.2rem;
+    border-right: 1px solid var(--line);
+    margin-right: 1.2rem;
+  }
+  .pf-stat:last-child { border-right: none; margin-right: 0; padding-right: 0; }
+  .pf-stat-val {
+    font-family: var(--mono);
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 0.2rem;
+  }
+  .pf-stat-lbl { font-size: 0.65rem; color: var(--muted); letter-spacing: 0.07em; text-transform: uppercase; }
+
+  /* ══════════════════════════════════════════
+     CARROSSEL ESTILO INSTAGRAM / LINKEDIN
+     ══════════════════════════════════════════ */
+  .carousel-section {
+    grid-column: span 2;
+    background: var(--bg2);
+    border: 1px solid var(--line);
+    border-radius: 20px;
     overflow: hidden;
+    transition: border-color 0.3s, box-shadow 0.3s;
   }
-  .github-embed iframe {
-    display: block;
-    width: 100%;
-    height: 480px;
-    border: none;
+  .carousel-section:hover {
+    border-color: rgba(232,104,42,0.2);
   }
-  .embed-topbar {
+
+  /* Post header — como Instagram/LinkedIn */
+  .post-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0.5rem 1rem;
-    background: rgba(9,9,13,0.9);
+    padding: 1rem 1.4rem;
     border-bottom: 1px solid var(--line);
-    gap: 0.8rem;
+    background: var(--bg2);
   }
-  .embed-topbar-dots { display: flex; gap: 5px; }
-  .embed-topbar-dots span {
-    width: 10px; height: 10px; border-radius: 50%;
+  .post-author {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
   }
-  .embed-topbar-dots span:nth-child(1) { background: #ff5f56; }
-  .embed-topbar-dots span:nth-child(2) { background: #ffbd2e; }
-  .embed-topbar-dots span:nth-child(3) { background: #27c93f; }
-  .embed-topbar-url {
-    flex: 1;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid var(--line2);
-    border-radius: 4px;
-    padding: 0.25rem 0.7rem;
+  .post-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), #c4501c);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--serif);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #000;
+    flex-shrink: 0;
+  }
+  .post-author-info {}
+  .post-author-name {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--white);
+    line-height: 1.2;
+  }
+  .post-author-handle {
     font-family: var(--mono);
-    font-size: 0.62rem;
+    font-size: 0.6rem;
     color: var(--muted);
-    letter-spacing: 0.03em;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    letter-spacing: 0.06em;
   }
-  .looker-embed {
-    width: 100%;
-    background: var(--bg3);
-    border-bottom: 1px solid var(--line);
-    position: relative;
-    overflow: hidden;
-  }
-  .looker-embed iframe {
-    display: block;
-    width: 100%;
-    height: 480px;
-    border: none;
+  .post-platform-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.3rem 0.75rem;
+    border: 1px solid var(--line2);
+    border-radius: 99px;
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-transform: uppercase;
   }
 
-  /* =============================================
-     CARROSSEL INLINE (SUBSTITUINDO O PDF VIEWER)
-     ============================================= */
-  .humor-carousel-wrapper {
+  /* Carousel track */
+  .carousel-viewport {
+    position: relative;
+    background: #0a0a10;
+    user-select: none;
+  }
+
+  .carousel-track {
     display: flex;
     overflow-x: auto;
-    gap: 24px;
-    padding: 2.5rem;
-    background: var(--bg);
     scroll-snap-type: x mandatory;
     overscroll-behavior-x: contain;
-    border-bottom: 1px solid var(--line);
-    scrollbar-width: thin;
-    scrollbar-color: #333 var(--bg);
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    cursor: grab;
   }
-  .humor-carousel-wrapper::-webkit-scrollbar { height: 8px; }
-  .humor-carousel-wrapper::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
-  .humor-carousel-wrapper::-webkit-scrollbar-track { background: var(--bg); }
+  .carousel-track:active { cursor: grabbing; }
+  .carousel-track::-webkit-scrollbar { display: none; }
 
-  .slide {
-    --slide-size: 460px;
-    width: var(--slide-size);
-    height: var(--slide-size);
-    font-size: calc(var(--slide-size) / 72);
+  /* Each slide — square aspect ratio like Instagram */
+  .c-slide {
+    flex-shrink: 0;
+    scroll-snap-align: start;
     position: relative;
     overflow: hidden;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-    border-radius: 8px;
-    scroll-snap-align: center;
-    font-family: var(--c-fb);
-    background: #111; /* Fallback */
   }
 
+  /* Slide size: fill the card width, square aspect */
+  /* On desktop: card is ~50% of container. On mobile: full width */
+
+  /* Navigation arrows */
+  .carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(9,9,13,0.75);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--line2);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    opacity: 0;
+  }
+  .carousel-viewport:hover .carousel-nav { opacity: 1; }
+  .carousel-nav:hover { background: rgba(232,104,42,0.8); border-color: var(--accent); }
+  .carousel-nav svg { width: 14px; height: 14px; }
+  .carousel-nav.prev { left: 0.75rem; }
+  .carousel-nav.next { right: 0.75rem; }
+
+  /* Dots indicator */
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    padding: 0.75rem 0;
+    background: #0a0a10;
+  }
+  .c-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+  .c-dot.active {
+    background: var(--accent);
+    width: 16px;
+    border-radius: 3px;
+  }
+
+  /* Post footer — likes, comments */
+  .post-footer {
+    padding: 0.9rem 1.4rem;
+    border-top: 1px solid var(--line);
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    background: var(--bg2);
+  }
+  .post-actions {
+    display: flex;
+    gap: 0.8rem;
+    flex-shrink: 0;
+  }
+  .post-action-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--muted);
+    cursor: pointer;
+    transition: color 0.2s;
+    background: none;
+    border: none;
+    padding: 0;
+  }
+  .post-action-btn svg { width: 16px; height: 16px; }
+  .post-action-btn:hover { color: var(--accent); }
+  .post-caption {
+    flex: 1;
+    font-size: 0.78rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .post-caption strong { color: var(--white); font-weight: 500; }
+
+  /* Slide tags overlay bottom-right */
+  .slide-slide-num {
+    position: absolute;
+    bottom: 0.8rem;
+    right: 1rem;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.3);
+    z-index: 50;
+  }
+
+  /* SLIDES CSS — reusing existing slide styles */
   .fz { position: absolute; border-radius: 50%; pointer-events: none; }
   .pill { display: inline-flex; align-items: center; gap: 0.67em; border-radius: 100px; padding: 0.8em 1.6em; }
-  .mono { font-family: var(--mono); font-size: 0.75em; letter-spacing: 0.16em; text-transform: uppercase; }
-  .pn { font-family: var(--mono); font-size: 0.75em; letter-spacing: 0.18em; position: absolute; bottom: 2.4em; right: 3.2em; z-index: 50; opacity: 0.35; color: #fff; }
+  .mono-slide { font-family: var(--mono); font-size: 0.75em; letter-spacing: 0.16em; text-transform: uppercase; }
   .lbl { font-family: var(--mono); font-size: 0.78em; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.65; }
   .ring { position: absolute; border-radius: 50%; border: 2px solid rgba(255,255,255,0.09); }
 
-  /* ══ S1 — CAPA ══ */
   .s1{background:linear-gradient(148deg,#5A10D8 0%,#9A2AF8 38%,#E040C0 70%,#FF55A0 100%)}
   .s1 .fz1{width:440px;height:440px;top:-140px;left:-140px;background:radial-gradient(circle at 44% 42%,rgba(200,120,255,.85) 0%,rgba(175,80,255,.5) 20%,rgba(150,50,240,.14) 44%,transparent 68%);filter:blur(6px)}
   .s1 .fz2{width:360px;height:360px;bottom:-100px;right:-80px;background:radial-gradient(circle at 42% 44%,rgba(255,170,220,.8) 0%,rgba(255,110,180,.45) 22%,transparent 62%);filter:blur(6px)}
@@ -512,7 +576,6 @@
   .s1-dot{width:.93em;height:.93em;border-radius:50%}
   .s1-hint{background:rgba(255,255,255,.15);backdrop-filter:blur(8px);border:1.5px solid rgba(255,255,255,.28);color:rgba(255,255,255,.5)}
 
-  /* ══ S2 — CENÁRIO ══ */
   .s2{background:linear-gradient(145deg,#FF4E99 0%,#FF8055 45%,#FFBA60 100%)}
   .s2 .fz1{width:380px;height:380px;top:-110px;right:-70px;background:radial-gradient(circle at 44% 42%,rgba(200,80,255,.7) 0%,rgba(175,55,240,.38) 24%,transparent 62%);filter:blur(8px)}
   .s2 .fz2{width:260px;height:260px;bottom:60px;left:-70px;background:radial-gradient(circle,rgba(200,80,255,.6) 0%,transparent 60%);filter:blur(8px)}
@@ -528,7 +591,6 @@
   .s2-warn-txt{font-family:var(--c-ff);font-size:1.6em;font-weight:900;color:var(--c-black);line-height:1.3}
   .s2-warn-txt em{color:var(--c-pink);font-style:normal}
 
-  /* ══ S3 — ORACLE ══ */
   .s3{background:linear-gradient(135deg,#8A35FF 0%,#6A10E8 100%)}
   .s3-rings{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1}
   .s3 .fz1{width:340px;height:340px;top:-80px;right:-60px;background:radial-gradient(circle at 43% 42%,rgba(255,215,50,.75) 0%,rgba(255,155,40,.36) 26%,transparent 62%);filter:blur(7px);z-index:2}
@@ -544,7 +606,6 @@
   .s3-note strong{color:var(--c-yellow)}
   .s3-src{font-family:var(--mono);font-size:.78em;color:rgba(255,255,255,.35);margin-top:.67em}
 
-  /* ══ S4 — EMOÇÕES ══ */
   .s4{background:linear-gradient(145deg,#E2CCFF 0%,#F5EEFF 55%,#FFF0F8 100%)}
   .s4 .fz1{width:440px;height:440px;top:-150px;right:-120px;background:radial-gradient(circle,rgba(130,50,240,.22) 0%,transparent 62%);filter:blur(10px)}
   .s4 .fz2{width:300px;height:300px;bottom:-100px;left:-80px;background:radial-gradient(circle,rgba(255,80,160,.16) 0%,transparent 62%);filter:blur(10px)}
@@ -565,7 +626,6 @@
   .s4-box p{font-family:var(--c-ff);font-size:1.8em;font-weight:900;color:#fff;line-height:1.42}
   .s4-box strong{color:var(--c-yellow)}
 
-  /* ══ S5 — EVIDÊNCIA 2×2 grid ══ */
   .s5{background:linear-gradient(150deg,#4510CC 0%,#7B2FFF 100%)}
   .s5 .fz1{width:380px;height:380px;bottom:-80px;right:-60px;background:radial-gradient(circle,rgba(255,80,160,.45) 0%,transparent 60%);filter:blur(8px)}
   .s5 .fz2{width:260px;height:260px;top:-60px;left:-60px;background:radial-gradient(circle,rgba(255,228,77,.32) 0%,transparent 62%);filter:blur(6px)}
@@ -582,7 +642,6 @@
   .s5-title{font-size:1.3em;font-weight:800;color:#fff;line-height:1.2}
   .s5-desc{font-size:1.1em;font-weight:600;color:rgba(255,255,255,.6);line-height:1.45;margin-top:.3em}
 
-  /* ══ S6 — ROI ══ */
   .s6{background:linear-gradient(145deg,#FF4E99 0%,#FF8060 50%,#FFBA50 100%)}
   .s6 .fz1{width:380px;height:380px;top:-110px;right:-80px;background:radial-gradient(circle at 44% 42%,rgba(180,60,255,.65) 0%,rgba(155,40,240,.3) 26%,transparent 62%);filter:blur(8px)}
   .s6 .fz2{width:260px;height:260px;bottom:60px;left:-70px;background:radial-gradient(circle,rgba(180,60,255,.55) 0%,transparent 58%);filter:blur(8px)}
@@ -596,7 +655,6 @@
   .s6-txts p{font-size:1.15em;font-weight:600;color:rgba(255,255,255,.75);line-height:1.45}
   .s6-foot{background:rgba(255,255,255,.18);border-radius:100px;padding:.8em 1.6em;align-self:flex-start;font-family:var(--mono);font-size:.8em;letter-spacing:.08em;color:rgba(255,255,255,.6)}
 
-  /* ══ S7 — 6 RAZÕES ══ */
   .s7{background:linear-gradient(145deg,#8A30F8 0%,#C060FF 100%)}
   .s7 .fz1{width:280px;height:280px;top:-55px;right:80px;background:radial-gradient(circle,rgba(255,230,60,.58) 0%,transparent 62%);filter:blur(6px)}
   .s7-header{padding:3.47em 4.3em 2.13em;position:relative;z-index:10;flex-shrink:0}
@@ -607,7 +665,6 @@
   .s7-name{font-size:1.35em;font-weight:900;color:#fff;line-height:1.2;font-family:var(--c-ff)}
   .s7-desc{font-size:1.12em;font-weight:600;color:rgba(255,255,255,.7);line-height:1.45}
 
-  /* ══ S-ESTUDO ══ */
   .sestudo{background:var(--c-lilac)}
   .sestudo .fz1{width:420px;height:420px;top:-130px;right:-90px;background:radial-gradient(circle at 44% 42%,rgba(123,47,255,.32) 0%,rgba(100,30,220,.1) 44%,transparent 66%);filter:blur(10px)}
   .sestudo .fz2{width:280px;height:280px;bottom:-80px;left:-60px;background:radial-gradient(circle,rgba(255,78,153,.18) 0%,transparent 62%);filter:blur(10px)}
@@ -625,7 +682,6 @@
   .sestudo-note-txt{font-size:1.25em;font-weight:700;color:#fff;line-height:1.55}
   .sestudo-note-txt strong{color:var(--c-yellow)}
 
-  /* ══ S8 — PERFIL A ══ */
   .s8{background:linear-gradient(135deg,#5010E0 0%,#9040F8 100%)}
   .s8-rings{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1}
   .s8 .fz1{width:360px;height:360px;top:-80px;right:-60px;background:radial-gradient(circle at 43% 42%,rgba(255,215,50,.72) 0%,rgba(255,155,40,.34) 26%,transparent 60%);filter:blur(7px);z-index:2}
@@ -644,7 +700,6 @@
   .s8-hero-big{font-family:var(--c-ff);font-size:3.8em;font-weight:900;letter-spacing:-.04em;line-height:1;color:var(--c-black)}
   .s8-hero-sub{font-size:1.18em;font-weight:800;color:rgba(26,24,40,.65);margin-top:.33em;line-height:1.4}
 
-  /* ══ S9 — PERFIL B ══ */
   .s9{background:linear-gradient(145deg,#18C870 0%,#00A8A0 100%)}
   .s9 .fz1{width:340px;height:340px;top:-75px;right:-55px;background:radial-gradient(circle,rgba(180,60,255,.58) 0%,rgba(155,40,240,.26) 28%,transparent 60%);filter:blur(8px)}
   .s9-in{position:relative;z-index:10;display:flex;flex-direction:column;height:100%;padding:3.73em 4.3em;justify-content:space-between}
@@ -661,7 +716,6 @@
   .s9-pnum{font-family:var(--c-ff);font-size:3em;font-weight:900;letter-spacing:-.04em;line-height:1;color:#fff;min-width:3.2em;flex-shrink:0}
   .s9-ptxt{font-size:1.22em;font-weight:700;color:rgba(255,255,255,.9);line-height:1.5}
 
-  /* ══ S11 — PERFIL C (ITAÚ) ══ */
   .s11{background:linear-gradient(135deg,#FF5000 0%,#FF8C00 100%)}
   .s11-rings{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1}
   .s11 .fz1{width:360px;height:360px;top:-80px;right:-60px;background:radial-gradient(circle at 43% 42%,rgba(255,215,50,.72) 0%,rgba(255,155,40,.34) 26%,transparent 60%);filter:blur(7px);z-index:2}
@@ -678,7 +732,6 @@
   .s11-card-ico{width:3.8em;height:3.8em;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
   .s11-card-txt{font-size:1.15em;font-weight:700;color:#fff;line-height:1.4;}
 
-  /* ══ S12 — CONCLUSÃO ══ */
   .s12{background:linear-gradient(150deg,#3508C8 0%,#7B2FFF 100%)}
   .s12 .fz1{width:380px;height:380px;top:-90px;right:-70px;background:radial-gradient(circle at 43% 42%,rgba(255,80,160,.5) 0%,rgba(255,55,140,.2) 34%,transparent 62%);filter:blur(8px)}
   .s12 .fz2{width:240px;height:240px;bottom:-50px;left:-50px;background:radial-gradient(circle,rgba(255,228,77,.4) 0%,transparent 62%);filter:blur(6px)}
@@ -698,45 +751,10 @@
   /* ══ FERRAMENTAS ══ */
   #ferramentas { background: var(--bg2); position: relative; overflow: hidden; }
   #ferramentas::before { content: ''; position: absolute; bottom: -20%; left: -10%; width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(232,104,42,0.05) 0%, transparent 65%); pointer-events: none; }
-  
-  .tools-grid { 
-    display: grid; 
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); 
-    gap: 1.2rem; 
-  }
-  
-  .tool-card { 
-    background: var(--bg2); 
-    border: 1px solid var(--line); 
-    border-radius: 12px; 
-    padding: 1.5rem; 
-    text-align: center; 
-    transition: all 0.25s cubic-bezier(0.22,1,0.36,1); 
-    cursor: default; 
-    aspect-ratio: 3 / 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .tool-card:hover { 
-    border-color: var(--accent); 
-    background: var(--bg3); 
-    transform: translateY(-4px); 
-    box-shadow: 0 16px 40px rgba(0,0,0,0.4), 0 0 0 1px var(--accent-gl); 
-  }
-  
-  .tool-icon { 
-    width: 48px; 
-    height: 48px; 
-    border-radius: 10px; 
-    margin: 0 0 1rem 0; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-  }
-  
+  .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1.2rem; }
+  .tool-card { background: var(--bg2); border: 1px solid var(--line); border-radius: 12px; padding: 1.5rem; text-align: center; transition: all 0.25s cubic-bezier(0.22,1,0.36,1); cursor: default; aspect-ratio: 3 / 2; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .tool-card:hover { border-color: var(--accent); background: var(--bg3); transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.4), 0 0 0 1px var(--accent-gl); }
+  .tool-icon { width: 48px; height: 48px; border-radius: 10px; margin: 0 0 1rem 0; display: flex; align-items: center; justify-content: center; }
   .tool-name { font-size: 0.82rem; font-weight: 500; color: var(--white); margin-bottom: 0.2rem; }
   .tool-type { font-size: 0.65rem; font-family: var(--mono); color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
 
@@ -768,26 +786,84 @@
   ::-webkit-scrollbar-thumb { background: var(--bg3); border-radius: 3px; }
   ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
 
-  @media (max-width: 900px) {
-    .portfolio-grid { grid-template-columns: 1fr; }
-    .portfolio-card.span-2 { grid-column: span 1; }
+  /* ══════════════════════════════════════
+     RESPONSIVIDADE MOBILE
+     ══════════════════════════════════════ */
+  @media (max-width: 1024px) {
+    .portfolio-grid { grid-template-columns: 1fr 1fr; }
+    .pf-card.full-width { grid-column: span 2; }
+    .carousel-section { grid-column: span 2; }
   }
+
   @media (max-width: 768px) {
+    /* Nav */
     .nav-links { display: none; }
-    .nav-links.open { display: flex; flex-direction: column; position: absolute; top: var(--nav-h); left: 0; right: 0; background: rgba(9,9,13,0.97); backdrop-filter: blur(20px); padding: 1.5rem 2rem; border-bottom: 1px solid var(--line); gap: 1.5rem; }
+    .nav-links.open { display: flex; flex-direction: column; position: absolute; top: var(--nav-h); left: 0; right: 0; background: rgba(9,9,13,0.97); backdrop-filter: blur(20px); padding: 1.5rem 2rem; border-bottom: 1px solid var(--line); gap: 1.5rem; z-index: 99; }
     .nav-hamburger { display: flex; }
-    .sobre-grid { grid-template-columns: 1fr; gap: 3rem; }
-    .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
-    .timeline::before { display: none; }
-    .timeline-item::before { display: none; }
-    .tl-meta { padding-left: 0; }
-    .contato-inner { grid-template-columns: 1fr; gap: 3rem; }
-    .hero-stats { flex-direction: column; }
-    .hero-stat { border-right: none; border-bottom: 1px solid var(--line); }
+
+    /* Sections */
+    section { padding: 4rem 0; }
+    .container { padding: 0 1.2rem; }
+    .section-header { flex-direction: column; align-items: flex-start; margin-bottom: 2.5rem; }
+    .section-title { font-size: 1.8rem; }
+
+    /* Hero */
+    .hero-name { font-size: 3rem; }
+    .hero-title { font-size: 0.95rem; }
+    .hero-desc { font-size: 0.92rem; }
+    .hero-actions { gap: 0.75rem; }
+    .hero-actions .btn { padding: 0.7rem 1.2rem; font-size: 0.8rem; }
+    .hero-stats { flex-direction: column; margin-top: 3rem; }
+    .hero-stat { border-right: none; border-bottom: 1px solid var(--line); padding: 1rem 0; }
     .hero-stat:last-child { border-bottom: none; }
-    .section-header { flex-direction: column; align-items: flex-start; }
-    section { padding: 5rem 0; }
-    .github-preview iframe { width: 300%; height: 840px; transform: scale(0.333); }
+
+    /* Sobre */
+    .sobre-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+
+    /* Timeline */
+    .timeline::before { display: none; }
+    .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; padding-bottom: 2.5rem; }
+    .timeline-item::before { display: none; }
+    .tl-meta { padding-left: 0; display: flex; flex-direction: row; align-items: center; gap: 0.8rem; flex-wrap: wrap; }
+    .tl-company-icon { margin-bottom: 0; }
+    .tl-role { font-size: 1.1rem; }
+
+    /* Clientes */
+    .clients-grid { grid-template-columns: repeat(3, 1fr); }
+
+    /* Portfolio */
+    .portfolio-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+    .pf-card.full-width { grid-column: span 1; }
+    .carousel-section { grid-column: span 1; }
+    .pf-info { padding: 1.2rem 1.2rem 1.4rem; }
+    .pf-title { font-size: 1rem; }
+    .pf-stats-row { flex-wrap: wrap; gap: 0.75rem; }
+    .pf-stat { border-right: none; margin-right: 0; flex: 0 0 calc(50% - 0.375rem); }
+
+    /* Post header mobile */
+    .post-header { padding: 0.75rem 1rem; }
+    .post-footer { padding: 0.75rem 1rem; flex-wrap: wrap; gap: 0.6rem; }
+    .post-caption { width: 100%; }
+
+    /* Contato */
+    .contato-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .contato-big { font-size: 2rem; }
+
+    /* Footer */
+    .footer-inner { flex-direction: column; align-items: center; text-align: center; gap: 0.75rem; }
+
+    /* Ferramentas */
+    .tools-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 480px) {
+    .container { padding: 0 1rem; }
+    .hero-name { font-size: 2.6rem; }
+    .clients-grid { grid-template-columns: repeat(2, 1fr); }
+    .tools-grid { grid-template-columns: repeat(2, 1fr); }
+    .post-actions { gap: 0.6rem; }
+    .pf-info-row { flex-direction: column; gap: 0.75rem; }
+    .pf-link-btn { align-self: flex-start; }
   }
 </style>
 </head>
@@ -805,9 +881,9 @@
       <li><a href="#ferramentas">Ferramentas</a></li>
       <li><a href="#contato" class="nav-cta">Contato</a></li>
     </ul>
-    <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()">
+    <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
       <span></span><span></span><span></span>
-    </div>
+    </button>
   </div>
 </nav>
 
@@ -930,18 +1006,10 @@
       </div>
     </div>
     <div class="timeline">
-
       <div class="timeline-item reveal">
         <div class="tl-meta">
           <div class="tl-company-icon" style="background:linear-gradient(135deg,#1a0e06 0%,#2a1408 100%);">
-            <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <!-- Charisma BI: abstract upward bar chart with glow -->
-              <rect x="4" y="18" width="5" height="10" rx="1.5" fill="#e8682a" opacity="0.5"/>
-              <rect x="12" y="12" width="5" height="16" rx="1.5" fill="#e8682a" opacity="0.75"/>
-              <rect x="20" y="6" width="5" height="22" rx="1.5" fill="#e8682a"/>
-              <path d="M5 17 L13 11 L21 5" stroke="#e8682a" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
-              <circle cx="21" cy="5" r="2" fill="#f5a070"/>
-            </svg>
+            <svg width="28" height="28" viewBox="0 0 32 32" fill="none"><rect x="4" y="18" width="5" height="10" rx="1.5" fill="#e8682a" opacity="0.5"/><rect x="12" y="12" width="5" height="16" rx="1.5" fill="#e8682a" opacity="0.75"/><rect x="20" y="6" width="5" height="22" rx="1.5" fill="#e8682a"/><path d="M5 17 L13 11 L21 5" stroke="#e8682a" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/><circle cx="21" cy="5" r="2" fill="#f5a070"/></svg>
           </div>
           <div class="tl-period">fev 2025 — presente<br>São Paulo, SP</div>
           <div class="tl-company">Charisma Business Intelligence</div>
@@ -954,27 +1022,10 @@
           </div>
         </div>
       </div>
-
       <div class="timeline-item reveal reveal-d1">
         <div class="tl-meta">
           <div class="tl-company-icon" style="background:linear-gradient(135deg,#1a0f04 0%,#261408 100%);">
-            <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <!-- Bauducco: stylized wheat stalk / bread loaf -->
-              <ellipse cx="16" cy="20" rx="9" ry="6" fill="#c47a1e" opacity="0.9"/>
-              <ellipse cx="16" cy="19" rx="9" ry="5.5" fill="#d98c2a"/>
-              <!-- seeds / texture dots -->
-              <circle cx="13" cy="19" r="1" fill="#f0b84a" opacity="0.7"/>
-              <circle cx="16.5" cy="21" r="1" fill="#f0b84a" opacity="0.7"/>
-              <circle cx="19.5" cy="18.5" r="1" fill="#f0b84a" opacity="0.7"/>
-              <!-- stem -->
-              <line x1="16" y1="13" x2="16" y2="7" stroke="#a06010" stroke-width="1.5" stroke-linecap="round"/>
-              <!-- wheat grains left -->
-              <ellipse cx="13" cy="10" rx="2.5" ry="1.3" fill="#c47a1e" opacity="0.8" transform="rotate(-30 13 10)"/>
-              <!-- wheat grains right -->
-              <ellipse cx="19" cy="10" rx="2.5" ry="1.3" fill="#c47a1e" opacity="0.8" transform="rotate(30 19 10)"/>
-              <ellipse cx="14" cy="7.5" rx="2" ry="1.1" fill="#d98c2a" opacity="0.7" transform="rotate(-20 14 7.5)"/>
-              <ellipse cx="18" cy="7.5" rx="2" ry="1.1" fill="#d98c2a" opacity="0.7" transform="rotate(20 18 7.5)"/>
-            </svg>
+            <svg width="28" height="28" viewBox="0 0 32 32" fill="none"><ellipse cx="16" cy="20" rx="9" ry="6" fill="#c47a1e" opacity="0.9"/><ellipse cx="16" cy="19" rx="9" ry="5.5" fill="#d98c2a"/><circle cx="13" cy="19" r="1" fill="#f0b84a" opacity="0.7"/><circle cx="16.5" cy="21" r="1" fill="#f0b84a" opacity="0.7"/><circle cx="19.5" cy="18.5" r="1" fill="#f0b84a" opacity="0.7"/><line x1="16" y1="13" x2="16" y2="7" stroke="#a06010" stroke-width="1.5" stroke-linecap="round"/><ellipse cx="13" cy="10" rx="2.5" ry="1.3" fill="#c47a1e" opacity="0.8" transform="rotate(-30 13 10)"/><ellipse cx="19" cy="10" rx="2.5" ry="1.3" fill="#c47a1e" opacity="0.8" transform="rotate(30 19 10)"/></svg>
           </div>
           <div class="tl-period">fev 2024 — set 2024<br>Guarulhos, SP</div>
           <div class="tl-company">Bauducco</div>
@@ -987,25 +1038,10 @@
           </div>
         </div>
       </div>
-
       <div class="timeline-item reveal reveal-d2">
         <div class="tl-meta">
           <div class="tl-company-icon" style="background:linear-gradient(135deg,#050a14 0%,#0a1428 100%);">
-            <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <!-- FSB: communication network / PR nodes -->
-              <circle cx="16" cy="16" r="3.5" fill="#3b82f6" opacity="0.9"/>
-              <circle cx="7" cy="10" r="2.5" fill="#3b82f6" opacity="0.5"/>
-              <circle cx="25" cy="10" r="2.5" fill="#3b82f6" opacity="0.5"/>
-              <circle cx="7" cy="22" r="2.5" fill="#3b82f6" opacity="0.5"/>
-              <circle cx="25" cy="22" r="2.5" fill="#3b82f6" opacity="0.5"/>
-              <line x1="16" y1="12.5" x2="9" y2="11.5" stroke="#3b82f6" stroke-width="1" opacity="0.4"/>
-              <line x1="16" y1="12.5" x2="23" y2="11.5" stroke="#3b82f6" stroke-width="1" opacity="0.4"/>
-              <line x1="16" y1="19.5" x2="9" y2="20.5" stroke="#3b82f6" stroke-width="1" opacity="0.4"/>
-              <line x1="16" y1="19.5" x2="23" y2="20.5" stroke="#3b82f6" stroke-width="1" opacity="0.4"/>
-              <!-- signal rings -->
-              <circle cx="16" cy="16" r="7" stroke="#3b82f6" stroke-width="0.75" opacity="0.2"/>
-              <circle cx="16" cy="16" r="11" stroke="#3b82f6" stroke-width="0.5" opacity="0.1"/>
-            </svg>
+            <svg width="28" height="28" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3.5" fill="#3b82f6" opacity="0.9"/><circle cx="7" cy="10" r="2.5" fill="#3b82f6" opacity="0.5"/><circle cx="25" cy="10" r="2.5" fill="#3b82f6" opacity="0.5"/><circle cx="7" cy="22" r="2.5" fill="#3b82f6" opacity="0.5"/><circle cx="25" cy="22" r="2.5" fill="#3b82f6" opacity="0.5"/><line x1="16" y1="12.5" x2="9" y2="11.5" stroke="#3b82f6" stroke-width="1" opacity="0.4"/><line x1="16" y1="12.5" x2="23" y2="11.5" stroke="#3b82f6" stroke-width="1" opacity="0.4"/><line x1="16" y1="19.5" x2="9" y2="20.5" stroke="#3b82f6" stroke-width="1" opacity="0.4"/><line x1="16" y1="19.5" x2="23" y2="20.5" stroke="#3b82f6" stroke-width="1" opacity="0.4"/><circle cx="16" cy="16" r="7" stroke="#3b82f6" stroke-width="0.75" opacity="0.2"/><circle cx="16" cy="16" r="11" stroke="#3b82f6" stroke-width="0.5" opacity="0.1"/></svg>
           </div>
           <div class="tl-period">ago 2022 — fev 2024<br>São Paulo, SP</div>
           <div class="tl-company">FSB Holding</div>
@@ -1018,22 +1054,10 @@
           </div>
         </div>
       </div>
-
       <div class="timeline-item reveal reveal-d3">
         <div class="tl-meta">
           <div class="tl-company-icon" style="background:linear-gradient(135deg,#050f05 0%,#091a09 100%);">
-            <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <!-- Ministério Transportes: stylized road with center dashes -->
-              <!-- Road shape -->
-              <path d="M4 26 L10 6 L22 6 L28 26 Z" fill="#2a6b2a" opacity="0.3"/>
-              <path d="M5 26 L11 7 L21 7 L27 26 Z" stroke="#4a9c4a" stroke-width="1.2" fill="none"/>
-              <!-- center lane dashes -->
-              <line x1="16" y1="23" x2="16" y2="19" stroke="#6ec86e" stroke-width="1.5" stroke-linecap="round" opacity="0.9"/>
-              <line x1="16" y1="16" x2="16" y2="12" stroke="#6ec86e" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
-              <line x1="16" y1="9.5" x2="16" y2="7.5" stroke="#6ec86e" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
-              <!-- ground line -->
-              <line x1="4" y1="27" x2="28" y2="27" stroke="#4a9c4a" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
-            </svg>
+            <svg width="28" height="28" viewBox="0 0 32 32" fill="none"><path d="M4 26 L10 6 L22 6 L28 26 Z" fill="#2a6b2a" opacity="0.3"/><path d="M5 26 L11 7 L21 7 L27 26 Z" stroke="#4a9c4a" stroke-width="1.2" fill="none"/><line x1="16" y1="23" x2="16" y2="19" stroke="#6ec86e" stroke-width="1.5" stroke-linecap="round" opacity="0.9"/><line x1="16" y1="16" x2="16" y2="12" stroke="#6ec86e" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/><line x1="4" y1="27" x2="28" y2="27" stroke="#4a9c4a" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/></svg>
           </div>
           <div class="tl-period">jun 2019 — ago 2022<br>Brasília, DF</div>
           <div class="tl-company">Ministério dos Transportes</div>
@@ -1046,7 +1070,6 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -1062,265 +1085,91 @@
     </div>
     <p class="clients-intro reveal">Ao longo da carreira, desenvolvi inteligência de dados e estratégias de comunicação para organizações de diferentes setores — do governo federal a marcas globais de consumo.</p>
     <div class="clients-grid">
-
-
-      <!-- ANBIMA — finanças / mercado de capitais -->
       <div class="client-card reveal">
         <div class="client-icon-wrap" style="background:linear-gradient(135deg,#0a1628,#0d2040);">
-          <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
-            <rect x="4" y="20" width="4" height="8" rx="1" fill="#4a90d9" opacity="0.5"/>
-            <rect x="10" y="14" width="4" height="14" rx="1" fill="#4a90d9" opacity="0.7"/>
-            <rect x="16" y="8" width="4" height="20" rx="1" fill="#4a90d9"/>
-            <rect x="22" y="11" width="4" height="17" rx="1" fill="#4a90d9" opacity="0.8"/>
-            <path d="M6 19 L12 13 L18 7 L24 10" stroke="#7ab8f5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
-            <circle cx="24" cy="10" r="2" fill="#7ab8f5"/>
-          </svg>
+          <svg width="30" height="30" viewBox="0 0 32 32" fill="none"><rect x="4" y="20" width="4" height="8" rx="1" fill="#4a90d9" opacity="0.5"/><rect x="10" y="14" width="4" height="14" rx="1" fill="#4a90d9" opacity="0.7"/><rect x="16" y="8" width="4" height="20" rx="1" fill="#4a90d9"/><rect x="22" y="11" width="4" height="17" rx="1" fill="#4a90d9" opacity="0.8"/><path d="M6 19 L12 13 L18 7 L24 10" stroke="#7ab8f5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/><circle cx="24" cy="10" r="2" fill="#7ab8f5"/></svg>
         </div>
         <span class="client-label">Anbima</span>
       </div>
-
-      <!-- CAIXA ECONÔMICA — banco público / habitação -->
       <div class="client-card reveal reveal-d1">
         <div class="client-icon-wrap" style="background:linear-gradient(135deg,#071a07,#0c280c);">
-          <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
-            <!-- house shape -->
-            <path d="M16 4 L28 14 L28 28 L4 28 L4 14 Z" fill="#1a7a1a" opacity="0.2"/>
-            <path d="M16 5 L27 14.5 L27 27 L5 27 L5 14.5 Z" stroke="#2ea82e" stroke-width="1.5" fill="none"/>
-            <path d="M9 27 L9 19 Q9 17 11 17 L21 17 Q23 17 23 19 L23 27" stroke="#2ea82e" stroke-width="1.2" fill="#0c280c"/>
-            <!-- door -->
-            <rect x="14" y="20" width="4" height="7" rx="2" fill="#2ea82e" opacity="0.8"/>
-            <!-- roof ridge -->
-            <path d="M16 5 L16 4" stroke="#5ecf5e" stroke-width="2" stroke-linecap="round"/>
-            <path d="M3 14.5 L16 5 L29 14.5" stroke="#2ea82e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-          </svg>
+          <svg width="30" height="30" viewBox="0 0 32 32" fill="none"><path d="M16 5 L28 14 L28 28 L4 28 L4 14 Z" fill="#1a7a1a" opacity="0.2"/><path d="M16 5 L27 14.5 L27 27 L5 27 L5 14.5 Z" stroke="#2ea82e" stroke-width="1.5" fill="none"/><path d="M9 27 L9 19 Q9 17 11 17 L21 17 Q23 17 23 19 L23 27" stroke="#2ea82e" stroke-width="1.2" fill="#0c280c"/><rect x="14" y="20" width="4" height="7" rx="2" fill="#2ea82e" opacity="0.8"/><path d="M3 14.5 L16 5 L29 14.5" stroke="#2ea82e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
         </div>
         <span class="client-label">Caixa</span>
       </div>
-
-      <!-- CNI — indústria / engrenagem -->
       <div class="client-card reveal reveal-d2">
         <div class="client-icon-wrap" style="background:linear-gradient(135deg,#140a02,#201208);">
-          <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
-            <circle cx="16" cy="16" r="5" stroke="#e07820" stroke-width="2"/>
-            <circle cx="16" cy="16" r="2" fill="#e07820" opacity="0.7"/>
-            <!-- gear teeth -->
-            <rect x="14.5" y="3" width="3" height="5" rx="1" fill="#e07820" opacity="0.8"/>
-            <rect x="14.5" y="24" width="3" height="5" rx="1" fill="#e07820" opacity="0.8"/>
-            <rect x="3" y="14.5" width="5" height="3" rx="1" fill="#e07820" opacity="0.8"/>
-            <rect x="24" y="14.5" width="5" height="3" rx="1" fill="#e07820" opacity="0.8"/>
-            <rect x="6.5" y="6.5" width="3" height="5" rx="1" fill="#e07820" opacity="0.6" transform="rotate(45 8 9)"/>
-            <rect x="22.5" y="6.5" width="3" height="5" rx="1" fill="#e07820" opacity="0.6" transform="rotate(-45 24 9)"/>
-            <rect x="6.5" y="20.5" width="3" height="5" rx="1" fill="#e07820" opacity="0.6" transform="rotate(-45 8 23)"/>
-            <rect x="22.5" y="20.5" width="3" height="5" rx="1" fill="#e07820" opacity="0.6" transform="rotate(45 24 23)"/>
-          </svg>
+          <svg width="30" height="30" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="5" stroke="#e07820" stroke-width="2"/><circle cx="16" cy="16" r="2" fill="#e07820" opacity="0.7"/><rect x="14.5" y="3" width="3" height="5" rx="1" fill="#e07820" opacity="0.8"/><rect x="14.5" y="24" width="3" height="5" rx="1" fill="#e07820" opacity="0.8"/><rect x="3" y="14.5" width="5" height="3" rx="1" fill="#e07820" opacity="0.8"/><rect x="24" y="14.5" width="5" height="3" rx="1" fill="#e07820" opacity="0.8"/></svg>
         </div>
         <span class="client-label">CNI</span>
       </div>
-
-      <!-- MINISTÉRIO DA SAÚDE — cruz + coração -->
       <div class="client-card reveal reveal-d3">
         <div class="client-icon-wrap" style="background:linear-gradient(135deg,#071412,#0a2020);">
-          <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
-            <!-- cross -->
-            <rect x="13" y="5" width="6" height="22" rx="2" fill="#00b09b" opacity="0.3"/>
-            <rect x="5" y="13" width="22" height="6" rx="2" fill="#00b09b" opacity="0.3"/>
-            <rect x="13.5" y="5.5" width="5" height="21" rx="1.5" stroke="#00c9b0" stroke-width="0.8" fill="none"/>
-            <rect x="5.5" y="13.5" width="21" height="5" rx="1.5" stroke="#00c9b0" stroke-width="0.8" fill="none"/>
-            <!-- heart small -->
-            <path d="M16 22 C16 22 12 19 12 16.5 C12 14.8 13.3 13.5 16 15.5 C18.7 13.5 20 14.8 20 16.5 C20 19 16 22 16 22Z" fill="#00e0c4" opacity="0.85"/>
-          </svg>
+          <svg width="30" height="30" viewBox="0 0 32 32" fill="none"><rect x="13" y="5" width="6" height="22" rx="2" fill="#00b09b" opacity="0.3"/><rect x="5" y="13" width="22" height="6" rx="2" fill="#00b09b" opacity="0.3"/><path d="M16 22 C16 22 12 19 12 16.5 C12 14.8 13.3 13.5 16 15.5 C18.7 13.5 20 14.8 20 16.5 C20 19 16 22 16 22Z" fill="#00e0c4" opacity="0.85"/></svg>
         </div>
         <span class="client-label">Min. Saúde</span>
       </div>
-
-      <!-- MINISTÉRIO DA CULTURA — star/arts -->
       <div class="client-card reveal">
         <div class="client-icon-wrap" style="background:linear-gradient(135deg,#130814,#1e0e20);">
-          <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
-            <!-- palette-like shape -->
-            <circle cx="16" cy="16" r="9" stroke="#c060d8" stroke-width="1.2" fill="none" opacity="0.4"/>
-            <!-- color dots on palette -->
-            <circle cx="12" cy="11" r="2.5" fill="#e080f0" opacity="0.9"/>
-            <circle cx="19" cy="10" r="2" fill="#f0a0e0" opacity="0.7"/>
-            <circle cx="22" cy="17" r="2" fill="#c060d8" opacity="0.8"/>
-            <circle cx="19" cy="22" r="2" fill="#d070e8" opacity="0.7"/>
-            <circle cx="11" cy="20" r="2.5" fill="#b050c8" opacity="0.85"/>
-            <!-- brush handle -->
-            <line x1="8" y1="24" x2="12" y2="20" stroke="#e080f0" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
+          <svg width="30" height="30" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="9" stroke="#c060d8" stroke-width="1.2" fill="none" opacity="0.4"/><circle cx="12" cy="11" r="2.5" fill="#e080f0" opacity="0.9"/><circle cx="19" cy="10" r="2" fill="#f0a0e0" opacity="0.7"/><circle cx="22" cy="17" r="2" fill="#c060d8" opacity="0.8"/><circle cx="11" cy="20" r="2.5" fill="#b050c8" opacity="0.85"/><line x1="8" y1="24" x2="12" y2="20" stroke="#e080f0" stroke-width="1.5" stroke-linecap="round"/></svg>
         </div>
         <span class="client-label">Min. Cultura</span>
       </div>
-
-      <!-- MINISTÉRIO DO ESPORTE — podium / trophy -->
       <div class="client-card reveal reveal-d1">
         <div class="client-icon-wrap" style="background:linear-gradient(135deg,#0d1205,#141c07);">
-          <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
-            <!-- trophy cup -->
-            <path d="M10 6 L22 6 L22 16 Q22 22 16 22 Q10 22 10 16 Z" fill="#8ac820" opacity="0.25"/>
-            <path d="M10 6 L22 6 L22 16 Q22 22 16 22 Q10 22 10 16 Z" stroke="#9ed030" stroke-width="1.5" fill="none"/>
-            <!-- handles -->
-            <path d="M10 9 Q6 9 6 13 Q6 17 10 16" stroke="#9ed030" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-            <path d="M22 9 Q26 9 26 13 Q26 17 22 16" stroke="#9ed030" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-            <!-- stem -->
-            <line x1="16" y1="22" x2="16" y2="26" stroke="#9ed030" stroke-width="1.5"/>
-            <line x1="11" y1="26" x2="21" y2="26" stroke="#9ed030" stroke-width="2" stroke-linecap="round"/>
-            <!-- star inside trophy -->
-            <path d="M16 10 L17 13 L20 13 L17.5 14.8 L18.5 18 L16 16 L13.5 18 L14.5 14.8 L12 13 L15 13 Z" fill="#b8e840" opacity="0.8"/>
-          </svg>
+          <svg width="30" height="30" viewBox="0 0 32 32" fill="none"><path d="M10 6 L22 6 L22 16 Q22 22 16 22 Q10 22 10 16 Z" stroke="#9ed030" stroke-width="1.5" fill="none"/><path d="M10 9 Q6 9 6 13 Q6 17 10 16" stroke="#9ed030" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M22 9 Q26 9 26 13 Q26 17 22 16" stroke="#9ed030" stroke-width="1.5" fill="none" stroke-linecap="round"/><line x1="16" y1="22" x2="16" y2="26" stroke="#9ed030" stroke-width="1.5"/><line x1="11" y1="26" x2="21" y2="26" stroke="#9ed030" stroke-width="2" stroke-linecap="round"/><path d="M16 10 L17 13 L20 13 L17.5 14.8 L18.5 18 L16 16 L13.5 18 L14.5 14.8 L12 13 L15 13 Z" fill="#b8e840" opacity="0.8"/></svg>
         </div>
         <span class="client-label">Min. Esporte</span>
       </div>
-
-      <!-- MINISTÉRIO DOS TRANSPORTES — road/highway -->
       <div class="client-card reveal reveal-d2">
         <div class="client-icon-wrap" style="background:linear-gradient(135deg,#050f05,#091a09);">
-          <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
-            <path d="M5 27 L10 5 L22 5 L27 27 Z" fill="#4a9c4a" opacity="0.15"/>
-            <path d="M5.5 27 L10.5 6 L21.5 6 L26.5 27 Z" stroke="#5cb85c" stroke-width="1.2" fill="none"/>
-            <line x1="16" y1="24" x2="16" y2="20" stroke="#7dd87d" stroke-width="1.5" stroke-linecap="round"/>
-            <line x1="16" y1="17" x2="16" y2="13" stroke="#7dd87d" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
-            <line x1="16" y1="10.5" x2="16" y2="8" stroke="#7dd87d" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
-            <line x1="4" y1="28" x2="28" y2="28" stroke="#5cb85c" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
-          </svg>
+          <svg width="30" height="30" viewBox="0 0 32 32" fill="none"><path d="M5.5 27 L10.5 6 L21.5 6 L26.5 27 Z" stroke="#5cb85c" stroke-width="1.2" fill="none"/><line x1="16" y1="24" x2="16" y2="20" stroke="#7dd87d" stroke-width="1.5" stroke-linecap="round"/><line x1="16" y1="17" x2="16" y2="13" stroke="#7dd87d" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/><line x1="4" y1="28" x2="28" y2="28" stroke="#5cb85c" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/></svg>
         </div>
         <span class="client-label">Min. Transportes</span>
       </div>
-
-      <!-- SEBRAE — small business / plant growing -->
       <div class="client-card reveal reveal-d3">
         <div class="client-icon-wrap" style="background:linear-gradient(135deg,#04100c,#071a14);">
-          <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
-            <!-- sprout/growth -->
-            <line x1="16" y1="28" x2="16" y2="12" stroke="#00c878" stroke-width="2" stroke-linecap="round"/>
-            <!-- left leaf -->
-            <path d="M16 18 Q10 16 8 10 Q14 10 16 18Z" fill="#00c878" opacity="0.8"/>
-            <!-- right leaf -->
-            <path d="M16 14 Q22 12 24 6 Q18 7 16 14Z" fill="#00e890" opacity="0.7"/>
-            <!-- ground -->
-            <path d="M8 28 Q16 25 24 28" stroke="#00c878" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.5"/>
-            <!-- small person icon -->
-            <circle cx="16" cy="6" r="2" fill="#00e890" opacity="0.6"/>
-          </svg>
+          <svg width="30" height="30" viewBox="0 0 32 32" fill="none"><line x1="16" y1="28" x2="16" y2="12" stroke="#00c878" stroke-width="2" stroke-linecap="round"/><path d="M16 18 Q10 16 8 10 Q14 10 16 18Z" fill="#00c878" opacity="0.8"/><path d="M16 14 Q22 12 24 6 Q18 7 16 14Z" fill="#00e890" opacity="0.7"/><path d="M8 28 Q16 25 24 28" stroke="#00c878" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.5"/></svg>
         </div>
         <span class="client-label">SEBRAE</span>
       </div>
-
-      <!-- EMBRATUR — sun/tourism/travel -->
       <div class="client-card reveal">
         <div class="client-icon-wrap" style="background:linear-gradient(135deg,#140c02,#201408);">
-          <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
-            <!-- globe -->
-            <circle cx="16" cy="16" r="10" stroke="#f5a020" stroke-width="1.5" fill="none" opacity="0.5"/>
-            <!-- latitude lines -->
-            <ellipse cx="16" cy="16" rx="10" ry="5" stroke="#f5a020" stroke-width="0.8" fill="none" opacity="0.4"/>
-            <!-- longitude line -->
-            <line x1="16" y1="6" x2="16" y2="26" stroke="#f5a020" stroke-width="0.8" opacity="0.4"/>
-            <!-- sun rays -->
-            <circle cx="16" cy="16" r="4" fill="#f5a020" opacity="0.9"/>
-            <line x1="16" y1="3" x2="16" y2="6" stroke="#f5c050" stroke-width="2" stroke-linecap="round"/>
-            <line x1="16" y1="26" x2="16" y2="29" stroke="#f5c050" stroke-width="2" stroke-linecap="round"/>
-            <line x1="3" y1="16" x2="6" y2="16" stroke="#f5c050" stroke-width="2" stroke-linecap="round"/>
-            <line x1="26" y1="16" x2="29" y2="16" stroke="#f5c050" stroke-width="2" stroke-linecap="round"/>
-          </svg>
+          <svg width="30" height="30" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="10" stroke="#f5a020" stroke-width="1.5" fill="none" opacity="0.5"/><ellipse cx="16" cy="16" rx="10" ry="5" stroke="#f5a020" stroke-width="0.8" fill="none" opacity="0.4"/><line x1="16" y1="6" x2="16" y2="26" stroke="#f5a020" stroke-width="0.8" opacity="0.4"/><circle cx="16" cy="16" r="4" fill="#f5a020" opacity="0.9"/><line x1="16" y1="3" x2="16" y2="6" stroke="#f5c050" stroke-width="2" stroke-linecap="round"/><line x1="16" y1="26" x2="16" y2="29" stroke="#f5c050" stroke-width="2" stroke-linecap="round"/><line x1="3" y1="16" x2="6" y2="16" stroke="#f5c050" stroke-width="2" stroke-linecap="round"/><line x1="26" y1="16" x2="29" y2="16" stroke="#f5c050" stroke-width="2" stroke-linecap="round"/></svg>
         </div>
         <span class="client-label">Embratur</span>
       </div>
-
-      <!-- BRASKEM — petrochemical / molecule -->
       <div class="client-card reveal reveal-d1">
         <div class="client-icon-wrap" style="background:linear-gradient(135deg,#0a0614,#100a20);">
-          <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
-            <!-- molecule nodes -->
-            <circle cx="16" cy="16" r="3.5" fill="#8050e0"/>
-            <circle cx="7" cy="10" r="2.5" fill="#6038c0" opacity="0.8"/>
-            <circle cx="25" cy="10" r="2.5" fill="#6038c0" opacity="0.8"/>
-            <circle cx="7" cy="22" r="2.5" fill="#6038c0" opacity="0.8"/>
-            <circle cx="25" cy="22" r="2.5" fill="#6038c0" opacity="0.8"/>
-            <circle cx="16" cy="5" r="2" fill="#a070f0" opacity="0.7"/>
-            <circle cx="16" cy="27" r="2" fill="#a070f0" opacity="0.7"/>
-            <!-- bonds -->
-            <line x1="16" y1="12.5" x2="9" y2="11" stroke="#8050e0" stroke-width="1.2" opacity="0.6"/>
-            <line x1="16" y1="12.5" x2="23" y2="11" stroke="#8050e0" stroke-width="1.2" opacity="0.6"/>
-            <line x1="16" y1="19.5" x2="9" y2="21" stroke="#8050e0" stroke-width="1.2" opacity="0.6"/>
-            <line x1="16" y1="19.5" x2="23" y2="21" stroke="#8050e0" stroke-width="1.2" opacity="0.6"/>
-            <line x1="16" y1="12.5" x2="16" y2="7" stroke="#a070f0" stroke-width="1.2" opacity="0.5"/>
-            <line x1="16" y1="19.5" x2="16" y2="25" stroke="#a070f0" stroke-width="1.2" opacity="0.5"/>
-          </svg>
+          <svg width="30" height="30" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3.5" fill="#8050e0"/><circle cx="7" cy="10" r="2.5" fill="#6038c0" opacity="0.8"/><circle cx="25" cy="10" r="2.5" fill="#6038c0" opacity="0.8"/><circle cx="7" cy="22" r="2.5" fill="#6038c0" opacity="0.8"/><circle cx="25" cy="22" r="2.5" fill="#6038c0" opacity="0.8"/><circle cx="16" cy="5" r="2" fill="#a070f0" opacity="0.7"/><circle cx="16" cy="27" r="2" fill="#a070f0" opacity="0.7"/><line x1="16" y1="12.5" x2="9" y2="11" stroke="#8050e0" stroke-width="1.2" opacity="0.6"/><line x1="16" y1="12.5" x2="23" y2="11" stroke="#8050e0" stroke-width="1.2" opacity="0.6"/></svg>
         </div>
         <span class="client-label">Braskem</span>
       </div>
-
-      <!-- KUMON — education / pencil / learning -->
       <div class="client-card reveal reveal-d2">
         <div class="client-icon-wrap" style="background:linear-gradient(135deg,#140403,#201008);">
-          <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
-            <!-- open book -->
-            <path d="M4 8 Q4 6 6 6 L15 7 L15 26 L6 25 Q4 25 4 23 Z" fill="#e84040" opacity="0.2"/>
-            <path d="M4.5 8 Q4.5 6.5 6 6.5 L15 7.5 L15 25.5 L6 24.5 Q4.5 24.5 4.5 23 Z" stroke="#e84040" stroke-width="1.2" fill="none"/>
-            <path d="M28 8 Q28 6 26 6 L17 7 L17 26 L26 25 Q28 25 28 23 Z" fill="#e84040" opacity="0.2"/>
-            <path d="M27.5 8 Q27.5 6.5 26 6.5 L17 7.5 L17 25.5 L26 24.5 Q27.5 24.5 27.5 23 Z" stroke="#e84040" stroke-width="1.2" fill="none"/>
-            <!-- spine -->
-            <line x1="16" y1="7" x2="16" y2="26" stroke="#e84040" stroke-width="1.5" opacity="0.6"/>
-            <!-- text lines on left page -->
-            <line x1="7" y1="11" x2="13" y2="11.5" stroke="#e84040" stroke-width="0.8" opacity="0.6"/>
-            <line x1="7" y1="14" x2="13" y2="14.5" stroke="#e84040" stroke-width="0.8" opacity="0.5"/>
-            <line x1="7" y1="17" x2="13" y2="17.5" stroke="#e84040" stroke-width="0.8" opacity="0.4"/>
-            <!-- text lines on right page -->
-            <line x1="19" y1="11" x2="25" y2="11.5" stroke="#e84040" stroke-width="0.8" opacity="0.6"/>
-            <line x1="19" y1="14" x2="25" y2="14.5" stroke="#e84040" stroke-width="0.8" opacity="0.5"/>
-            <line x1="19" y1="17" x2="25" y2="17.5" stroke="#e84040" stroke-width="0.8" opacity="0.4"/>
-          </svg>
+          <svg width="30" height="30" viewBox="0 0 32 32" fill="none"><path d="M4 8 Q4 6 6 6 L15 7 L15 26 L6 25 Q4 25 4 23 Z" stroke="#e84040" stroke-width="1.2" fill="none"/><path d="M28 8 Q28 6 26 6 L17 7 L17 26 L26 25 Q28 25 28 23 Z" stroke="#e84040" stroke-width="1.2" fill="none"/><line x1="16" y1="7" x2="16" y2="26" stroke="#e84040" stroke-width="1.5" opacity="0.6"/><line x1="7" y1="11" x2="13" y2="11.5" stroke="#e84040" stroke-width="0.8" opacity="0.6"/><line x1="7" y1="14" x2="13" y2="14.5" stroke="#e84040" stroke-width="0.8" opacity="0.5"/></svg>
         </div>
         <span class="client-label">Kumon</span>
       </div>
-
-      <!-- COCA-COLA FEMSA — beverage / bottle wave -->
       <div class="client-card reveal reveal-d3">
         <div class="client-icon-wrap" style="background:linear-gradient(135deg,#140202,#200404);">
-          <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
-            <!-- bottle silhouette -->
-            <path d="M13 4 L13 7 Q10 8 10 11 L10 24 Q10 27 13 27 L19 27 Q22 27 22 24 L22 11 Q22 8 19 7 L19 4 Z" fill="#e82020" opacity="0.2"/>
-            <path d="M13.5 4.5 L13.5 7.5 Q11 8.5 11 11 L11 24 Q11 26.5 13.5 26.5 L18.5 26.5 Q21 26.5 21 24 L21 11 Q21 8.5 18.5 7.5 L18.5 4.5 Z" stroke="#e83030" stroke-width="1.2" fill="none"/>
-            <!-- cap -->
-            <rect x="13" y="3" width="6" height="2" rx="1" fill="#e83030" opacity="0.7"/>
-            <!-- bubbles -->
-            <circle cx="14.5" cy="18" r="1" fill="#f06060" opacity="0.5"/>
-            <circle cx="17.5" cy="14" r="1.2" fill="#f06060" opacity="0.5"/>
-            <circle cx="15" cy="22" r="0.8" fill="#f06060" opacity="0.4"/>
-            <!-- wave line inside -->
-            <path d="M12 15 Q14 13 16 15 Q18 17 20 15" stroke="#f06060" stroke-width="1" fill="none" opacity="0.6"/>
-          </svg>
+          <svg width="30" height="30" viewBox="0 0 32 32" fill="none"><path d="M13.5 4.5 L13.5 7.5 Q11 8.5 11 11 L11 24 Q11 26.5 13.5 26.5 L18.5 26.5 Q21 26.5 21 24 L21 11 Q21 8.5 18.5 7.5 L18.5 4.5 Z" stroke="#e83030" stroke-width="1.2" fill="none"/><rect x="13" y="3" width="6" height="2" rx="1" fill="#e83030" opacity="0.7"/><circle cx="14.5" cy="18" r="1" fill="#f06060" opacity="0.5"/><circle cx="17.5" cy="14" r="1.2" fill="#f06060" opacity="0.5"/><path d="M12 15 Q14 13 16 15 Q18 17 20 15" stroke="#f06060" stroke-width="1" fill="none" opacity="0.6"/></svg>
         </div>
         <span class="client-label">KOF / FEMSA</span>
       </div>
-
-      <!-- BAUDUCCO — bread/wheat (também empresa) -->
       <div class="client-card reveal">
         <div class="client-icon-wrap" style="background:linear-gradient(135deg,#1a0f04,#261408);">
-          <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
-            <ellipse cx="16" cy="20" rx="9" ry="5.5" fill="#c47a1e" opacity="0.9"/>
-            <ellipse cx="16" cy="19" rx="9" ry="5" fill="#d98c2a"/>
-            <circle cx="13" cy="19" r="1" fill="#f0b84a" opacity="0.7"/>
-            <circle cx="16.5" cy="21" r="1" fill="#f0b84a" opacity="0.7"/>
-            <circle cx="19.5" cy="18.5" r="1" fill="#f0b84a" opacity="0.7"/>
-            <line x1="16" y1="14" x2="16" y2="7" stroke="#a06010" stroke-width="1.5" stroke-linecap="round"/>
-            <ellipse cx="13" cy="10" rx="2.5" ry="1.3" fill="#c47a1e" opacity="0.8" transform="rotate(-30 13 10)"/>
-            <ellipse cx="19" cy="10" rx="2.5" ry="1.3" fill="#c47a1e" opacity="0.8" transform="rotate(30 19 10)"/>
-            <ellipse cx="14" cy="7.5" rx="2" ry="1.1" fill="#d98c2a" opacity="0.7" transform="rotate(-20 14 7.5)"/>
-            <ellipse cx="18" cy="7.5" rx="2" ry="1.1" fill="#d98c2a" opacity="0.7" transform="rotate(20 18 7.5)"/>
-          </svg>
+          <svg width="30" height="30" viewBox="0 0 32 32" fill="none"><ellipse cx="16" cy="20" rx="9" ry="5.5" fill="#c47a1e" opacity="0.9"/><ellipse cx="16" cy="19" rx="9" ry="5" fill="#d98c2a"/><circle cx="13" cy="19" r="1" fill="#f0b84a" opacity="0.7"/><circle cx="16.5" cy="21" r="1" fill="#f0b84a" opacity="0.7"/><line x1="16" y1="14" x2="16" y2="7" stroke="#a06010" stroke-width="1.5" stroke-linecap="round"/><ellipse cx="13" cy="10" rx="2.5" ry="1.3" fill="#c47a1e" opacity="0.8" transform="rotate(-30 13 10)"/><ellipse cx="19" cy="10" rx="2.5" ry="1.3" fill="#c47a1e" opacity="0.8" transform="rotate(30 19 10)"/></svg>
         </div>
         <span class="client-label">Bauducco</span>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- =============================================
-     PORTFÓLIO
-     ============================================= -->
+<!-- ════════════════════════════════════════
+     PORTFÓLIO — CARDS RETANGULARES
+     ════════════════════════════════════════ -->
 <section id="portfolio">
   <div class="container">
     <div class="section-header reveal">
@@ -1332,15 +1181,17 @@
 
     <div class="portfolio-grid">
 
-      <!-- CARD 1: Taggea — embed interativo -->
-      <div class="portfolio-card reveal">
-        <div class="github-embed">
-          <div class="embed-topbar">
-            <div class="embed-topbar-dots">
-              <span></span><span></span><span></span>
-            </div>
-            <div class="embed-topbar-url">yonnowsp-beep.github.io/taggea/</div>
-            <a href="https://yonnowsp-beep.github.io/taggea/" target="_blank" rel="noopener" class="portfolio-link-btn" style="padding:0.25rem 0.7rem;font-size:0.65rem;">
+      <!-- CARD 1: Taggea -->
+      <div class="pf-card reveal">
+        <div class="pf-card-badge">
+          <div class="pf-card-badge-dot"></div>
+          Web App
+        </div>
+        <div class="pf-preview" style="height: 340px;">
+          <div class="pf-browser-bar">
+            <div class="pf-browser-dots"><span></span><span></span><span></span></div>
+            <div class="pf-browser-url">yonnowsp-beep.github.io/taggea/</div>
+            <a href="https://yonnowsp-beep.github.io/taggea/" target="_blank" rel="noopener" class="pf-browser-open">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
               Abrir
             </a>
@@ -1349,38 +1200,54 @@
             src="https://yonnowsp-beep.github.io/taggea/"
             title="Taggea — Social Listening App"
             loading="lazy"
-            allow="same-origin"
             sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+            style="height: 300px;"
           ></iframe>
         </div>
-        <div class="portfolio-info">
-          <div class="portfolio-info-top">
-            <div class="portfolio-title">Taggea — Social Listening Tool</div>
-            <a href="https://yonnowsp-beep.github.io/taggea/" target="_blank" rel="noopener" class="portfolio-link-btn">
+        <div class="pf-info">
+          <div class="pf-info-row">
+            <div class="pf-title">Taggea — Social Listening Tool</div>
+            <a href="https://yonnowsp-beep.github.io/taggea/" target="_blank" rel="noopener" class="pf-link-btn">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
               Ver ao vivo
             </a>
           </div>
-          <p class="portfolio-desc">Aplicativo web para automatizar a catalogação de conteúdos sobre tópicos e clientes, extraídos via desk research em redes sociais. Uma ferramenta própria de Social Listening que agiliza a organização de dados e potencializa a geração de insights estratégicos.</p>
-          <div class="portfolio-tags">
-            <span class="portfolio-tag">Social Listening</span>
-            <span class="portfolio-tag">Web App</span>
-            <span class="portfolio-tag">Desk Research</span>
-            <span class="portfolio-tag">Catalogação</span>
-            <span class="portfolio-tag">GitHub Pages</span>
+          <p class="pf-desc">Aplicativo web para automatizar a catalogação de conteúdos sobre tópicos e clientes, extraídos via desk research em redes sociais. Uma ferramenta própria de Social Listening que agiliza a organização de dados e potencializa a geração de insights estratégicos.</p>
+          <div class="pf-tags">
+            <span class="pf-tag">Social Listening</span>
+            <span class="pf-tag">Web App</span>
+            <span class="pf-tag">Desk Research</span>
+            <span class="pf-tag">Catalogação</span>
+            <span class="pf-tag">GitHub Pages</span>
+          </div>
+          <div class="pf-stats-row">
+            <div class="pf-stat">
+              <div class="pf-stat-val">100%</div>
+              <div class="pf-stat-lbl">Desenvolvido do zero</div>
+            </div>
+            <div class="pf-stat">
+              <div class="pf-stat-val">Web</div>
+              <div class="pf-stat-lbl">Multiplataforma</div>
+            </div>
+            <div class="pf-stat">
+              <div class="pf-stat-val">Live</div>
+              <div class="pf-stat-lbl">Em produção</div>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- CARD 2: Looker Studio — embed real -->
-      <div class="portfolio-card reveal reveal-d1">
-        <div class="looker-embed">
-          <div class="embed-topbar">
-            <div class="embed-topbar-dots">
-              <span></span><span></span><span></span>
-            </div>
-            <div class="embed-topbar-url">lookerstudio.google.com · Dashboard</div>
-            <a href="https://lookerstudio.google.com/reporting/5e6a4058-ac64-4d8b-bf2a-e18d02a63fcb" target="_blank" rel="noopener" class="portfolio-link-btn" style="padding:0.25rem 0.7rem;font-size:0.65rem;">
+      <!-- CARD 2: Looker Studio -->
+      <div class="pf-card reveal reveal-d1">
+        <div class="pf-card-badge">
+          <div class="pf-card-badge-dot"></div>
+          Dashboard BI
+        </div>
+        <div class="pf-preview" style="height: 340px;">
+          <div class="pf-browser-bar">
+            <div class="pf-browser-dots"><span></span><span></span><span></span></div>
+            <div class="pf-browser-url">lookerstudio.google.com · Dashboard</div>
+            <a href="https://lookerstudio.google.com/reporting/5e6a4058-ac64-4d8b-bf2a-e18d02a63fcb" target="_blank" rel="noopener" class="pf-browser-open">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
               Abrir
             </a>
@@ -1389,577 +1256,418 @@
             src="https://lookerstudio.google.com/embed/reporting/5e6a4058-ac64-4d8b-bf2a-e18d02a63fcb/page/5VjqF"
             title="Dashboard — Looker Studio"
             frameborder="0"
-            style="border:0"
             allowfullscreen
             sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+            style="height: 300px;"
           ></iframe>
         </div>
-        <div class="portfolio-info">
-          <div class="portfolio-info-top">
-            <div class="portfolio-title">Dashboard — Looker Studio</div>
-            <a href="https://lookerstudio.google.com/reporting/5e6a4058-ac64-4d8b-bf2a-e18d02a63fcb" target="_blank" rel="noopener" class="portfolio-link-btn">
+        <div class="pf-info">
+          <div class="pf-info-row">
+            <div class="pf-title">Dashboard — Looker Studio</div>
+            <a href="https://lookerstudio.google.com/reporting/5e6a4058-ac64-4d8b-bf2a-e18d02a63fcb" target="_blank" rel="noopener" class="pf-link-btn">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
               Tela cheia
             </a>
           </div>
-          <p class="portfolio-desc">Dashboard interativo de Business Intelligence construído no Looker Studio. Visualização de métricas, tendências e KPIs para suporte à tomada de decisão.</p>
-          <div class="portfolio-tags">
-            <span class="portfolio-tag">Looker Studio</span>
-            <span class="portfolio-tag">BI</span>
-            <span class="portfolio-tag">Dashboard</span>
-            <span class="portfolio-tag">Data Viz</span>
+          <p class="pf-desc">Dashboard interativo de Business Intelligence construído no Looker Studio. Visualização de métricas, tendências e KPIs para suporte à tomada de decisão executiva com dados em tempo real.</p>
+          <div class="pf-tags">
+            <span class="pf-tag">Looker Studio</span>
+            <span class="pf-tag">BI</span>
+            <span class="pf-tag">Dashboard</span>
+            <span class="pf-tag">Data Viz</span>
+            <span class="pf-tag">KPIs</span>
+          </div>
+          <div class="pf-stats-row">
+            <div class="pf-stat">
+              <div class="pf-stat-val">Google</div>
+              <div class="pf-stat-lbl">Plataforma</div>
+            </div>
+            <div class="pf-stat">
+              <div class="pf-stat-val">Real-time</div>
+              <div class="pf-stat-lbl">Atualização</div>
+            </div>
+            <div class="pf-stat">
+              <div class="pf-stat-val">Multi</div>
+              <div class="pf-stat-lbl">Dispositivos</div>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- CARD 3: Carrossel do LinkedIn (Embed nativo em HTML/CSS) -->
-      <div class="portfolio-card span-2 reveal reveal-d2">
-        <div class="humor-carousel-wrapper">
-          
-          <!-- SLIDE 1 — CAPA -->
-          <div class="slide s1">
-            <div class="fz fz1"></div><div class="fz fz2"></div><div class="fz fz3"></div>
-            <div class="s1-in">
-              <div class="pill s1-chip mono"><span>✦</span><p>Estratégia de Marca</p></div>
-              <div>
-                <h1 class="s1-title">Humor<br>& <em>Enga&shy;ja&shy;mento</em></h1>
-                <p class="s1-sub">Por que marcas que fazem rir vencem as que apenas informam.</p>
-              </div>
-              <div class="s1-foot">
-                <div class="s1-dots">
-                  <div class="s1-dot" style="background:var(--c-pink)"></div>
-                  <div class="s1-dot" style="background:var(--c-yellow)"></div>
-                  <div class="s1-dot" style="background:rgba(255,255,255,.3)"></div>
-                </div>
-                <div class="pill mono s1-hint">deslize &nbsp;→</div>
-              </div>
-            </div>
-            <span class="pn">01 / 12</span>
-          </div>
+      <!-- CARD 3: Carrossel — estilo post Instagram/LinkedIn -->
+      <div class="pf-card full-width carousel-section reveal reveal-d2">
 
-          <!-- SLIDE 2 — CENÁRIO -->
-          <div class="slide s2">
-            <div class="fz fz1"></div><div class="fz fz2"></div>
-            <div class="s2-in">
-              <div>
-                <div class="lbl" style="color:rgba(255,255,255,.7)">O contexto</div>
-                <h2 class="s2-heading">Uma sede<br>de leveza</h2>
-              </div>
-              <div class="s2-cards">
-                <div class="s2-card">
-                  <div class="s2-card-icon">
-                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="14" stroke="white" stroke-width="2.4"/><circle cx="12.5" cy="15" r="2" fill="white"/><circle cx="23.5" cy="15" r="2" fill="white"/><path d="M12 25 Q18 21 24 25" stroke="white" stroke-width="2.4" stroke-linecap="round" fill="none"/><path d="M10 11 L13 13M26 11 L23 13" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
-                  </div>
-                  <div>
-                    <div class="s2-card-title">Emoções negativas dominam</div>
-                    <div class="s2-card-desc">Estresse crônico e tédio viraram sentimentos perenes pós-pandemia no Brasil e no mundo</div>
-                  </div>
-                </div>
-                <div class="s2-card">
-                  <div class="s2-card-icon">
-                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><rect x="4" y="10" width="28" height="18" rx="4" stroke="white" stroke-width="2.4"/><circle cx="18" cy="19" r="4" stroke="white" stroke-width="2.2"/><path d="M18 6 L18 10M11 7 L13 10M25 7 L23 10" stroke="white" stroke-width="2.2" stroke-linecap="round"/></svg>
-                  </div>
-                  <div>
-                    <div class="s2-card-title">Medo do dinheiro</div>
-                    <div class="s2-card-desc">Consumidores querem sentir alegria ao pensar em finanças — não ansiedade nem culpa</div>
-                  </div>
-                </div>
-                <div class="s2-card">
-                  <div class="s2-card-icon">
-                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><path d="M18 4 L21 14 L32 13 L23 19 L26 30 L18 24 L10 30 L13 19 L4 13 L15 14 Z" stroke="white" stroke-width="2.2" stroke-linejoin="round" fill="none"/></svg>
-                  </div>
-                  <div>
-                    <div class="s2-card-title">Busca ativa por leveza</div>
-                    <div class="s2-card-desc">As pessoas buscam pausas da seriedade e querem marcas que as façam sorrir</div>
-                  </div>
-                </div>
-              </div>
-              <div class="s2-warn">
-                <div class="s2-warn-ico">
-                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M16 3 L29 27 H3 Z" stroke="#FF4E99" stroke-width="2.4" stroke-linejoin="round" fill="none"/><line x1="16" y1="13" x2="16" y2="20" stroke="#FF4E99" stroke-width="2.4" stroke-linecap="round"/><circle cx="16" cy="23.5" r="1.6" fill="#FF4E99"/></svg>
-                </div>
-                <div class="s2-warn-txt">Ser uma marca <em>chata e esquecível</em> é o maior risco de hoje.</div>
-              </div>
+        <!-- Post header -->
+        <div class="post-header">
+          <div class="post-author">
+            <div class="post-avatar">YP</div>
+            <div class="post-author-info">
+              <div class="post-author-name">Yoneila Pereira</div>
+              <div class="post-author-handle">@yonno-pereira · Data Analyst</div>
             </div>
-            <span class="pn">02 / 12</span>
           </div>
-
-          <!-- SLIDE 3 — ORACLE -->
-          <div class="slide s3">
-            <div class="s3-rings">
-              <div class="ring" style="width:940px;height:940px"></div>
-              <div class="ring" style="width:720px;height:720px"></div>
-              <div class="ring" style="width:510px;height:510px"></div>
-              <div class="ring" style="width:320px;height:320px"></div>
-            </div>
-            <div class="fz fz1"></div>
-            <div class="s3-in">
-              <div>
-                <div class="lbl" style="color:rgba(255,255,255,.5)">Oracle Advertising &amp; CX · 2022</div>
-                <h2 class="s3-heading">O que as<br>pessoas<br>estão sentindo</h2>
-              </div>
-              <div class="s3-pills">
-                <div class="s3-pill">
-                  <div class="s3-pill-ico">
-                    <svg width="34" height="34" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="13" stroke="rgba(255,228,77,.9)" stroke-width="2.2"/><circle cx="12" cy="14" r="1.8" fill="rgba(255,228,77,.9)"/><circle cx="22" cy="14" r="1.8" fill="rgba(255,228,77,.9)"/><path d="M11 22 Q17 18 23 22" stroke="rgba(255,228,77,.9)" stroke-width="2.2" stroke-linecap="round" fill="none"/></svg>
-                  </div>
-                  <div class="s3-num y">45%</div>
-                  <p class="s3-desc">das pessoas não sentiram <strong>felicidade real</strong> nos últimos dois anos</p>
-                </div>
-                <div class="s3-pill">
-                  <div class="s3-pill-ico">
-                    <svg width="34" height="34" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="13" stroke="rgba(255,255,255,.85)" stroke-width="2.2"/><circle cx="12" cy="14" r="1.8" fill="rgba(255,255,255,.85)"/><circle cx="22" cy="14" r="1.8" fill="rgba(255,255,255,.85)"/><path d="M11 18 Q17 24 23 18" stroke="rgba(255,255,255,.85)" stroke-width="2.2" stroke-linecap="round" fill="none"/></svg>
-                  </div>
-                  <div class="s3-num w">88%</div>
-                  <p class="s3-desc">dos entrevistados busca <strong>ativamente experiências</strong> que os façam sorrir</p>
-                </div>
-              </div>
-              <div class="s3-note">
-                💡 A demanda por leveza é <strong>real e mensurável</strong>. Marcas que ignoram isso ignoram o estado emocional do próprio público.
-                <div class="s3-src">+12 mil pessoas em 14 países · Oracle Advertising &amp; CX, 2022</div>
-              </div>
-            </div>
-            <span class="pn">03 / 12</span>
-          </div>
-
-          <!-- SLIDE 4 — EMOÇÕES -->
-          <div class="slide s4">
-            <div class="fz fz1"></div><div class="fz fz2"></div>
-            <div class="s4-in">
-              <div>
-                <div class="lbl" style="color:rgba(100,40,200,.5)">Neurociência do consumo · Gallup</div>
-                <h2 class="s4-heading">Emoção<br>vende mais<br>que <em>razão</em></h2>
-              </div>
-              <div class="s4-bars">
-                <div>
-                  <div class="s4-br">
-                    <div class="s4-pct main">70%</div>
-                    <div class="s4-lbl">Das decisões de compra são guiadas por <strong>fatores emocionais</strong></div>
-                  </div>
-                  <div class="s4-track"><div class="s4-fill" style="width:70%;background:var(--c-purple)"></div></div>
-                </div>
-                <div class="s4-sep"></div>
-                <div>
-                  <div class="s4-br">
-                    <div class="s4-pct fade">30%</div>
-                    <div class="s4-lbl fade">Das decisões são guiadas por fatores racionais</div>
-                  </div>
-                  <div class="s4-track"><div class="s4-fill" style="width:30%;background:rgba(120,40,255,.18)"></div></div>
-                </div>
-                <p class="s4-src">Fonte: Gallup Analytics &amp; Advice</p>
-              </div>
-              <div class="s4-box">
-                <p>O maior inimigo de uma marca não é a raiva. É a <strong>apatia</strong> — quando o público não sente absolutamente nada.</p>
-              </div>
-            </div>
-            <span class="pn" style="color:rgba(100,40,200,.45)">04 / 12</span>
-          </div>
-
-          <!-- SLIDE 5 — EVIDÊNCIA -->
-          <div class="slide s5">
-            <div class="fz fz1"></div><div class="fz fz2"></div>
-            <div class="s5-in">
-              <div class="s5-top">
-                <div class="lbl" style="color:rgba(255,255,255,.42)">A evidência</div>
-                <h2 class="s5-heading">Humor <em>funciona</em><br>de verdade</h2>
-              </div>
-              <div class="s5-grid">
-                <div class="s5-card" style="border-color:rgba(255,228,77,.3)">
-                  <div class="s5-card-top">
-                    <div class="s5-ico" style="background:rgba(255,228,77,.2)">
-                      <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="10" r="6" stroke="rgba(255,228,77,.9)" stroke-width="2"/><path d="M14 16 L14 21M11 21 L17 21" stroke="rgba(255,228,77,.9)" stroke-width="2" stroke-linecap="round"/><path d="M11 12 Q14 15 17 12" stroke="rgba(255,228,77,.9)" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>
-                    </div>
-                    <span class="s5-tag">Ad Recall</span>
-                  </div>
-                  <div class="s5-big" style="color:var(--c-yellow)">90%</div>
-                  <div>
-                    <div class="s5-title">Lembrança de anúncio</div>
-                    <div class="s5-desc">9 em cada 10 pessoas lembram de um anúncio engraçado — acima de qualquer outro formato</div>
-                  </div>
-                </div>
-                <div class="s5-card" style="border-color:rgba(255,140,210,.3)">
-                  <div class="s5-card-top">
-                    <div class="s5-ico" style="background:rgba(255,100,180,.2)">
-                      <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="10" stroke="#FF99D6" stroke-width="2"/><path d="M8 14 L13 19 L21 10" stroke="#FF99D6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </div>
-                    <span class="s5-tag">Redes sociais</span>
-                  </div>
-                  <div class="s5-big" style="color:#FF99D6">75%</div>
-                  <div>
-                    <div class="s5-title">Seguir marcas com humor</div>
-                    <div class="s5-desc">3 em cada 4 consumidores preferem seguir marcas que usam humor</div>
-                  </div>
-                </div>
-                <div class="s5-card" style="border-color:rgba(255,255,255,.25)">
-                  <div class="s5-card-top">
-                    <div class="s5-ico" style="background:rgba(255,255,255,.14)">
-                      <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M3 21 L10 12 L15 17 L21 9 L25 13" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="25" cy="8" r="2.2" fill="white"/></svg>
-                    </div>
-                    <span class="s5-tag">Percepção</span>
-                  </div>
-                  <div class="s5-big" style="color:#fff">6×</div>
-                  <div>
-                    <div class="s5-title">Percepção de marca</div>
-                    <div class="s5-desc">Campanhas humorísticas geram 6× mais percepção positiva e intenção de compra</div>
-                  </div>
-                </div>
-                <div class="s5-card" style="border-color:rgba(196,163,255,.3)">
-                  <div class="s5-card-top">
-                    <div class="s5-ico" style="background:rgba(196,163,255,.18)">
-                      <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 3 L17 10 L24 11 L19 16.5 L20.5 24 L14 21 L7.5 24 L9 16.5 L4 11 L11 10 Z" stroke="rgba(196,163,255,.9)" stroke-width="2" stroke-linejoin="round" fill="none"/></svg>
-                    </div>
-                    <span class="s5-tag">Preferência</span>
-                  </div>
-                  <div class="s5-big" style="color:var(--c-lilac)">72%</div>
-                  <div>
-                    <div class="s5-title">Preferência declarada</div>
-                    <div class="s5-desc">Consumidores preferem marcas com humor em vez de marcas neutras, segundo Oracle</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <span class="pn">05 / 12</span>
-          </div>
-
-          <!-- SLIDE 6 — ROI -->
-          <div class="slide s6">
-            <div class="fz fz1"></div><div class="fz fz2"></div>
-            <div class="s6-in">
-              <div>
-                <div class="lbl" style="color:rgba(255,255,255,.65)">IPA DataBank · Nielsen · Imperial Business School</div>
-                <h2 class="s6-heading">Riso<br>vira<br>lucro</h2>
-              </div>
-              <div class="s6-cards">
-                <div class="s6-card">
-                  <div class="s6-card-ico">
-                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><path d="M18 6 L18 30M12 10 L24 10M10 18 L26 18M13 26 L23 26" stroke="white" stroke-width="2.4" stroke-linecap="round"/><circle cx="18" cy="18" r="14" stroke="white" stroke-width="1.8" opacity=".35"/></svg>
-                  </div>
-                  <div class="s6-txts">
-                    <div class="s6-num">+47%</div>
-                    <strong>Maior ROI</strong>
-                    <p>Campanhas humorísticas geram ROI 47% maior que anúncios convencionais — IPA DataBank</p>
-                  </div>
-                </div>
-                <div class="s6-card">
-                  <div class="s6-card-ico">
-                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><path d="M6 28 L14 18 L20 24 L28 12 L32 16" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M28 8 L32 8 L32 16" stroke="white" stroke-width="2.5" stroke-linecap="round"/></svg>
-                  </div>
-                  <div class="s6-txts">
-                    <div class="s6-num">+23%</div>
-                    <strong>Mais vendas</strong>
-                    <p>Anúncios com forte apelo emocional elevam as vendas em até 23%, segundo a Nielsen</p>
-                  </div>
-                </div>
-                <div class="s6-card">
-                  <div class="s6-card-ico">
-                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="15" r="9" stroke="white" stroke-width="2.3"/><circle cx="12" cy="13" r="1.8" fill="white"/><circle cx="24" cy="13" r="1.8" fill="white"/><path d="M12 18 Q18 24 24 18" stroke="white" stroke-width="2.3" fill="none" stroke-linecap="round"/><path d="M18 24 L18 30M14 30 L22 30" stroke="white" stroke-width="2.3" stroke-linecap="round"/></svg>
-                  </div>
-                  <div class="s6-txts">
-                    <div class="s6-num">91%</div>
-                    <strong>Ad Recall</strong>
-                    <p>Consumidores lembram e preferem anúncios engraçados a qualquer outro formato</p>
-                  </div>
-                </div>
-              </div>
-              <div class="s6-foot">Fontes: IPA DataBank · Nielsen · Imperial Business School, 2023</div>
-            </div>
-            <span class="pn">06 / 12</span>
-          </div>
-
-          <!-- SLIDE 7 — 6 RAZÕES -->
-          <div class="slide s7">
-            <div class="fz fz1"></div>
-            <div class="s7-header">
-              <div class="lbl" style="color:rgba(255,255,255,.56)">O que o humor faz pela sua marca</div>
-              <h2 class="s7-heading">6 razões para<br>apostar na leveza</h2>
-            </div>
-            <div class="s7-grid">
-              <div class="s7-item">
-                <div class="s7-ico"><svg width="36" height="36" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="14" r="8" stroke="white" stroke-width="2.2"/><path d="M14 12 Q15 9 18 9 Q21 9 22 12" stroke="white" stroke-width="1.8" stroke-linecap="round" fill="none"/><circle cx="15" cy="14" r="1.4" fill="white"/><circle cx="21" cy="14" r="1.4" fill="white"/><path d="M18 22 L18 28M15 28 L21 28" stroke="white" stroke-width="2.2" stroke-linecap="round"/></svg></div>
-                <div class="s7-name">Memorabilidade</div>
-                <p class="s7-desc">91% lembram de anúncios engraçados</p>
-              </div>
-              <div class="s7-item">
-                <div class="s7-ico"><svg width="36" height="36" viewBox="0 0 36 36" fill="none"><path d="M18 30 L6 18 C3 15 3 10 6 7 C9 4 14 4 18 8 C22 4 27 4 30 7 C33 10 33 15 30 18 Z" stroke="white" stroke-width="2.3" fill="none"/></svg></div>
-                <div class="s7-name">Conexão emocional</div>
-                <p class="s7-desc">Humor cria vínculos que vão além da transação</p>
-              </div>
-              <div class="s7-item">
-                <div class="s7-ico"><svg width="36" height="36" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="12" stroke="white" stroke-width="2.2"/><path d="M12 22 Q18 28 24 22" stroke="white" stroke-width="2.2" fill="none" stroke-linecap="round"/><line x1="13" y1="15" x2="13" y2="20" stroke="white" stroke-width="2" stroke-linecap="round"/><line x1="23" y1="15" x2="23" y2="20" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
-                <div class="s7-name">Redução de tensão</div>
-                <p class="s7-desc">Torna temas difíceis mais acessíveis</p>
-              </div>
-              <div class="s7-item">
-                <div class="s7-ico"><svg width="36" height="36" viewBox="0 0 36 36" fill="none"><path d="M5 30 L5 22 L13 22 L13 30Z M14 30 L14 15 L22 15 L22 30Z M23 30 L23 9 L31 9 L31 30Z" stroke="white" stroke-width="2.2" stroke-linejoin="round" fill="none"/></svg></div>
-                <div class="s7-name">Mais engajamento</div>
-                <p class="s7-desc">Mais curtidas, comentários e shares</p>
-              </div>
-              <div class="s7-item">
-                <div class="s7-ico"><svg width="36" height="36" viewBox="0 0 36 36" fill="none"><path d="M18 4 L21.5 13 L32 13 L23.5 19.5 L26.5 29 L18 23.5 L9.5 29 L12.5 19.5 L4 13 L14.5 13 Z" stroke="white" stroke-width="2.2" stroke-linejoin="round" fill="none"/></svg></div>
-                <div class="s7-name">Diferenciação</div>
-                <p class="s7-desc">A marca se destaca em setores sérios</p>
-              </div>
-              <div class="s7-item">
-                <div class="s7-ico"><svg width="36" height="36" viewBox="0 0 36 36" fill="none"><circle cx="12" cy="12" r="5" stroke="white" stroke-width="2.2"/><circle cx="24" cy="12" r="5" stroke="white" stroke-width="2.2"/><path d="M5 32 C5 24 9 22 12 22 L24 22 C27 22 31 24 31 32" stroke="white" stroke-width="2.2" stroke-linecap="round" fill="none"/></svg></div>
-                <div class="s7-name">Humanização</div>
-                <p class="s7-desc">Revela o lado humano e constrói confiança</p>
-              </div>
-            </div>
-            <span class="pn">07 / 12</span>
-          </div>
-
-          <!-- SLIDE 8 — SOBRE O ESTUDO -->
-          <div class="slide sestudo">
-            <div class="fz fz1"></div><div class="fz fz2"></div>
-            <div class="sestudo-in">
-              <div>
-                <div class="lbl" style="color:rgba(60,10,160,.55)">Análise original · Yoneila Pereira</div>
-                <h2 class="sestudo-heading">Sobre <em>o estudo</em></h2>
-                <p class="sestudo-intro">Para além da teoria, este carrossel traz dados reais coletados e analisados diretamente de perfis do setor financeiro nas redes sociais.</p>
-              </div>
-              <div class="sestudo-cards">
-                <div class="sestudo-card">
-                  <div class="sestudo-card-ico" style="background:#F0E8FF">
-                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none"><rect x="4" y="3" width="22" height="26" rx="3" stroke="#7B2FFF" stroke-width="2.2"/><path d="M9 10 L21 10M9 15 L21 15M9 20 L16 20" stroke="#7B2FFF" stroke-width="2" stroke-linecap="round"/></svg>
-                  </div>
-                  <div>
-                    <div class="sestudo-card-title">Metodologia</div>
-                    <div class="sestudo-card-desc">Análise de 340 publicações em dois perfis reais do setor financeiro brasileiro ao longo de 6 meses, classificando cada post por tipo e medindo engajamento individual</div>
-                  </div>
-                </div>
-                <div class="sestudo-card">
-                  <div class="sestudo-card-ico" style="background:#E8FFF0">
-                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none"><circle cx="15" cy="15" r="11" stroke="#18C870" stroke-width="2.2"/><path d="M9 15 L13 19 L21 11" stroke="#18C870" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  </div>
-                  <div>
-                    <div class="sestudo-card-title">O que foi analisado</div>
-                    <div class="sestudo-card-desc">Número de posts, engajamento acumulado, média por publicação e o peso relativo do conteúdo humorístico — em volume e em resultado</div>
-                  </div>
-                </div>
-                <div class="sestudo-card">
-                  <div class="sestudo-card-ico" style="background:#FFF3E0">
-                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none"><path d="M5 25 L5 17 L11 17 L11 25Z M12 25 L12 11 L18 11 L18 25Z M19 25 L19 6 L25 6 L25 25Z" stroke="#FF8C00" stroke-width="2.2" stroke-linejoin="round" fill="none"/><path d="M27 4 L23 2 L23 6" stroke="#FF8C00" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  </div>
-                  <div>
-                    <div class="sestudo-card-title">Dois perfis, um padrão</div>
-                    <div class="sestudo-card-desc">Um perfil público e um privado — ambos chegaram ao mesmo resultado: humor performa muito acima da média</div>
-                  </div>
-                </div>
-              </div>
-              <div class="sestudo-note">
-                <div class="sestudo-note-ico">
-                  <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><circle cx="13" cy="13" r="10" stroke="rgba(255,228,77,.9)" stroke-width="2.2"/><path d="M13 8 L13 14" stroke="rgba(255,228,77,.9)" stroke-width="2.4" stroke-linecap="round"/><circle cx="13" cy="18" r="1.4" fill="rgba(255,228,77,.9)"/></svg>
-                </div>
-                <div class="sestudo-note-txt">Os perfis analisados são <strong>reais, mas não nomeados</strong> — os dados falam por si, sem precisar de marca.</div>
-              </div>
-            </div>
-            <span class="pn" style="color:rgba(60,10,160,.35)">08 / 12</span>
-          </div>
-
-          <!-- SLIDE 9 — PERFIL A -->
-          <div class="slide s8">
-            <div class="s8-rings">
-              <div class="ring" style="width:960px;height:960px"></div>
-              <div class="ring" style="width:740px;height:740px"></div>
-              <div class="ring" style="width:530px;height:530px"></div>
-              <div class="ring" style="width:340px;height:340px"></div>
-            </div>
-            <div class="fz fz1"></div>
-            <div class="s8-in">
-              <div>
-                <div class="lbl" style="color:rgba(255,255,255,.42)">Análise · Setor financeiro · Redes sociais</div>
-                <h2 class="s8-heading">Humor no mercado<br>de <em>capitais</em></h2>
-                <div class="pill s8-badge">
-                  <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><rect x="1" y="1" width="13" height="13" rx="2.5" stroke="rgba(255,255,255,.5)" stroke-width="1.5"/><path d="M3 10 L3 8 L6 8 L6 10Z M6 10 L6 5 L9 5 L9 10Z M9 10 L9 3 L12 3 L12 10Z" stroke="rgba(255,255,255,.5)" stroke-width="1.2" stroke-linejoin="round" fill="none"/></svg>
-                  Perfil A · Instituição pública · 6 meses
-                </div>
-              </div>
-              <div class="s8-grid">
-                <div class="s8-cell">
-                  <div class="s8-cico"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="2" y="3" width="12" height="2" rx="1" fill="rgba(255,228,77,.7)"/><rect x="2" y="7" width="18" height="2" rx="1" fill="rgba(255,228,77,.5)"/><rect x="2" y="11" width="14" height="2" rx="1" fill="rgba(255,228,77,.5)"/><rect x="2" y="15" width="10" height="2" rx="1" fill="rgba(255,228,77,.5)"/></svg></div>
-                  <div class="s8-val y">242</div><div class="s8-lbl">Publicações totais</div>
-                </div>
-                <div class="s8-cell">
-                  <div class="s8-cico"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 16 L8 10 L12 13 L16 6 L19 9" stroke="rgba(255,136,204,.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-                  <div class="s8-val pk">923k</div><div class="s8-lbl">Engajamento total</div>
-                </div>
-                <div class="s8-cell">
-                  <div class="s8-cico"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="7" stroke="rgba(255,255,255,.6)" stroke-width="1.8"/><path d="M11 7 L11 11 L14 13" stroke="rgba(255,255,255,.6)" stroke-width="1.8" stroke-linecap="round"/></svg></div>
-                  <div class="s8-val w">3.816</div><div class="s8-lbl">Média por post</div>
-                </div>
-                <div class="s8-cell">
-                  <div class="s8-cico"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="9" r="5" stroke="rgba(255,228,77,.8)" stroke-width="1.8"/><circle cx="7" cy="9" r="1.2" fill="rgba(255,228,77,.8)"/><circle cx="15" cy="9" r="1.2" fill="rgba(255,228,77,.8)"/><path d="M7 12 Q11 16 15 12" stroke="rgba(255,228,77,.8)" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg></div>
-                  <div class="s8-val y">3</div><div class="s8-lbl">Posts humorísticos</div>
-                </div>
-                <div class="s8-cell">
-                  <div class="s8-cico"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M5 17 L5 13 L9 13 L9 17Z M9 17 L9 9 L13 9 L13 17Z M13 17 L13 6 L17 6 L17 17Z" stroke="rgba(255,136,204,.8)" stroke-width="1.6" stroke-linejoin="round" fill="none"/></svg></div>
-                  <div class="s8-val pk">1,2%</div><div class="s8-lbl">Do volume total</div>
-                </div>
-                <div class="s8-cell">
-                  <div class="s8-cico"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 11 L8 7 L11 10 L15 6 L18 9" stroke="rgba(255,255,255,.7)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 6 L18 6 L18 9" stroke="rgba(255,255,255,.7)" stroke-width="1.8" stroke-linecap="round"/></svg></div>
-                  <div class="s8-val w">21,6%</div><div class="s8-lbl">Do engajamento gerado</div>
-                </div>
-              </div>
-              <div class="s8-hero">
-                <div class="s8-hero-ico">
-                  <svg width="38" height="38" viewBox="0 0 38 38" fill="none"><path d="M19 5 L23 15 L35 15 L25 22 L29 33 L19 26 L9 33 L13 22 L3 15 L15 15 Z" stroke="#1A1828" stroke-width="2.5" stroke-linejoin="round" fill="none"/><path d="M29 7 L33 3 M33 3 L37 7 M33 3 L33 11" stroke="#1A1828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </div>
-                <div>
-                  <div class="s8-hero-big">22× mais</div>
-                  <div class="s8-hero-sub">Os 3 posts humorísticos geraram 22× mais engajamento que a média dos demais</div>
-                </div>
-              </div>
-            </div>
-            <span class="pn">09 / 12</span>
-          </div>
-
-          <!-- SLIDE 10 — PERFIL B -->
-          <div class="slide s9">
-            <div class="fz fz1"></div>
-            <div class="s9-in">
-              <div>
-                <div class="lbl" style="color:rgba(255,255,255,.62)">Análise · Setor financeiro · Redes sociais</div>
-                <h2 class="s9-heading">Quando humor<br>vira resultado</h2>
-                <div class="pill s9-badge">
-                  <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><rect x="1" y="1" width="13" height="13" rx="2.5" stroke="rgba(255,255,255,.75)" stroke-width="1.5"/><path d="M3 10 L3 8 L6 8 L6 10Z M6 10 L6 5 L9 5 L9 10Z M9 10 L9 3 L12 3 L12 10Z" stroke="rgba(255,255,255,.75)" stroke-width="1.2" stroke-linejoin="round" fill="none"/></svg>
-                  Perfil B · Empresa privada · 6 meses
-                </div>
-              </div>
-              <div class="s9-minis">
-                <div class="s9-mini">
-                  <div class="s9-mini-ico"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="2" y="3" width="12" height="2" rx="1" fill="rgba(255,255,255,.7)"/><rect x="2" y="7" width="18" height="2" rx="1" fill="rgba(255,255,255,.5)"/><rect x="2" y="11" width="14" height="2" rx="1" fill="rgba(255,255,255,.5)"/><rect x="2" y="15" width="10" height="2" rx="1" fill="rgba(255,255,255,.5)"/></svg></div>
-                  <div class="s9-mval">98</div><div class="s9-mlbl">Publicações totais</div>
-                </div>
-                <div class="s9-mini">
-                  <div class="s9-mini-ico"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="9" r="5" stroke="rgba(255,255,255,.8)" stroke-width="1.8"/><circle cx="7.5" cy="8" r="1.1" fill="rgba(255,255,255,.8)"/><circle cx="14.5" cy="8" r="1.1" fill="rgba(255,255,255,.8)"/><path d="M7 11.5 Q11 15 15 11.5" stroke="rgba(255,255,255,.8)" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg></div>
-                  <div class="s9-mval">18</div><div class="s9-mlbl">Posts humorísticos</div>
-                </div>
-                <div class="s9-mini">
-                  <div class="s9-mini-ico"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8" stroke="rgba(255,255,255,.7)" stroke-width="1.8"/><path d="M11 7 L11 11 L14 11" stroke="rgba(255,255,255,.7)" stroke-width="1.8" stroke-linecap="round"/></svg></div>
-                  <div class="s9-mval">18,4%</div><div class="s9-mlbl">Do volume total</div>
-                </div>
-              </div>
-              <div class="s9-pills">
-                <div class="s9-pill">
-                  <div class="s9-pico"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M5 20 L9 13 L13 17 L18 7 L22 11" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M18 7 L22 7 L22 11" stroke="white" stroke-width="2.2" stroke-linecap="round"/></svg></div>
-                  <div class="s9-pnum">40%</div>
-                  <div class="s9-ptxt">Posts humorísticos responderam por 40% de todo o engajamento do perfil</div>
-                </div>
-                <div class="s9-pill">
-                  <div class="s9-pico"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M4 20 L8 15 L12 18 L18 10 L22 14" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-                  <div class="s9-pnum">3×</div>
-                  <div class="s9-ptxt">Posts humorísticos geraram 3 vezes mais engajamento que os convencionais</div>
-                </div>
-                <div class="s9-pill">
-                  <div class="s9-pico"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><circle cx="13" cy="13" r="9" stroke="white" stroke-width="2.2"/><path d="M9 17 Q13 21 17 17" stroke="white" stroke-width="2.2" fill="none" stroke-linecap="round"/><circle cx="9.5" cy="11" r="1.4" fill="white"/><circle cx="16.5" cy="11" r="1.4" fill="white"/></svg></div>
-                  <div class="s9-pnum">875</div>
-                  <div class="s9-ptxt">Média de interações dos posts com humor (ante 401 de média geral)</div>
-                </div>
-              </div>
-            </div>
-            <span class="pn">10 / 12</span>
-          </div>
-
-          <!-- SLIDE 11 — PERFIL C -->
-          <div class="slide s11">
-            <div class="s11-rings">
-              <div class="ring" style="width:960px;height:960px"></div>
-              <div class="ring" style="width:740px;height:740px"></div>
-            </div>
-            <div class="fz fz1"></div>
-            <div class="s11-in">
-              <div>
-                <div class="lbl" style="color:rgba(255,255,255,.42)">Análise · Setor financeiro · Campanhas Patrocinadas</div>
-                <h2 class="s11-heading">Quando a publi<br>vira <em>entretenimento</em></h2>
-                <div class="pill s11-badge">
-                  <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><rect x="1" y="1" width="13" height="13" rx="2.5" stroke="rgba(255,255,255,.5)" stroke-width="1.5"/><path d="M3 10 L3 8 L6 8 L6 10Z M6 10 L6 5 L9 5 L9 10Z M9 10 L9 3 L12 3 L12 10Z" stroke="rgba(255,255,255,.5)" stroke-width="1.2" stroke-linejoin="round" fill="none"/></svg>
-                  Perfil C · Banco Privado · Estudo de Caso
-                </div>
-              </div>
-              <div class="s11-quote">
-                <div class="s11-quote-mark">“</div>
-                <div class="s11-qtext">Que momento! Tentada a abrir conta só por conta dessa campanha hahaha</div>
-                <div class="s11-qauthor">💬 Comentário real de seguidor sobre a série 'Tá Feito'</div>
-              </div>
-              <div class="s11-cards">
-                <div class="s11-card">
-                  <div class="s11-card-ico">
-                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 2 L17 11 L26 11 L19 16 L21 25 L14 19 L7 25 L9 16 L2 11 L11 11 Z" stroke="white" stroke-width="2.2" stroke-linejoin="round" fill="none"/></svg>
-                  </div>
-                  <div class="s11-card-txt">O humor quebrou o tabu de falar sobre dinheiro de forma leve.</div>
-                </div>
-                <div class="s11-card">
-                  <div class="s11-card-ico">
-                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M4 21 L8 16 L13 19 L19 11 L24 15" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M19 11 L24 11 L24 16" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  </div>
-                  <div class="s11-card-txt">Gerou forte engajamento orgânico mesmo sendo conteúdo patrocinado.</div>
-                </div>
-              </div>
-            </div>
-            <span class="pn">11 / 12</span>
-          </div>
-
-          <!-- SLIDE 12 — CONCLUSÃO -->
-          <div class="slide s12">
-            <div class="fz fz1"></div><div class="fz fz2"></div>
-            <div class="s12-in">
-              <div>
-                <div class="lbl" style="color:rgba(255,255,255,.42)">O que levar daqui</div>
-                <h2 class="s12-heading">3 verdades<br>sobre <em>rir</em><br>com estratégia</h2>
-              </div>
-              <div class="s12-pts">
-                <div class="s12-pt">
-                  <div class="s12-ico">
-                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none"><circle cx="15" cy="12" r="7" stroke="rgba(255,228,77,.9)" stroke-width="2.2"/><path d="M15 19 L15 24M12 24 L18 24" stroke="rgba(255,228,77,.9)" stroke-width="2.2" stroke-linecap="round"/><path d="M11 10 Q15 7 19 10" stroke="rgba(255,228,77,.7)" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>
-                  </div>
-                  <div>
-                    <div class="s12-n">01 de 03</div>
-                    <p class="s12-t"><strong>Humor não é frescura.</strong> É estratégia — com ROI 47% maior e resultados mensuráveis.</p>
-                  </div>
-                </div>
-                <div class="s12-pt">
-                  <div class="s12-ico">
-                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none"><path d="M4 25 L4 19 L10 19 L10 25Z M10 25 L10 13 L16 13 L16 25Z M16 25 L16 8 L22 8 L22 25Z" stroke="rgba(255,228,77,.9)" stroke-width="2.2" stroke-linejoin="round" fill="none"/><path d="M26 6 L22 4 L22 8" stroke="rgba(255,228,77,.9)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  </div>
-                  <div>
-                    <div class="s12-n">02 de 03</div>
-                    <p class="s12-t"><strong>Pouco volume, grande impacto.</strong> Menos de 2% dos posts geram quase 1/4 de todo o engajamento.</p>
-                  </div>
-                </div>
-                <div class="s12-pt">
-                  <div class="s12-ico">
-                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none"><circle cx="15" cy="15" r="11" stroke="rgba(255,228,77,.9)" stroke-width="2.2"/><path d="M9 19 Q15 25 21 19" stroke="rgba(255,228,77,.9)" stroke-width="2.2" fill="none" stroke-linecap="round"/><circle cx="10" cy="12" r="2" fill="rgba(255,228,77,.9)"/><circle cx="20" cy="12" r="2" fill="rgba(255,228,77,.9)"/></svg>
-                  </div>
-                  <div>
-                    <div class="s12-n">03 de 03</div>
-                    <p class="s12-t"><strong>O público quer leveza.</strong> 88% das pessoas buscam ativamente experiências que as façam sorrir.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="s12-cta">
-                <div class="s12-cta-q">Sua marca faz as pessoas sentirem algo?</div>
-                <div class="s12-cta-s">Se não, ela pode estar perdendo muito mais do que engajamento.</div>
-              </div>
-            </div>
-            <span class="pn">12 / 12</span>
-          </div>
-
-        </div>
-        
-        <div class="portfolio-info">
-          <div class="portfolio-info-top">
-            <div class="portfolio-title">Estudo de Dados: Humor & Engajamento</div>
-          </div>
-          <p class="portfolio-desc">Análise quantitativa e qualitativa sobre como o uso do humor impacta o engajamento digital de marcas no setor financeiro. O estudo prova que publicações descontraídas (mesmo sendo minoria no volume) são as principais responsáveis pelo resultado da estratégia social.</p>
-          <div class="portfolio-tags">
-            <span class="portfolio-tag">Data Storytelling</span>
-            <span class="portfolio-tag">Design Analítico</span>
-            <span class="portfolio-tag">Social Media Metrics</span>
+          <div class="post-platform-badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+            Carrossel · 12 slides
           </div>
         </div>
-      </div>
 
-    </div>
+        <!-- Carousel -->
+        <div class="carousel-viewport" id="carousel1">
+          <div class="carousel-track" id="track1">
+
+            <!-- All 12 slides — square format -->
+            <!-- S1 -->
+            <div class="c-slide s1" style="width: 100%; min-width: 100%; aspect-ratio: 1/1;">
+              <div class="fz fz1"></div><div class="fz fz2"></div><div class="fz fz3"></div>
+              <div class="s1-in">
+                <div class="pill s1-chip mono-slide"><span>✦</span><p>Estratégia de Marca</p></div>
+                <div>
+                  <h1 class="s1-title">Humor<br>& <em>Enga&shy;ja&shy;mento</em></h1>
+                  <p class="s1-sub">Por que marcas que fazem rir vencem as que apenas informam.</p>
+                </div>
+                <div class="s1-foot">
+                  <div class="s1-dots">
+                    <div class="s1-dot" style="background:var(--c-pink)"></div>
+                    <div class="s1-dot" style="background:var(--c-yellow)"></div>
+                    <div class="s1-dot" style="background:rgba(255,255,255,.3)"></div>
+                  </div>
+                  <div class="pill mono-slide s1-hint">deslize →</div>
+                </div>
+              </div>
+              <span class="slide-slide-num">01 / 12</span>
+            </div>
+
+            <!-- S2 -->
+            <div class="c-slide s2" style="width: 100%; min-width: 100%; aspect-ratio: 1/1;">
+              <div class="fz fz1"></div><div class="fz fz2"></div>
+              <div class="s2-in">
+                <div>
+                  <div class="lbl" style="color:rgba(255,255,255,.7)">O contexto</div>
+                  <h2 class="s2-heading">Uma sede<br>de leveza</h2>
+                </div>
+                <div class="s2-cards">
+                  <div class="s2-card">
+                    <div class="s2-card-icon"><svg width="36" height="36" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="14" stroke="white" stroke-width="2.4"/><circle cx="12.5" cy="15" r="2" fill="white"/><circle cx="23.5" cy="15" r="2" fill="white"/><path d="M12 25 Q18 21 24 25" stroke="white" stroke-width="2.4" stroke-linecap="round" fill="none"/></svg></div>
+                    <div><div class="s2-card-title">Emoções negativas dominam</div><div class="s2-card-desc">Estresse crônico e tédio viraram sentimentos perenes pós-pandemia</div></div>
+                  </div>
+                  <div class="s2-card">
+                    <div class="s2-card-icon"><svg width="36" height="36" viewBox="0 0 36 36" fill="none"><rect x="4" y="10" width="28" height="18" rx="4" stroke="white" stroke-width="2.4"/><circle cx="18" cy="19" r="4" stroke="white" stroke-width="2.2"/></svg></div>
+                    <div><div class="s2-card-title">Medo do dinheiro</div><div class="s2-card-desc">Consumidores querem sentir alegria ao pensar em finanças</div></div>
+                  </div>
+                </div>
+                <div class="s2-warn">
+                  <div class="s2-warn-ico"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M16 3 L29 27 H3 Z" stroke="#FF4E99" stroke-width="2.4" stroke-linejoin="round" fill="none"/><line x1="16" y1="13" x2="16" y2="20" stroke="#FF4E99" stroke-width="2.4" stroke-linecap="round"/><circle cx="16" cy="23.5" r="1.6" fill="#FF4E99"/></svg></div>
+                  <div class="s2-warn-txt">Ser uma marca <em>chata e esquecível</em> é o maior risco de hoje.</div>
+                </div>
+              </div>
+              <span class="slide-slide-num">02 / 12</span>
+            </div>
+
+            <!-- S3 -->
+            <div class="c-slide s3" style="width: 100%; min-width: 100%; aspect-ratio: 1/1;">
+              <div class="s3-rings"><div class="ring" style="width:940px;height:940px"></div><div class="ring" style="width:720px;height:720px"></div><div class="ring" style="width:510px;height:510px"></div><div class="ring" style="width:320px;height:320px"></div></div>
+              <div class="fz fz1"></div>
+              <div class="s3-in">
+                <div>
+                  <div class="lbl" style="color:rgba(255,255,255,.5)">Oracle Advertising &amp; CX · 2022</div>
+                  <h2 class="s3-heading">O que as<br>pessoas<br>estão sentindo</h2>
+                </div>
+                <div class="s3-pills">
+                  <div class="s3-pill">
+                    <div class="s3-pill-ico"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="13" stroke="rgba(255,228,77,.9)" stroke-width="2.2"/><circle cx="12" cy="14" r="1.8" fill="rgba(255,228,77,.9)"/><circle cx="22" cy="14" r="1.8" fill="rgba(255,228,77,.9)"/><path d="M11 22 Q17 18 23 22" stroke="rgba(255,228,77,.9)" stroke-width="2.2" stroke-linecap="round" fill="none"/></svg></div>
+                    <div class="s3-num y">45%</div>
+                    <p class="s3-desc">não sentiram <strong>felicidade real</strong> nos últimos dois anos</p>
+                  </div>
+                  <div class="s3-pill">
+                    <div class="s3-pill-ico"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="13" stroke="rgba(255,255,255,.85)" stroke-width="2.2"/><circle cx="12" cy="14" r="1.8" fill="rgba(255,255,255,.85)"/><circle cx="22" cy="14" r="1.8" fill="rgba(255,255,255,.85)"/><path d="M11 18 Q17 24 23 18" stroke="rgba(255,255,255,.85)" stroke-width="2.2" stroke-linecap="round" fill="none"/></svg></div>
+                    <div class="s3-num w">88%</div>
+                    <p class="s3-desc">busca <strong>ativamente experiências</strong> que os façam sorrir</p>
+                  </div>
+                </div>
+                <div class="s3-note">💡 A demanda por leveza é <strong>real e mensurável</strong>. Marcas que ignoram isso ignoram o estado emocional do próprio público.<div class="s3-src">+12 mil pessoas em 14 países · Oracle Advertising &amp; CX, 2022</div></div>
+              </div>
+              <span class="slide-slide-num">03 / 12</span>
+            </div>
+
+            <!-- S4 -->
+            <div class="c-slide s4" style="width: 100%; min-width: 100%; aspect-ratio: 1/1;">
+              <div class="fz fz1"></div><div class="fz fz2"></div>
+              <div class="s4-in">
+                <div>
+                  <div class="lbl" style="color:rgba(100,40,200,.5)">Neurociência do consumo · Gallup</div>
+                  <h2 class="s4-heading">Emoção<br>vende mais<br>que <em>razão</em></h2>
+                </div>
+                <div class="s4-bars">
+                  <div>
+                    <div class="s4-br"><div class="s4-pct main">70%</div><div class="s4-lbl">Das decisões são guiadas por <strong>fatores emocionais</strong></div></div>
+                    <div class="s4-track"><div class="s4-fill" style="width:70%;background:var(--c-purple)"></div></div>
+                  </div>
+                  <div class="s4-sep"></div>
+                  <div>
+                    <div class="s4-br"><div class="s4-pct fade">30%</div><div class="s4-lbl fade">Das decisões são guiadas por fatores racionais</div></div>
+                    <div class="s4-track"><div class="s4-fill" style="width:30%;background:rgba(120,40,255,.18)"></div></div>
+                  </div>
+                  <p class="s4-src">Fonte: Gallup Analytics &amp; Advice</p>
+                </div>
+                <div class="s4-box"><p>O maior inimigo de uma marca não é a raiva. É a <strong>apatia</strong> — quando o público não sente absolutamente nada.</p></div>
+              </div>
+              <span class="slide-slide-num" style="color:rgba(100,40,200,.45)">04 / 12</span>
+            </div>
+
+            <!-- S5 -->
+            <div class="c-slide s5" style="width: 100%; min-width: 100%; aspect-ratio: 1/1;">
+              <div class="fz fz1"></div><div class="fz fz2"></div>
+              <div class="s5-in">
+                <div class="s5-top">
+                  <div class="lbl" style="color:rgba(255,255,255,.42)">A evidência</div>
+                  <h2 class="s5-heading">Humor <em>funciona</em><br>de verdade</h2>
+                </div>
+                <div class="s5-grid">
+                  <div class="s5-card" style="border-color:rgba(255,228,77,.3)">
+                    <div class="s5-card-top"><div class="s5-ico" style="background:rgba(255,228,77,.2)"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="10" r="6" stroke="rgba(255,228,77,.9)" stroke-width="2"/><path d="M14 16 L14 21M11 21 L17 21" stroke="rgba(255,228,77,.9)" stroke-width="2" stroke-linecap="round"/></svg></div><span class="s5-tag">Ad Recall</span></div>
+                    <div class="s5-big" style="color:var(--c-yellow)">90%</div>
+                    <div><div class="s5-title">Lembrança de anúncio</div><div class="s5-desc">9 em cada 10 lembram de um anúncio engraçado</div></div>
+                  </div>
+                  <div class="s5-card" style="border-color:rgba(255,140,210,.3)">
+                    <div class="s5-card-top"><div class="s5-ico" style="background:rgba(255,100,180,.2)"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="10" stroke="#FF99D6" stroke-width="2"/><path d="M8 14 L13 19 L21 10" stroke="#FF99D6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="s5-tag">Social</span></div>
+                    <div class="s5-big" style="color:#FF99D6">75%</div>
+                    <div><div class="s5-title">Seguir marcas com humor</div><div class="s5-desc">3 em 4 consumidores preferem marcas com humor</div></div>
+                  </div>
+                  <div class="s5-card" style="border-color:rgba(255,255,255,.25)">
+                    <div class="s5-card-top"><div class="s5-ico" style="background:rgba(255,255,255,.14)"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M3 21 L10 12 L15 17 L21 9 L25 13" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="s5-tag">Percepção</span></div>
+                    <div class="s5-big" style="color:#fff">6×</div>
+                    <div><div class="s5-title">Percepção de marca</div><div class="s5-desc">Campanhas humorísticas geram 6× mais percepção positiva</div></div>
+                  </div>
+                  <div class="s5-card" style="border-color:rgba(196,163,255,.3)">
+                    <div class="s5-card-top"><div class="s5-ico" style="background:rgba(196,163,255,.18)"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 3 L17 10 L24 11 L19 16.5 L20.5 24 L14 21 L7.5 24 L9 16.5 L4 11 L11 10 Z" stroke="rgba(196,163,255,.9)" stroke-width="2" stroke-linejoin="round" fill="none"/></svg></div><span class="s5-tag">Preferência</span></div>
+                    <div class="s5-big" style="color:var(--c-lilac)">72%</div>
+                    <div><div class="s5-title">Preferência declarada</div><div class="s5-desc">Consumidores preferem marcas com humor vs marcas neutras</div></div>
+                  </div>
+                </div>
+              </div>
+              <span class="slide-slide-num">05 / 12</span>
+            </div>
+
+            <!-- S6 -->
+            <div class="c-slide s6" style="width: 100%; min-width: 100%; aspect-ratio: 1/1;">
+              <div class="fz fz1"></div><div class="fz fz2"></div>
+              <div class="s6-in">
+                <div>
+                  <div class="lbl" style="color:rgba(255,255,255,.65)">IPA DataBank · Nielsen · Imperial Business School</div>
+                  <h2 class="s6-heading">Riso<br>vira<br>lucro</h2>
+                </div>
+                <div class="s6-cards">
+                  <div class="s6-card"><div class="s6-card-ico"><svg width="36" height="36" viewBox="0 0 36 36" fill="none"><path d="M18 6 L18 30M12 10 L24 10M10 18 L26 18M13 26 L23 26" stroke="white" stroke-width="2.4" stroke-linecap="round"/></svg></div><div class="s6-txts"><div class="s6-num">+47%</div><strong>Maior ROI</strong><p>Campanhas humorísticas geram ROI 47% maior — IPA DataBank</p></div></div>
+                  <div class="s6-card"><div class="s6-card-ico"><svg width="36" height="36" viewBox="0 0 36 36" fill="none"><path d="M6 28 L14 18 L20 24 L28 12 L32 16" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="s6-txts"><div class="s6-num">+23%</div><strong>Mais vendas</strong><p>Anúncios com forte apelo emocional elevam vendas em até 23%</p></div></div>
+                  <div class="s6-card"><div class="s6-card-ico"><svg width="36" height="36" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="15" r="9" stroke="white" stroke-width="2.3"/><path d="M12 18 Q18 24 24 18" stroke="white" stroke-width="2.3" fill="none" stroke-linecap="round"/></svg></div><div class="s6-txts"><div class="s6-num">91%</div><strong>Ad Recall</strong><p>Consumidores lembram e preferem anúncios engraçados</p></div></div>
+                </div>
+                <div class="s6-foot">Fontes: IPA DataBank · Nielsen · Imperial Business School, 2023</div>
+              </div>
+              <span class="slide-slide-num">06 / 12</span>
+            </div>
+
+            <!-- S7 -->
+            <div class="c-slide s7" style="width: 100%; min-width: 100%; aspect-ratio: 1/1; display: flex; flex-direction: column;">
+              <div class="fz fz1"></div>
+              <div class="s7-header">
+                <div class="lbl" style="color:rgba(255,255,255,.56)">O que o humor faz pela sua marca</div>
+                <h2 class="s7-heading">6 razões para<br>apostar na leveza</h2>
+              </div>
+              <div class="s7-grid">
+                <div class="s7-item"><div class="s7-ico"><svg width="36" height="36" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="14" r="8" stroke="white" stroke-width="2.2"/><circle cx="15" cy="14" r="1.4" fill="white"/><circle cx="21" cy="14" r="1.4" fill="white"/><path d="M18 22 L18 28M15 28 L21 28" stroke="white" stroke-width="2.2" stroke-linecap="round"/></svg></div><div class="s7-name">Memorabilidade</div><p class="s7-desc">91% lembram de anúncios engraçados</p></div>
+                <div class="s7-item"><div class="s7-ico"><svg width="36" height="36" viewBox="0 0 36 36" fill="none"><path d="M18 30 L6 18 C3 15 3 10 6 7 C9 4 14 4 18 8 C22 4 27 4 30 7 C33 10 33 15 30 18 Z" stroke="white" stroke-width="2.3" fill="none"/></svg></div><div class="s7-name">Conexão emocional</div><p class="s7-desc">Humor cria vínculos além da transação</p></div>
+                <div class="s7-item"><div class="s7-ico"><svg width="36" height="36" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="12" stroke="white" stroke-width="2.2"/><path d="M12 22 Q18 28 24 22" stroke="white" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg></div><div class="s7-name">Redução de tensão</div><p class="s7-desc">Temas difíceis ficam mais acessíveis</p></div>
+                <div class="s7-item"><div class="s7-ico"><svg width="36" height="36" viewBox="0 0 36 36" fill="none"><path d="M5 30 L5 22 L13 22 L13 30Z M14 30 L14 15 L22 15 L22 30Z M23 30 L23 9 L31 9 L31 30Z" stroke="white" stroke-width="2.2" stroke-linejoin="round" fill="none"/></svg></div><div class="s7-name">Mais engajamento</div><p class="s7-desc">Mais curtidas, comentários e shares</p></div>
+                <div class="s7-item"><div class="s7-ico"><svg width="36" height="36" viewBox="0 0 36 36" fill="none"><path d="M18 4 L21.5 13 L32 13 L23.5 19.5 L26.5 29 L18 23.5 L9.5 29 L12.5 19.5 L4 13 L14.5 13 Z" stroke="white" stroke-width="2.2" stroke-linejoin="round" fill="none"/></svg></div><div class="s7-name">Diferenciação</div><p class="s7-desc">A marca se destaca em setores sérios</p></div>
+                <div class="s7-item"><div class="s7-ico"><svg width="36" height="36" viewBox="0 0 36 36" fill="none"><circle cx="12" cy="12" r="5" stroke="white" stroke-width="2.2"/><circle cx="24" cy="12" r="5" stroke="white" stroke-width="2.2"/><path d="M5 32 C5 24 9 22 12 22 L24 22 C27 22 31 24 31 32" stroke="white" stroke-width="2.2" stroke-linecap="round" fill="none"/></svg></div><div class="s7-name">Humanização</div><p class="s7-desc">Revela o lado humano da marca</p></div>
+              </div>
+              <span class="slide-slide-num">07 / 12</span>
+            </div>
+
+            <!-- S8 — Sobre o estudo -->
+            <div class="c-slide sestudo" style="width: 100%; min-width: 100%; aspect-ratio: 1/1;">
+              <div class="fz fz1"></div><div class="fz fz2"></div>
+              <div class="sestudo-in">
+                <div>
+                  <div class="lbl" style="color:rgba(60,10,160,.55)">Análise original · Yoneila Pereira</div>
+                  <h2 class="sestudo-heading">Sobre <em>o estudo</em></h2>
+                  <p class="sestudo-intro">Dados reais coletados e analisados diretamente de perfis do setor financeiro nas redes sociais.</p>
+                </div>
+                <div class="sestudo-cards">
+                  <div class="sestudo-card"><div class="sestudo-card-ico" style="background:#F0E8FF"><svg width="30" height="30" viewBox="0 0 30 30" fill="none"><rect x="4" y="3" width="22" height="26" rx="3" stroke="#7B2FFF" stroke-width="2.2"/><path d="M9 10 L21 10M9 15 L21 15M9 20 L16 20" stroke="#7B2FFF" stroke-width="2" stroke-linecap="round"/></svg></div><div><div class="sestudo-card-title">Metodologia</div><div class="sestudo-card-desc">Análise de 340 publicações em dois perfis reais do setor financeiro ao longo de 6 meses</div></div></div>
+                  <div class="sestudo-card"><div class="sestudo-card-ico" style="background:#E8FFF0"><svg width="30" height="30" viewBox="0 0 30 30" fill="none"><circle cx="15" cy="15" r="11" stroke="#18C870" stroke-width="2.2"/><path d="M9 15 L13 19 L21 11" stroke="#18C870" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><div class="sestudo-card-title">O que foi analisado</div><div class="sestudo-card-desc">Número de posts, engajamento acumulado, média por publicação e peso do humor</div></div></div>
+                </div>
+                <div class="sestudo-note"><div class="sestudo-note-ico"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><circle cx="13" cy="13" r="10" stroke="rgba(255,228,77,.9)" stroke-width="2.2"/><path d="M13 8 L13 14" stroke="rgba(255,228,77,.9)" stroke-width="2.4" stroke-linecap="round"/><circle cx="13" cy="18" r="1.4" fill="rgba(255,228,77,.9)"/></svg></div><div class="sestudo-note-txt">Os perfis analisados são <strong>reais, mas não nomeados</strong> — os dados falam por si.</div></div>
+              </div>
+              <span class="slide-slide-num" style="color:rgba(60,10,160,.35)">08 / 12</span>
+            </div>
+
+            <!-- S9 — Perfil A -->
+            <div class="c-slide s8" style="width: 100%; min-width: 100%; aspect-ratio: 1/1;">
+              <div class="s8-rings"><div class="ring" style="width:960px;height:960px"></div><div class="ring" style="width:740px;height:740px"></div></div>
+              <div class="fz fz1"></div>
+              <div class="s8-in">
+                <div>
+                  <div class="lbl" style="color:rgba(255,255,255,.42)">Análise · Setor financeiro</div>
+                  <h2 class="s8-heading">Humor no mercado<br>de <em>capitais</em></h2>
+                  <div class="pill s8-badge">Perfil A · Instituição pública · 6 meses</div>
+                </div>
+                <div class="s8-grid">
+                  <div class="s8-cell"><div class="s8-cico"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="2" y="3" width="12" height="2" rx="1" fill="rgba(255,228,77,.7)"/><rect x="2" y="7" width="18" height="2" rx="1" fill="rgba(255,228,77,.5)"/><rect x="2" y="11" width="14" height="2" rx="1" fill="rgba(255,228,77,.5)"/></svg></div><div class="s8-val y">242</div><div class="s8-lbl">Publicações totais</div></div>
+                  <div class="s8-cell"><div class="s8-cico"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 16 L8 10 L12 13 L16 6 L19 9" stroke="rgba(255,136,204,.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="s8-val pk">923k</div><div class="s8-lbl">Engajamento total</div></div>
+                  <div class="s8-cell"><div class="s8-cico"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="7" stroke="rgba(255,255,255,.6)" stroke-width="1.8"/></svg></div><div class="s8-val w">3.816</div><div class="s8-lbl">Média por post</div></div>
+                  <div class="s8-cell"><div class="s8-cico"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="9" r="5" stroke="rgba(255,228,77,.8)" stroke-width="1.8"/></svg></div><div class="s8-val y">3</div><div class="s8-lbl">Posts humorísticos</div></div>
+                  <div class="s8-cell"><div class="s8-cico"></div><div class="s8-val pk">1,2%</div><div class="s8-lbl">Do volume total</div></div>
+                  <div class="s8-cell"><div class="s8-cico"></div><div class="s8-val w">21,6%</div><div class="s8-lbl">Do engajamento</div></div>
+                </div>
+                <div class="s8-hero">
+                  <div class="s8-hero-ico"><svg width="38" height="38" viewBox="0 0 38 38" fill="none"><path d="M19 5 L23 15 L35 15 L25 22 L29 33 L19 26 L9 33 L13 22 L3 15 L15 15 Z" stroke="#1A1828" stroke-width="2.5" stroke-linejoin="round" fill="none"/></svg></div>
+                  <div><div class="s8-hero-big">22× mais</div><div class="s8-hero-sub">Os 3 posts humorísticos geraram 22× mais engajamento que a média</div></div>
+                </div>
+              </div>
+              <span class="slide-slide-num">09 / 12</span>
+            </div>
+
+            <!-- S10 — Perfil B -->
+            <div class="c-slide s9" style="width: 100%; min-width: 100%; aspect-ratio: 1/1;">
+              <div class="fz fz1"></div>
+              <div class="s9-in">
+                <div>
+                  <div class="lbl" style="color:rgba(255,255,255,.62)">Análise · Setor financeiro</div>
+                  <h2 class="s9-heading">Quando humor<br>vira resultado</h2>
+                  <div class="pill s9-badge">Perfil B · Empresa privada · 6 meses</div>
+                </div>
+                <div class="s9-minis">
+                  <div class="s9-mini"><div class="s9-mini-ico"></div><div class="s9-mval">98</div><div class="s9-mlbl">Publicações totais</div></div>
+                  <div class="s9-mini"><div class="s9-mini-ico"></div><div class="s9-mval">18</div><div class="s9-mlbl">Posts humor</div></div>
+                  <div class="s9-mini"><div class="s9-mini-ico"></div><div class="s9-mval">18,4%</div><div class="s9-mlbl">Do volume</div></div>
+                </div>
+                <div class="s9-pills">
+                  <div class="s9-pill"><div class="s9-pico"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M5 20 L9 13 L13 17 L18 7 L22 11" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="s9-pnum">40%</div><div class="s9-ptxt">Posts humor geraram 40% de todo o engajamento do perfil</div></div>
+                  <div class="s9-pill"><div class="s9-pico"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M4 20 L8 15 L12 18 L18 10 L22 14" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="s9-pnum">3×</div><div class="s9-ptxt">Posts humorísticos geraram 3× mais que os convencionais</div></div>
+                </div>
+              </div>
+              <span class="slide-slide-num">10 / 12</span>
+            </div>
+
+            <!-- S11 — Perfil C -->
+            <div class="c-slide s11" style="width: 100%; min-width: 100%; aspect-ratio: 1/1;">
+              <div class="s11-rings"><div class="ring" style="width:960px;height:960px"></div></div>
+              <div class="fz fz1"></div>
+              <div class="s11-in">
+                <div>
+                  <div class="lbl" style="color:rgba(255,255,255,.42)">Análise · Campanhas Patrocinadas</div>
+                  <h2 class="s11-heading">Quando a publi<br>vira <em>entretenimento</em></h2>
+                  <div class="pill s11-badge">Perfil C · Banco Privado · Estudo de Caso</div>
+                </div>
+                <div class="s11-quote">
+                  <div class="s11-quote-mark">"</div>
+                  <div class="s11-qtext">Tentada a abrir conta só por conta dessa campanha hahaha</div>
+                  <div class="s11-qauthor">💬 Comentário real sobre a série 'Tá Feito'</div>
+                </div>
+                <div class="s11-cards">
+                  <div class="s11-card"><div class="s11-card-ico"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 2 L17 11 L26 11 L19 16 L21 25 L14 19 L7 25 L9 16 L2 11 L11 11 Z" stroke="white" stroke-width="2.2" stroke-linejoin="round" fill="none"/></svg></div><div class="s11-card-txt">O humor quebrou o tabu de falar sobre dinheiro de forma leve.</div></div>
+                  <div class="s11-card"><div class="s11-card-ico"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M4 21 L8 16 L13 19 L19 11 L24 15" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="s11-card-txt">Gerou forte engajamento orgânico mesmo sendo conteúdo patrocinado.</div></div>
+                </div>
+              </div>
+              <span class="slide-slide-num">11 / 12</span>
+            </div>
+
+            <!-- S12 — Conclusão -->
+            <div class="c-slide s12" style="width: 100%; min-width: 100%; aspect-ratio: 1/1;">
+              <div class="fz fz1"></div><div class="fz fz2"></div>
+              <div class="s12-in">
+                <div>
+                  <div class="lbl" style="color:rgba(255,255,255,.42)">O que levar daqui</div>
+                  <h2 class="s12-heading">3 verdades<br>sobre <em>rir</em><br>com estratégia</h2>
+                </div>
+                <div class="s12-pts">
+                  <div class="s12-pt"><div class="s12-ico"><svg width="30" height="30" viewBox="0 0 30 30" fill="none"><circle cx="15" cy="12" r="7" stroke="rgba(255,228,77,.9)" stroke-width="2.2"/></svg></div><div><div class="s12-n">01 de 03</div><p class="s12-t"><strong>Humor não é frescura.</strong> É estratégia — com ROI 47% maior e resultados mensuráveis.</p></div></div>
+                  <div class="s12-pt"><div class="s12-ico"><svg width="30" height="30" viewBox="0 0 30 30" fill="none"><path d="M4 25 L4 19 L10 19 L10 25Z M10 25 L10 13 L16 13 L16 25Z M16 25 L16 8 L22 8 L22 25Z" stroke="rgba(255,228,77,.9)" stroke-width="2.2" stroke-linejoin="round" fill="none"/></svg></div><div><div class="s12-n">02 de 03</div><p class="s12-t"><strong>Pouco volume, grande impacto.</strong> Menos de 2% dos posts geram quase 1/4 de todo o engajamento.</p></div></div>
+                  <div class="s12-pt"><div class="s12-ico"><svg width="30" height="30" viewBox="0 0 30 30" fill="none"><circle cx="15" cy="15" r="11" stroke="rgba(255,228,77,.9)" stroke-width="2.2"/><path d="M9 19 Q15 25 21 19" stroke="rgba(255,228,77,.9)" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg></div><div><div class="s12-n">03 de 03</div><p class="s12-t"><strong>O público quer leveza.</strong> 88% das pessoas buscam ativamente experiências que as façam sorrir.</p></div></div>
+                </div>
+                <div class="s12-cta">
+                  <div class="s12-cta-q">Sua marca faz as pessoas sentirem algo?</div>
+                  <div class="s12-cta-s">Se não, ela pode estar perdendo muito mais do que engajamento.</div>
+                </div>
+              </div>
+              <span class="slide-slide-num">12 / 12</span>
+            </div>
+
+          </div><!-- /track -->
+
+          <!-- Nav arrows -->
+          <button class="carousel-nav prev" id="prev1" aria-label="Slide anterior">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <button class="carousel-nav next" id="next1" aria-label="Próximo slide">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+        </div><!-- /carousel-viewport -->
+
+        <!-- Dots -->
+        <div class="carousel-dots" id="dots1"></div>
+
+        <!-- Post footer -->
+        <div class="post-footer">
+          <div class="post-actions">
+            <button class="post-action-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              Curtir
+            </button>
+            <button class="post-action-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              Comentar
+            </button>
+            <button class="post-action-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+              Compartilhar
+            </button>
+          </div>
+          <div class="post-caption">
+            <strong>Estudo de Dados: Humor & Engajamento</strong> — Análise quantitativa sobre como o humor impacta o engajamento digital de marcas no setor financeiro. Posts descontraídos respondem por até 40% de todo o engajamento mesmo representando menos de 2% do volume.
+            <br><span style="color:var(--accent);margin-top:0.3rem;display:inline-block;">#DataAnalysis #SocialListening #BI #Marketing</span>
+          </div>
+        </div>
+
+        <!-- Portfolio info block -->
+        <div class="pf-info" style="border-top: 1px solid var(--line);">
+          <div class="pf-info-row">
+            <div>
+              <div class="pf-title">Estudo de Dados: Humor & Engajamento</div>
+            </div>
+          </div>
+          <p class="pf-desc">Análise quantitativa e qualitativa sobre como o uso do humor impacta o engajamento digital de marcas no setor financeiro. Publicações descontraídas — mesmo sendo minoria no volume — são as principais responsáveis pelos resultados da estratégia social.</p>
+          <div class="pf-tags">
+            <span class="pf-tag">Data Storytelling</span>
+            <span class="pf-tag">Design Analítico</span>
+            <span class="pf-tag">Social Media Metrics</span>
+            <span class="pf-tag">Setor Financeiro</span>
+            <span class="pf-tag">Carrossel</span>
+          </div>
+          <div class="pf-stats-row">
+            <div class="pf-stat">
+              <div class="pf-stat-val">340</div>
+              <div class="pf-stat-lbl">Publicações analisadas</div>
+            </div>
+            <div class="pf-stat">
+              <div class="pf-stat-val">6 meses</div>
+              <div class="pf-stat-lbl">Período de análise</div>
+            </div>
+            <div class="pf-stat">
+              <div class="pf-stat-val">22×</div>
+              <div class="pf-stat-lbl">Maior engajamento</div>
+            </div>
+            <div class="pf-stat">
+              <div class="pf-stat-val">12</div>
+              <div class="pf-stat-lbl">Slides de dados</div>
+            </div>
+          </div>
+        </div>
+      </div><!-- /carousel-section -->
+
+    </div><!-- /portfolio-grid -->
   </div>
 </section>
 
@@ -1973,63 +1681,13 @@
       </div>
     </div>
     <div class="tools-grid">
-
-      <div class="tool-card reveal">
-        <div class="tool-icon" style="background:rgba(30,100,200,0.12);border:1px solid rgba(30,100,200,0.2);">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" fill="#1e64c8" opacity="0.2"/><path d="M7 17V9l5 6 5-6v8" stroke="#1e64c8" stroke-width="2" stroke-linecap="round"/></svg>
-        </div>
-        <div class="tool-name">Brandwatch</div>
-        <div class="tool-type">Social Listening</div>
-      </div>
-
-      <div class="tool-card reveal reveal-d1">
-        <div class="tool-icon" style="background:rgba(0,180,120,0.1);border:1px solid rgba(0,180,120,0.2);">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#00b478" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#00b478" stroke-width="2" stroke-linecap="round"/></svg>
-        </div>
-        <div class="tool-name">Minter.io</div>
-        <div class="tool-type">Analytics</div>
-      </div>
-
-      <div class="tool-card reveal reveal-d2">
-        <div class="tool-icon" style="background:rgba(232,104,42,0.1);border:1px solid rgba(232,104,42,0.2);">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 3h18v18H3z" stroke="#e8682a" stroke-width="2"/><path d="M9 9h6M9 12h6M9 15h4" stroke="#e8682a" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </div>
-        <div class="tool-name">Stilingue</div>
-        <div class="tool-type">Social Listening</div>
-      </div>
-
-      <div class="tool-card reveal reveal-d3">
-        <div class="tool-icon" style="background:rgba(160,80,220,0.1);border:1px solid rgba(160,80,220,0.2);">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="#a050dc" stroke-width="2"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="#a050dc" stroke-width="2" stroke-linecap="round"/></svg>
-        </div>
-        <div class="tool-name">Tagger</div>
-        <div class="tool-type">Influencer Intel</div>
-      </div>
-
-      <div class="tool-card reveal">
-        <div class="tool-icon" style="background:rgba(0,120,212,0.1);border:1px solid rgba(0,120,212,0.2);">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="1" fill="#0078d4" opacity="0.15"/><path d="M7 13l3-4 3 4 2-2 2 2" stroke="#0078d4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <div class="tool-name">Power BI</div>
-        <div class="tool-type">Visualização</div>
-      </div>
-
-      <div class="tool-card reveal reveal-d1">
-        <div class="tool-icon" style="background:rgba(32,160,80,0.1);border:1px solid rgba(32,160,80,0.2);">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="1" fill="#20a050" opacity="0.15"/><path d="M8 7h8M8 12h8M8 17h5" stroke="#20a050" stroke-width="1.8" stroke-linecap="round"/></svg>
-        </div>
-        <div class="tool-name">Excel</div>
-        <div class="tool-type">Análise de Dados</div>
-      </div>
-
-      <div class="tool-card reveal reveal-d2">
-        <div class="tool-icon" style="background:rgba(240,180,0,0.1);border:1px solid rgba(240,180,0,0.2);">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="#f0b400" stroke-width="1.8"/><rect x="13" y="4" width="7" height="7" rx="1" stroke="#f0b400" stroke-width="1.8"/><rect x="4" y="13" width="7" height="7" rx="1" stroke="#f0b400" stroke-width="1.8"/><rect x="13" y="13" width="7" height="7" rx="1" stroke="#f0b400" stroke-width="1.8"/></svg>
-        </div>
-        <div class="tool-name">Looker Studio</div>
-        <div class="tool-type">Dashboards</div>
-      </div>
-
+      <div class="tool-card reveal"><div class="tool-icon" style="background:rgba(30,100,200,0.12);border:1px solid rgba(30,100,200,0.2);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" fill="#1e64c8" opacity="0.2"/><path d="M7 17V9l5 6 5-6v8" stroke="#1e64c8" stroke-width="2" stroke-linecap="round"/></svg></div><div class="tool-name">Brandwatch</div><div class="tool-type">Social Listening</div></div>
+      <div class="tool-card reveal reveal-d1"><div class="tool-icon" style="background:rgba(0,180,120,0.1);border:1px solid rgba(0,180,120,0.2);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#00b478" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#00b478" stroke-width="2" stroke-linecap="round"/></svg></div><div class="tool-name">Minter.io</div><div class="tool-type">Analytics</div></div>
+      <div class="tool-card reveal reveal-d2"><div class="tool-icon" style="background:rgba(232,104,42,0.1);border:1px solid rgba(232,104,42,0.2);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 3h18v18H3z" stroke="#e8682a" stroke-width="2"/><path d="M9 9h6M9 12h6M9 15h4" stroke="#e8682a" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="tool-name">Stilingue</div><div class="tool-type">Social Listening</div></div>
+      <div class="tool-card reveal reveal-d3"><div class="tool-icon" style="background:rgba(160,80,220,0.1);border:1px solid rgba(160,80,220,0.2);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="#a050dc" stroke-width="2"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="#a050dc" stroke-width="2" stroke-linecap="round"/></svg></div><div class="tool-name">Tagger</div><div class="tool-type">Influencer Intel</div></div>
+      <div class="tool-card reveal"><div class="tool-icon" style="background:rgba(0,120,212,0.1);border:1px solid rgba(0,120,212,0.2);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="1" fill="#0078d4" opacity="0.15"/><path d="M7 13l3-4 3 4 2-2 2 2" stroke="#0078d4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="tool-name">Power BI</div><div class="tool-type">Visualização</div></div>
+      <div class="tool-card reveal reveal-d1"><div class="tool-icon" style="background:rgba(32,160,80,0.1);border:1px solid rgba(32,160,80,0.2);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="1" fill="#20a050" opacity="0.15"/><path d="M8 7h8M8 12h8M8 17h5" stroke="#20a050" stroke-width="1.8" stroke-linecap="round"/></svg></div><div class="tool-name">Excel</div><div class="tool-type">Análise de Dados</div></div>
+      <div class="tool-card reveal reveal-d2"><div class="tool-icon" style="background:rgba(240,180,0,0.1);border:1px solid rgba(240,180,0,0.2);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="#f0b400" stroke-width="1.8"/><rect x="13" y="4" width="7" height="7" rx="1" stroke="#f0b400" stroke-width="1.8"/><rect x="4" y="13" width="7" height="7" rx="1" stroke="#f0b400" stroke-width="1.8"/><rect x="13" y="13" width="7" height="7" rx="1" stroke="#f0b400" stroke-width="1.8"/></svg></div><div class="tool-name">Looker Studio</div><div class="tool-type">Dashboards</div></div>
     </div>
   </div>
 </section>
@@ -2053,47 +1711,22 @@
         </a>
       </div>
       <div class="contact-links reveal reveal-d2">
-
         <a href="mailto:yoneila97@hotmail.com" class="contact-link">
-          <div class="contact-link-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-          </div>
-          <div>
-            <div class="contact-link-label">E-mail</div>
-            <div class="contact-link-value">yoneila97@hotmail.com</div>
-          </div>
+          <div class="contact-link-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
+          <div><div class="contact-link-label">E-mail</div><div class="contact-link-value">yoneila97@hotmail.com</div></div>
         </a>
-
         <a href="https://www.linkedin.com/in/yonno-pereira/" target="_blank" rel="noopener" class="contact-link">
-          <div class="contact-link-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          </div>
-          <div>
-            <div class="contact-link-label">LinkedIn</div>
-            <div class="contact-link-value">linkedin.com/in/yonno-pereira</div>
-          </div>
+          <div class="contact-link-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></div>
+          <div><div class="contact-link-label">LinkedIn</div><div class="contact-link-value">linkedin.com/in/yonno-pereira</div></div>
         </a>
-
         <a href="tel:+5511989925564" class="contact-link">
-          <div class="contact-link-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 014.07 1.14 2 2 0 016.06 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L10.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-          </div>
-          <div>
-            <div class="contact-link-label">WhatsApp / Telefone</div>
-            <div class="contact-link-value">+55 (11) 98992-5564</div>
-          </div>
+          <div class="contact-link-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 014.07 1.14 2 2 0 016.06 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L10.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+          <div><div class="contact-link-label">WhatsApp / Telefone</div><div class="contact-link-value">+55 (11) 98992-5564</div></div>
         </a>
-
         <div class="contact-link" style="cursor:default;">
-          <div class="contact-link-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
-          </div>
-          <div>
-            <div class="contact-link-label">Localização</div>
-            <div class="contact-link-value">São Paulo, SP — Brasil</div>
-          </div>
+          <div class="contact-link-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+          <div><div class="contact-link-label">Localização</div><div class="contact-link-value">São Paulo, SP — Brasil</div></div>
         </div>
-
       </div>
     </div>
   </div>
@@ -2102,29 +1735,19 @@
 <!-- FOOTER -->
 <footer>
   <div class="container footer-inner">
-    <span class="footer-copy">
-      &copy; 2026 Yoneila Pereira
-      <span class="footer-dot">·</span>
-      Data Analyst
-      <span class="footer-dot">·</span>
-      São Paulo, Brasil
-    </span>
-    <a href="#hero" class="footer-back">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
-      Voltar ao topo
-    </a>
+    <span class="footer-copy">&copy; 2026 Yoneila Pereira<span class="footer-dot">·</span>Data Analyst<span class="footer-dot">·</span>São Paulo, Brasil</span>
+    <a href="#hero" class="footer-back"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>Voltar ao topo</a>
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script>
-  // ── Navbar scroll ──────────────────────────────────────────
+  // ── Navbar scroll ──────────────────────────────────
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 30);
   }, { passive: true });
 
-  // ── Mobile menu ────────────────────────────────────────────
+  // ── Mobile menu ────────────────────────────────────
   function toggleMenu() {
     document.getElementById('nav-links').classList.toggle('open');
   }
@@ -2132,33 +1755,100 @@
     a.addEventListener('click', () => document.getElementById('nav-links').classList.remove('open'));
   });
 
-  // ── Reveal on scroll ───────────────────────────────────────
+  // ── Reveal on scroll ───────────────────────────────
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-  // ── Hero immediate reveal ──────────────────────────────────
-  function forceRevealAll() {
-    document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
-  }
   document.querySelectorAll('#hero .reveal').forEach((el, i) => {
     setTimeout(() => el.classList.add('visible'), 60 + i * 110);
   });
-  setTimeout(() => forceRevealAll(), 1500);
+  setTimeout(() => document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible')), 1600);
 
-  // ── Logo fallback ──────────────────────────────────────────
-  document.querySelectorAll('.client-logo').forEach(img => {
-    img.addEventListener('error', function() {
-      this.style.display = 'none';
-      const fallback = this.nextElementSibling;
-      if (fallback) fallback.style.display = 'block';
+  // ── CAROUSEL ───────────────────────────────────────
+  function initCarousel(trackId, dotsId, prevId, nextId) {
+    const track = document.getElementById(trackId);
+    const dotsContainer = document.getElementById(dotsId);
+    const prevBtn = document.getElementById(prevId);
+    const nextBtn = document.getElementById(nextId);
+    if (!track) return;
+
+    const slides = track.querySelectorAll('.c-slide');
+    const total = slides.length;
+    let current = 0;
+
+    // Build dots
+    slides.forEach((_, i) => {
+      const dot = document.createElement('div');
+      dot.className = 'c-dot' + (i === 0 ? ' active' : '');
+      dot.addEventListener('click', () => goTo(i));
+      dotsContainer.appendChild(dot);
     });
-  });
 
-  // ── Active nav highlight ───────────────────────────────────
+    function updateDots() {
+      dotsContainer.querySelectorAll('.c-dot').forEach((d, i) => {
+        d.classList.toggle('active', i === current);
+      });
+    }
+
+    function goTo(idx) {
+      current = Math.max(0, Math.min(total - 1, idx));
+      const slideWidth = track.parentElement.offsetWidth;
+      track.scrollTo({ left: current * slideWidth, behavior: 'smooth' });
+      updateDots();
+    }
+
+    if (prevBtn) prevBtn.addEventListener('click', () => goTo(current - 1));
+    if (nextBtn) nextBtn.addEventListener('click', () => goTo(current + 1));
+
+    // Sync dots on scroll
+    let scrollTimer;
+    track.addEventListener('scroll', () => {
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(() => {
+        const slideWidth = track.parentElement.offsetWidth;
+        if (slideWidth > 0) {
+          current = Math.round(track.scrollLeft / slideWidth);
+          updateDots();
+        }
+      }, 80);
+    }, { passive: true });
+
+    // Touch / drag support
+    let isDragging = false, startX = 0, startScroll = 0;
+    track.addEventListener('mousedown', e => {
+      isDragging = true;
+      startX = e.pageX;
+      startScroll = track.scrollLeft;
+      track.style.cursor = 'grabbing';
+    });
+    window.addEventListener('mousemove', e => {
+      if (!isDragging) return;
+      track.scrollLeft = startScroll - (e.pageX - startX);
+    });
+    window.addEventListener('mouseup', () => {
+      if (!isDragging) return;
+      isDragging = false;
+      track.style.cursor = 'grab';
+      // Snap to nearest slide
+      const slideWidth = track.parentElement.offsetWidth;
+      if (slideWidth > 0) {
+        goTo(Math.round(track.scrollLeft / slideWidth));
+      }
+    });
+
+    // Keyboard navigation when carousel is focused/hovered
+    track.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft') goTo(current - 1);
+      if (e.key === 'ArrowRight') goTo(current + 1);
+    });
+  }
+
+  initCarousel('track1', 'dots1', 'prev1', 'next1');
+
+  // ── Active nav highlight ───────────────────────────
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-links a');
   const navObs = new IntersectionObserver((entries) => {
@@ -2169,9 +1859,8 @@
         if (link) link.classList.add('active-nav');
       }
     });
-  }, { threshold: 0.4 });
+  }, { threshold: 0.35 });
   sections.forEach(s => navObs.observe(s));
-
 </script>
 </body>
 </html>
